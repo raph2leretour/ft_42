@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:21 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/18 11:31:52 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/21 11:58:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,6 @@ size_t	getnextc(const char *s, char c)
 	return (i - 1);
 }
 
-void	freesplit(char **str, size_t i)
-{
-	while (i != 0)
-	{
-		free(str[i]);
-		i--;
-	}
-	free(str);
-}
-
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -63,7 +53,7 @@ char	**ft_split(char const *s, char c)
 	{
 		s2[i] = ft_substr(s, j, nextc);
 		if (!s2[i])
-			freesplit(s2, howmanyc(s, c));
+			free(s2[i]);
 		j += nextc + 2;
 		nextc = getnextc((s + nextc), c);
 		i++;

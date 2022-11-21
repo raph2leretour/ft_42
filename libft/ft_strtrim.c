@@ -6,48 +6,72 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:27:18 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/17 18:39:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:37:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strstart(const char *s1, const char *set, size_t i, size_t j)
+size_t	getstart(char const *s1, char const *set)
 {
-	if (set[j] == s1[i])
-		ft_strstart(s1, set, i + 1, 0);
-	else if (set[j] != '\0')
-		ft_strstart(s1, set, i, j + 1);
-	return (i);
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (s1[i])
+	{
+		j = 0;
+		while (set[j] != s1[i])
+			j++;
+		if (set[j] == '\0')
+			return (i);
+		i++;
+	}
+	return (ft_strlen(s1));
 }
 
-size_t	ft_strend(const char *s1, const char *set, size_t i, size_t j)
+size_t	getend(char const *s1, char const *set)
 {
-	if (set[j] == s1[i])
-		ft_strend(s1, set, i - 1, 0);
-	else if (set[j] != '\0')
-		ft_strend(s1, set, i, j + 1);
-	return (i);
+	size_t	i;
+	size_t	j;
+
+	i = ft_strlen(s1) - 1;
+	while (s1[i])
+	{
+		j = 0;
+		while (set[j] != s1[i])
+			j++;
+		if (set[j] == '\0')
+			return (ft_strlen(s1) - i);
+		i--;
+	}
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*s2;
 	size_t	i;
+	size_t	start;
+	size_t	end;
 	size_t	len;
-	size_t	strstart;
-	size_t	strend;
+	char	*str;
 
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return ((char *)s1);
 	i = 0;
-	strstart = ft_strstart(s1, set, 0, 0);
-	len = ft_strlen(s1);
-	strend = ft_strend(s1, set, len, 0);
-	len = (ft_strlen(s1) - strstart - strend);
-	s2 = malloc(sizeof(char) * len);
-	while (i <= len)
+	start = getstart(s1, set);
+	end = getend(s1, set);
+	len = ft_strlen(s1) - (start + end);
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	while ((i + start) < len)
 	{
-		s2[i] = s1[strstart + i];
+		str[i] = s1[i + start];
 		i++;
 	}
-	return (s2);
+	str[i] = '\0';
+	return (str);
 }

@@ -6,31 +6,45 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:37:37 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/17 19:07:11 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:46:32 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*starttoofar(void)
+{
+	char	*str;
+
+	str = malloc(sizeof(char));
+	if (!str)
+		return (NULL);
+	str[0] = 0;
+	return (str);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	j;
+	size_t	alllen;
 	char	*str;
 
 	i = 0;
-	j = 0;
-	str = malloc(sizeof(char) * len);
-	if (str == NULL)
+	alllen = 0;
+	if (start > ft_strlen(s))
+		return (starttoofar());
+	while (s[alllen + start])
+		alllen++;
+	if (alllen > len)
+		alllen = len;
+	str = malloc(sizeof(char) * alllen + 1);
+	if (!str)
 		return (NULL);
-	while ((s[i]) && (i != start))
-		i++;
-	if (s[i] == '\0')
-		return (NULL);
-	while ((s[i + j]) && (j <= len))
+	while ((i < len) && s[start + i])
 	{
-		str[j] = s[i + j];
-		j++;
+		str[i] = s[start + i];
+		i++;
 	}
+	str[i] = '\0';
 	return (str);
 }

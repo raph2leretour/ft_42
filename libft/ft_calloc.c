@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:52:18 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/17 19:36:40 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/21 14:33:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,19 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
+	size_t	i;
 	char	*str;
 
-	str = malloc((sizeof(size)) * (nmemb));
-	if ((nmemb == 0) || (size == 0) || (!str))
+	i = 0;
+	if (nmemb > (sizeof(char) * UINT_MAX))
 		return (NULL);
-	ft_memset(str, 0, nmemb);
+	str = malloc(size * nmemb);
+	if (!str)
+		return (NULL);
+	while (i < (nmemb * size))
+	{
+		str[i] = 0;
+		i++;
+	}
 	return (str);
 }
