@@ -6,20 +6,11 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:27:18 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/22 11:24:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:06:13 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*error(char const *s1)
-{
-	char	*str;
-
-	str = malloc(sizeof(char) * ft_strlen(s1) + 1);
-	str = (char *)s1;
-	return (str);
-}
 
 size_t	getstart(char const *s1, char const *set)
 {
@@ -27,16 +18,14 @@ size_t	getstart(char const *s1, char const *set)
 	size_t	j;
 
 	i = 0;
-	while (s1[i])
+	j = ft_strlen(s1);
+	while (i < j)
 	{
-		j = 0;
-		while (set[j] != s1[i])
-			j++;
-		if (set[j] == '\0')
-			return (i);
+		if (!ft_strchr(set, s1[i]))
+			break ;
 		i++;
 	}
-	return (ft_strlen(s1));
+	return (i);
 }
 
 size_t	getend(char const *s1, char const *set)
@@ -44,43 +33,31 @@ size_t	getend(char const *s1, char const *set)
 	size_t	i;
 	size_t	j;
 
-	i = ft_strlen(s1) - 1;
-	while (s1[i])
+	i = 0;
+	j = ft_strlen(s1);
+	while (i < j)
 	{
-		j = 0;
-		while (set[j] != s1[i])
-			j++;
-		if (set[j] == '\0')
-			return (ft_strlen(s1) - i);
-		i--;
+		if (!ft_strchr(set, s1[j - i - 1]))
+			break ;
+		i++;
 	}
-	return (0);
+	return (j - i);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	start;
-	size_t	end;
-	size_t	len;
-	char	*str;
+	size_t	j;
 
+	i = 0;
 	if (!s1)
 		return (NULL);
 	if (!set)
-		return (error(s1));
-	i = 0;
-	start = getstart(s1, set);
-	end = getend(s1, set);
-	len = ft_strlen(s1) - (start + end);
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	while ((i + start) < len)
-	{
-		str[i] = s1[i + start];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+		return (ft_strdup(s1));
+	j = ft_strlen(s1) - 1;
+	if (getstart(s1, set))
+		i = getstart(s1, set);
+	if (getend(s1, set))
+		j = getend(s1, set);
+	return (ft_substr(s1, i, j - i));
 }

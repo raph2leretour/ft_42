@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:39:54 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/22 15:28:57 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:10:31 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ char	*intmin(int n, int i, char *str)
 	return (str);
 }
 
+char	*intnull(int i, char *str)
+{
+	str[i] = '0';
+	return (str);
+}
+
 size_t	intlen(int n)
 {
 	size_t	i;
@@ -35,6 +41,8 @@ size_t	intlen(int n)
 	i = 0;
 	if (n == INT_MIN)
 		n++;
+	if (n == 0)
+		i++;
 	if (n < 0)
 	{
 		n *= -1;
@@ -54,12 +62,14 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	i = intlen(n);
-	str = malloc(sizeof(char) * (i + 1));
+	str = malloc(sizeof(char) * i + 1);
 	if (!str)
 		return (NULL);
 	str[i--] = 0;
 	if (n == INT_MIN)
 		return (intmin(n, i, str));
+	if (n == 0)
+		return (intnull(i, str));
 	if (n < 0)
 	{
 		str[0] = '-';

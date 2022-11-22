@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:21 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/22 15:29:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/22 17:10:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,19 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = -1;
-	s2 = malloc(sizeof(char *) * (nbstr(s, c) + 1));
+	s2 = malloc(sizeof(char *) * ((nbstr(s, c) + 1)));
 	if (!s2)
-		return (0);
+		return (NULL);
 	while (j++ < (nbstr(s, c)))
 	{
 		while (s[i] == c)
 			i++;
 		nextstr = getnextstr(s, c, i);
 		s2[j] = ft_substr(s, i, nextstr);
-		if (!s2)
+		if (!s2[j])
 		{
 			freeerror(s2, j);
-			return (0);
+			return (NULL);
 		}
 		i += nextstr;
 	}
