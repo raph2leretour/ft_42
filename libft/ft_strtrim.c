@@ -6,11 +6,20 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:27:18 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/21 16:37:49 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:24:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*error(char const *s1)
+{
+	char	*str;
+
+	str = malloc(sizeof(char) * ft_strlen(s1) + 1);
+	str = (char *)s1;
+	return (str);
+}
 
 size_t	getstart(char const *s1, char const *set)
 {
@@ -59,7 +68,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (!s1)
 		return (NULL);
 	if (!set)
-		return ((char *)s1);
+		return (error(s1));
 	i = 0;
 	start = getstart(s1, set);
 	end = getend(s1, set);

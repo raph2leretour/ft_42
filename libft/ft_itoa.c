@@ -6,17 +6,35 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:39:54 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/17 11:27:41 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:28:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*intmin(int n, int i, char *str)
+{
+	str[i] = '8';
+	n /= 10;
+	i--;
+	str[0] = '-';
+	n *= -1;
+	while (n > 0)
+	{
+		str[i] = (n % 10) + 48;
+		n /= 10;
+		i--;
+	}
+	return (str);
+}
 
 size_t	intlen(int n)
 {
 	size_t	i;
 
 	i = 0;
+	if (n == INT_MIN)
+		n++;
 	if (n < 0)
 	{
 		n *= -1;
@@ -24,7 +42,7 @@ size_t	intlen(int n)
 	}
 	while (n > 0)
 	{
-		n = (n - (n % 10)) / 10;
+		n /= 10;
 		i++;
 	}
 	return (i);
@@ -36,19 +54,21 @@ char	*ft_itoa(int n)
 	char	*str;
 
 	i = intlen(n);
-	str = malloc(sizeof(char) * i);
+	str = malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
+	str[i--] = 0;
+	if (n == INT_MIN)
+		return (intmin(n, i, str));
 	if (n < 0)
 	{
 		str[0] = '-';
 		n *= -1;
 	}
-	i--;
 	while (n > 0)
 	{
-		n = (n - (n % 10) / 10);
-		str[i] = n + 48;
+		str[i] = (n % 10) + 48;
+		n /= 10;
 		i--;
 	}
 	return (str);
