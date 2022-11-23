@@ -6,19 +6,20 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:21 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/22 17:10:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:51:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	freeerror(char **s, int i)
+void	*freeerror(char **s, int i)
 {
-	while (i)
+	while (i >= 0)
 	{
 		free(s[i]);
 		i--;
 	}
+	return (NULL);
 }
 
 int	nbstr(const char *s, char c)
@@ -69,23 +70,21 @@ char	**ft_split(char const *s, char c)
 	char		**s2;
 
 	i = 0;
-	j = -1;
+	j = 0;
 	s2 = malloc(sizeof(char *) * ((nbstr(s, c) + 1)));
 	if (!s2)
 		return (NULL);
-	while (j++ < (nbstr(s, c)))
+	while (j < (nbstr(s, c)))
 	{
 		while (s[i] == c)
 			i++;
 		nextstr = getnextstr(s, c, i);
 		s2[j] = ft_substr(s, i, nextstr);
 		if (!s2[j])
-		{
-			freeerror(s2, j);
-			return (NULL);
-		}
+			return (freeerror(s2, j));
 		i += nextstr;
+		j++;
 	}
-	s2[j - 1] = '\0';
+	s2[j] = NULL;
 	return (s2);
 }
