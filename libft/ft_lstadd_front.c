@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:39:13 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/23 18:34:39 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/24 17:57:21 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,6 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
+	new->next = *lst;
+	*lst = new;
 }

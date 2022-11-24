@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 16:57:10 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/23 16:57:44 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/24 19:23:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,4 +14,9 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
+	while (lst)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
 }

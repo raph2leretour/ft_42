@@ -6,7 +6,7 @@
 #    By: rtissera <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/17 14:11:03 by rtissera          #+#    #+#              #
-#    Updated: 2022/11/23 17:31:03 by rtissera         ###   ########.fr        #
+#    Updated: 2022/11/24 13:56:21 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,11 @@ bonus : $(OBJ_BONUS)
 clean :
 	rm -rf *.o
 
-fclean :
+fclean : clean
 	rm -rf $(NAME)
+
+tildeclean :
+	rm -rf *~ .*~
 
 re : fclean all
 
