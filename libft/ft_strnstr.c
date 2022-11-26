@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 17:34:53 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/21 11:42:53 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:49:10 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*b;
 
 	i = 0;
+	if (!len && (!big || !little))
+		return (NULL);
 	b = (char *)big;
 	if (little[i] == 0)
 		return (b);

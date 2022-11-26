@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:37:17 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/18 12:04:31 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:37:53 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	i;
 
 	i = 0;
-	if ((!dst) || (!src))
-		return (0);
 	if (size > 0)
 	{
 		while ((--size) && (src[i]))
