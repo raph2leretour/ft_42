@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 13:37:37 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/26 12:20:44 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:56:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	alllen = 0;
+	if (!s)
+		return (NULL);
 	if (start > ft_strlen(s))
 		return (starttoofar());
 	while (s[alllen + start])

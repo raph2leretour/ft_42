@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:05:21 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/23 11:51:42 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/11/28 14:00:51 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	*freeerror(char **s, int i)
 		free(s[i]);
 		i--;
 	}
+	free(s);
 	return (NULL);
 }
 
@@ -71,6 +72,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (NULL);
 	s2 = malloc(sizeof(char *) * ((nbstr(s, c) + 1)));
 	if (!s2)
 		return (NULL);
