@@ -6,12 +6,30 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:03:07 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/06 15:20:25 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:21:39 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "print.h"
+
+int	condition(int c, int arg, int j)
+{
+	if (c == 'c')
+		j += ft_putchar(arg);
+	else if (c == 's')
+		j += ft_putstr(arg);
+	else if (c == 'p')
+		j += ft_putv(arg);
+	else if (c == 'u')
+		j += (ft_putu(arg));
+	else if ((c == 'd') || (c == 'i')
+		|| (c == 'x') || (c == 'X'))
+		j += ft_putputnbr_base(arg, c);
+	else if (c == '%')
+		j += ft_putchar('%');
+	return (j);
+}
 
 int	ft_printf(const char *str, ...)
 {
@@ -26,22 +44,10 @@ int	ft_printf(const char *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if (str[i + 1] == 'c')
-				j += ft_putchar(va_arg(char));
-			else if (str[i + 1] == 's')
-				j += ft_putstr(va_arg(char *));
-			else if (str[i + 1] == 'p')
-				j += ft_putv(va_arg(void *));
-			else if ((str[i + 1] == 'd') || (str[i] == 'i'))
-				j += ft_putnbr(va_arg(int));
-			else if (str[i + 1] == 'u')
-				j += ft_putu(va_arg(int));
-			else if (str[i + 1] == 'x')
-				j += ft_putex(va_arg(unsigned int), "0123456789abcdef");
-			else if (str[i + 1] == 'X')
-				j += ft_putex(va_arg(unsigned int), "0123456789ABCDEF");
-			else if (str[i + 1] == '%')
+			if (str[i + 1] == '%')
 				j += ft_putchar('%');
+			else
+				j += condition(str[i + 1], va_arg(), j);
 			j -= 2;
 			i += 2;
 		}
