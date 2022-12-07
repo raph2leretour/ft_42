@@ -6,7 +6,7 @@
 #    By: rtissera <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:21:42 by rtissera          #+#    #+#              #
-#    Updated: 2022/11/29 17:47:01 by rtissera         ###   ########.fr        #
+#    Updated: 2022/12/06 13:25:03 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,19 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 NAME = libftprintf.a
-SRC = 
+SRC = ft_printf.c ft_putchar.c ft_putex.c ft_putstr.c ft_putu.c ft_putv.c ft_strlen.c
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
-	$(MAKE) -C libft
 
 clean :
 	$(RM) $(OBJ)
-	$(MAKE) -C libft clean
 
 fclean : clean
 	$(RM) $(NAME)
-	$(MAKE) -C libft fclean
 
 re : fclean all
 

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printvoid.c                                     :+:      :+:    :+:   */
+/*   ft_putv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:23:13 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/05 13:45:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:10:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "print.h"
 
-void	ft_printvoid(const void s)
+int	ft_printvoid(const void s)
 {
 	char	str;
 
 	str = (char)s;
-	ft_putstr_fd(str, 1);
+	return (ft_putstr(str));
 }
