@@ -6,17 +6,14 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:23:13 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/06 14:10:45 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:38:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "print.h"
 
-int	ft_printvoid(const void s)
+int	ft_printvoid(unsigned long s)
 {
-	char	str;
-
-	str = (char)s;
 	return (ft_putstr(str));
 }

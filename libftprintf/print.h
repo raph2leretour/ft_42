@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:05:08 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/07 14:27:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:34:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	ft_puchar(char c);
 int	ft_putstr(char *s);
-int	ft_putu(unsigned int n)
+int	ft_putu(unsigned int n);
 int	ft_printvoid(const void s);
 int	ft_printf(const char *str, ...);
 int	ft_putputnbr_base(int n, int c);
