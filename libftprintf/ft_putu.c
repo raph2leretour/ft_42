@@ -6,11 +6,10 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:04:49 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/06 14:17:38 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:32:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "print.h"
 
 int	ft_putu(unsigned int n)
