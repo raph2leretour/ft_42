@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:03:07 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/12 16:08:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/12 16:31:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	condition(int c, int j, va_list arg)
 		j += ft_putchar(va_arg(arg, unsigned int));
 	else if (c == 'u')
 		j += (ft_putu(va_arg(arg, int)));
-	else if (str[i + 1] == 's')
+	else if (c == 's')
 		j += ft_putstr(va_arg(arg, char *));
 	else if ((c == 'd') || (c == 'i'))
 		j += ft_putnbr(va_arg(arg, int));
