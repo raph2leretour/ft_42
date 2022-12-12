@@ -6,13 +6,13 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:15:33 by rtissera          #+#    #+#             */
-/*   Updated: 2022/12/08 16:34:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:20:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "print.h"
+#include "ft_printf.h"
 
-int	ft_putchar(char c)
+int	ft_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
