@@ -6,8 +6,16 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/11 16:47:15 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:45:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+size_t	linelen(char *bank)
+{
+	size_t	i;
 
+	i = 0;
+	while (bank[i] != '\n')
+		i++;
+	return (i);
+}

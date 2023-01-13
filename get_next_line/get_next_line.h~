@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:46:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/13 15:50:34 by rtissera         ###   ########.fr       */
+/*   Created: 2023/01/11 16:47:23 by rtissera          #+#    #+#             */
+/*   Updated: 2023/01/13 15:48:32 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*get_next_line(int fd)
-{
-	size_t		i;
-	size_t		llen;
-	char		*line;
-	static char	*bank;
-	void		buff[BUFFER_SIZE];
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-	if !fd
-		return (NULL);
-	bank = read (fd, buff, BUFFER_SIZE);
-	llen = linelen(bank);
-	
-}
+# include <unistd.h>
+# include <stdlib.h>
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+char		*get_next_line(int fd);
+size_t	linelen(char *bank);
+
+#endif
