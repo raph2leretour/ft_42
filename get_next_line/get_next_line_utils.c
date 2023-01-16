@@ -6,31 +6,24 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/14 17:58:28 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:40:07 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t	linelen(char *bank)
+#include "get_next_line.h"
+
+char	*onlybuff(void *buff, int i)
 {
-	size_t	i;
+	int		j;
+	char	*line;
 
-	i = 0;
-	while (bank[i] != '\n')
-		i++;
-	return (i);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*last_lst;
-
-	if (!*lst)
+	char = malloc(sizeof(char) * (i + 1));
+	while ((i - j) > 0)
 	{
-		*lst = new;
-		return ;
+		line[j] = (char)buff[j];
+		j++;
 	}
-	last_lst = ft_lstlast(*lst);
-	last_lst->next = new;
+	return (line);
 }
 
 t_list	*ft_lstnew(void *content)
@@ -45,15 +38,15 @@ t_list	*ft_lstnew(void *content)
 	return (link);
 }
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	t_list	*last_lst;
 
-	i = 0;
-	while (lst)
+	if (!*lst)
 	{
-		lst = lst->next;
-		i++;
+		*lst = new;
+		return ;
 	}
-	return (i);
+	last_lst = ft_lstlast(*lst);
+	last_lst->next = new;
 }
