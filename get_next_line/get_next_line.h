@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/13 15:48:48 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/17 15:28:34 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ typedef struct s_list
 }	t_list;
 
 char	*get_next_line(int fd);
-size_t	linelen(char *bank);
 
 #endif
