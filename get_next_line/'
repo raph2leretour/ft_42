@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/23 18:27:51 by rtissera         ###   ########.fr       */
+/*   Created: 2023/01/11 16:46:31 by rtissera          #+#    #+#             */
+/*   Updated: 2023/01/23 18:39:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 420
-# endif
-
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct s_list
+int	is_new_line(char *str)
 {
-	char		buf[BUFFER_SIZE + 1];
-	struct s_line	*next;
-}	t_line;
+}
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd)
+{
+	char	*line;
 
-#endif
+	if (!fd || (BUFFER_SIZE <= 0))
+		return (NULL);
+	while ()
+}

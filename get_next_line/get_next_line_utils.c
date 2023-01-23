@@ -6,34 +6,17 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/16 17:40:07 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:58:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*onlybuff(void *buff, int i)
+t_list	*ft_lstnew(void)
 {
-	int		j;
-	char	*line;
+	t_line	*link;
 
-	char = malloc(sizeof(char) * (i + 1));
-	while ((i - j) > 0)
-	{
-		line[j] = (char)buff[j];
-		j++;
-	}
-	return (line);
-}
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*link;
-
-	link = malloc(sizeof(t_list));
-	if (!link)
-		return (NULL);
-	link->content = content;
+	link = malloc(sizeof(t_line));
 	link->next = NULL;
 	return (link);
 }

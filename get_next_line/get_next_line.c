@@ -6,42 +6,32 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:46:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/23 14:04:47 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/23 18:49:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int	is_new_line(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[i++])
+		if (str[i] == '\n')
+			return (0);
+	return (1);
+}
+
 char	*get_next_line(int fd)
 {
-	int			i;
-	int			j;
-	void		*buff;
-	char		*line;
-	static char	stash[1024];
+	char	*line;
 
-	if ((fd == -1) || (BUFFER_SIZE <= 0))
+	if (!fd || (BUFFER_SIZE <= 0))
 		return (NULL);
-	i = 0;
-	while (stash[i] != '\n')
+	ft_lstnew()
+	while (is_new_line(lst->buf))
 	{
-		if (read(fd, buff, BUFFER_SIZE) == -1)
-			return (NULL);
-		j = 0;
-		while ((((char *)buff)[j + 1] != '\n') && ((char *)buff)[j] && stash[i])
-		{
-			stash[i] = ((char *)buff)[j];
-			j++;
-			i++;
-		}
+		read(fd, lst->buf, BUFFER_SIZE);
 	}
-	line = malloc(sizeof(char) * (i + 1));
-	j = 0;
-	while (j < i)
-	{
-		line[j] = stash[j];
-		j++;
-	}
-	line[j] = '\0';
-	return (line);
 }
