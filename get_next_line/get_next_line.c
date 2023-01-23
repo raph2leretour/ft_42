@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:46:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/18 17:57:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:04:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*get_next_line(int fd)
 		if (read(fd, buff, BUFFER_SIZE) == -1)
 			return (NULL);
 		j = 0;
-		while ((buff[j + 1] != '\n') && buff[j] && stash[i])
+		while ((((char *)buff)[j + 1] != '\n') && ((char *)buff)[j] && stash[i])
 		{
-			stash[i] = buff[j];
+			stash[i] = ((char *)buff)[j];
 			j++;
 			i++;
 		}
