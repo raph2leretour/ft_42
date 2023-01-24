@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/24 14:39:32 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:07:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstnew(void *buf)
 {
-	t_list	*lst
+	t_list	*lst;
 
 	lst = malloc(sizeof(t_list));
 	if (!lst)
