@@ -5,6 +5,11 @@
 int	main()
 {
 	int	fd = open("test.txt", O_RDONLY);
-	printf("%s\n", get_next_line(fd));
+	char	*line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
 	return (0);
 }

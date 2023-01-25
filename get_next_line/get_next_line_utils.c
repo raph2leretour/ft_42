@@ -6,20 +6,27 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/24 17:07:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/25 03:38:10 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_lstnew(void *buf)
+t_list	*ft_lstnew(char *buf)
 {
+	int		i;
 	t_list	*lst;
 
 	lst = malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
-	lst->buf = buf;
+	i = 0;
+	while(buf[i])
+	{
+		lst->buf[i] = buf[i];
+		i++;
+	}
+	lst->buf[i] = '\0';
 	lst->next = NULL;
 	return (lst);
 }
