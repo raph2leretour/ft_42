@@ -4,12 +4,13 @@
 
 int	main()
 {
-	int	fd = open("test.txt", O_RDONLY);
+	int	fd = open("/mnt/nfs/homes/rtissera/workspacev2/get_next_line/test.txt", O_RDONLY);
 	char	*line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
+	while (line != NULL)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
 	return (0);
 }

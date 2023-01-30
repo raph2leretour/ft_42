@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 16:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/25 03:31:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:06:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		is_new_line(char *str);
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 char	*get_next_line(int fd);
+char	*miniline(char *line, int i);
 t_list	*ft_lstnew(char *buf);
 t_list	*ft_lstlast(t_list *lst);
 
