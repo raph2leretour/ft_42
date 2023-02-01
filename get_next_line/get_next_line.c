@@ -5,24 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 16:46:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/01/30 17:00:36 by rtissera         ###   ########.fr       */
+/*   Created: 2023/02/01 09:50:46 by rtissera          #+#    #+#             */
+/*   Updated: 2023/02/01 15:45:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*miniline(char *start_line, int i)
+//free bank
+int	error_lst(t_list *bank)
 {
-	int		j;
-	char	*line;
-
-	j = -1;
-	line = malloc(sizeof(char) * (i + 1));
-	while (j++ <= i)
-		line[j] = start_line[j];
-	line[j] = '\0';
-	return (line);
 }
 
 int	is_new_line(char *str)
@@ -39,79 +31,54 @@ int	is_new_line(char *str)
 	return (-1);
 }
 
+char	*put_in_line(t_list *lst, int lenlin, int decalage)
+{
+	int		i;
+	char	*line;
+
+	line = malloc(sizeof(char) * (lenlin + 1));
+	i = 0;
+	while (lst->buf[i])
+	{
+	}
+}
+
+char	*read_line(int fd, t_list *bank)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	*buf[BUFFER_SIZE + 1];
+
+	i = 0;
+	if (bank->buf[0] != '\0')
+	{
+		while (bank->buf[i] != '\n')
+			i++;
+		i++;
+	}
+	while (is_new_line(ft_lstlast(bank)->buf) == -1)
+	{
+		j = read(fd, buf, BUFFER_SIZE);
+		if (j == -1)
+			return (error_lst(bank));
+		else if (j == 0)
+			break ;
+		ft_lstadd_back(&bank, ft_lstnew(buf));
+	}
+	k += (ft_lstsize(bank) - 1) * BUFFER_SIZE;
+	return (put_in_line(bank, (k - (BUFFER_SIZE - i)), i));
+}
+
 char	*get_next_line(int fd)
 {
-	int			i;
-	int			j;
-	int			bytes;
-	int			decalage;
-	int			len_word;
-	int			len_lst;
-	char		buf[BUFFER_SIZE + 1];
-	char		*line;
-	static char	line_start[BUFFER_SIZE + 1];
-	t_list		*lst;
-	t_list		*lst_next;
-	
-	if (!fd || (BUFFER_SIZE <= 0))
+	char			*line;
+	static t_list	*bank;
+
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, &line, 0) < 0)
 		return (NULL);
-	if (read(fd, buf, BUFFER_SIZE) <= 0)
+	line = read_line(fd, bank);
+	if (!line)
 		return (NULL);
-	i = 0;
-	j = 0;
-	if (line_start[0] != '\0')
-	{
-		while (line_start[j] != '\n')
-			j++;
-		while (line_start[j++] && line_start[j] != '\n')
-			i++;
-		if (line_start[j] == '\n')
-			return (miniline(line_start, i));
-	}
-	if ((i == BUFFER_SIZE) && (line_start[BUFFER_SIZE] == '\n'))
-	{
-		i = 0;
-		line_start[0] = '\0';
-	}
-	lst = (NULL);
-	ft_lstadd_back(&lst, ft_lstnew(buf));
-	while (is_new_line(ft_lstlast(lst)->buf) == -1)
-	{
-		bytes = read(fd, buf, BUFFER_SIZE);
-		if (bytes == -1)
-			return (NULL);
-		else if (bytes == 0)
-			break ;
-		ft_lstadd_back(&lst, ft_lstnew(buf));
-	}
-	i += is_new_line(ft_lstlast(lst)->buf) + ((ft_lstsize(lst) - 1) * BUFFER_SIZE);
-	line = malloc(sizeof(char)*(i + 1));
-	len_word = i + 1;
-	decalage = 0;
-	if (line_start[0] != '\0')
-	{
-		while (decalage + is_new_line(line_start) + 1< BUFFER_SIZE)
-		{
-			line[decalage] = line_start[decalage + is_new_line(line_start) + 1];
-			decalage++;
-		}
-	}
-	j = -1;
-	len_lst = ft_lstsize(lst) - 1;
-	while (j++ < len_lst)
-	{
-		lst_next = lst->next;
-		i = -1;
-		while ((i++ < BUFFER_SIZE) && (lst->buf[i] != '\n'))
-			line[decalage + (j * BUFFER_SIZE) + i] = lst->buf[i];
-		free(lst);
-		lst = lst_next;
-	}
-	line[len_word - 1] = '\n';
-	line[len_word] = '\0';
-	i = -1;
-	while (i++ <= BUFFER_SIZE)
-		line_start[i] = ((char *)buf)[i];
-	line_start[i] = '\0';
 	return (line);
 }
