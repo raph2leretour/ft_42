@@ -5,12 +5,12 @@
 int	main()
 {
 	int	fd = open("/mnt/nfs/homes/rtissera/workspacev2/get_next_line/test.txt", O_RDONLY);
-	char	*line = get_next_line(fd);
-	while (line != NULL)
+	char	*line;
+	while ((line = get_next_line(fd)))
 	{
 		printf("%s", line);
 		free(line);
-		line = get_next_line(fd);
 	}
+	close(fd);
 	return (0);
 }

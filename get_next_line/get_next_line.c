@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:50:46 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/02 05:30:45 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/02 18:01:16 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ char	*error_lst(t_list **bank)
 	}
 	return (NULL);
 }
-
-/*bank
-|
-v
-.                               currebt
-|     /         |              |       |
-v             v               V        v
-VIDE      VIDE -- > VUDE  -> VIDE*/
 
 int	is_new_line(char *str)
 {
@@ -59,9 +51,8 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 	line = malloc(sizeof(char) * (lenlin + 1));
 	i = decalage;
 	j = 0;
-	while ((*lst)->buf[0])
+	while ( *lst && (*lst)->buf[0])
 	{
-		i = 0;
 		lst_next = (*lst)->next;
 		while ((*lst)->buf[i])
 		{
@@ -77,19 +68,21 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 		if ((*lst)->next)
 			free(*lst);
 		*lst = lst_next;
+		i = 0;
 	}
 	return (line);
 }
 
-char	*read_line(int fd, t_list **bank, int start, int end)
+char	*read_line(int fd, t_list **bank, int start)
 {
 	int		bytes;
 	int		lenlin;
 	char	buf[BUFFER_SIZE + 1];
 
+	buf[0] = '\0';
 	if (start == 0)
 	{
-		bytes = read(fd, buf, end);
+		bytes = read(fd, buf, BUFFER_SIZE);
 		if (bytes == -1)
 			return (error_lst(bank));
 		else if (bytes == 0)
@@ -105,14 +98,13 @@ char	*read_line(int fd, t_list **bank, int start, int end)
 			ft_lstadd_back(bank, ft_lstnew(buf));
 		}
 	}
-	lenlin = (ft_lstsize(*bank) * BUFFER_SIZE) + BUFFER_SIZE - start - end;
+	lenlin = (ft_lstsize(*bank) * BUFFER_SIZE);
 	return (put_in_line(bank, lenlin, start));
 }
 
 char	*get_next_line(int fd)
 {
 	int				start;
-	int				end;
 	char			*line;
 	static t_list	*bank = NULL;
 
@@ -121,15 +113,11 @@ char	*get_next_line(int fd)
 	start = 0;
 	if (bank)
 	{
-		while ((bank->buf[start] != '\n'))
+		while (bank->buf[start] && bank->buf[start - 1] != '\n')
 			start++;
-		end = start + 1;
-		while ((bank->buf[end] != '\n'))
-			end++;
 	}
-	else
-		end = BUFFER_SIZE;
-	line = read_line(fd, &bank, start, end);
+	line = read_line(fd, &bank, start);
+	bank = del_old_line(bank, start);
 	if (!line)
 		return (NULL);
 	return (line);
