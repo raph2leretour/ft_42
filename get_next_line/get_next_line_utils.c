@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:51:32 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/01 12:01:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/02 05:33:19 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,17 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
+}
+
+t_list	*del_old_line(t_list *lst, int start)
+{
+	int	i;
+
+	i = 0;
+	while (lst->buf[i + start])
+	{
+		lst->buf[i] = lst->buf[i + start];
+		i++;
+	}
+	lst->buf[i] = '\0';
 }
