@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:50:46 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/02 18:01:16 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:12:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 	line = malloc(sizeof(char) * (lenlin + 1));
 	i = decalage;
 	j = 0;
-	while ( *lst && (*lst)->buf[0])
+	while (*lst && (*lst)->buf[0])
 	{
 		lst_next = (*lst)->next;
 		while ((*lst)->buf[i])

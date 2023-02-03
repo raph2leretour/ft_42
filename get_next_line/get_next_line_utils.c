@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:51:32 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/02 17:49:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:10:05 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ t_list	*del_old_line(t_list *lst, int start)
 	int	i;
 
 	i = 0;
+	if (!lst->buf)
+		return (NULL);
 	while (lst->buf[i + start])
 	{
 		lst->buf[i] = lst->buf[i + start];
