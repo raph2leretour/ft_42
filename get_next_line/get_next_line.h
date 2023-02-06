@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:51:15 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/06 12:40:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/06 15:58:52 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 420
 # endif
 
 # include <unistd.h>
@@ -25,6 +25,7 @@ typedef struct s_list
 	char			buf[BUFFER_SIZE + 1];
 	struct s_list	*next;
 }	t_list;
+
 
 int		ft_lstsize(t_list *lst);
 int		is_new_line(char *str);

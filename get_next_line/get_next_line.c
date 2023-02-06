@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:50:46 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/06 12:45:18 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:00:40 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 		while ((*lst)->buf[i])
 		{
 			line[j] = (*lst)->buf[i];
-			if ((*lst)->buf[i] == '\n')
+			if (line[j] == '\n')
 			{
 				line[j + 1] = '\0';
 				return (line);
@@ -65,7 +65,11 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 			i++;
 			j++;
 		}
-		free(*lst);
+		if (*lst)
+		{
+			free(*lst);
+			*lst = NULL;
+		}
 		if (lst_next)
 			*lst = lst_next;
 		i = 0;
@@ -91,14 +95,19 @@ char	*read_line(int fd, t_list **bank, int start)
 	}
 	while (is_new_line(ft_lstlast(*bank)->buf + start) == -1)
 	{
-	bytes = read(fd, buf, BUFFER_SIZE);
-	if (bytes == -1)
-		return (error_lst(bank));
-	else if (bytes == 0)
-		break ;
-	ft_lstadd_back(bank, ft_lstnew(buf));
+		bytes = read(fd, buf, BUFFER_SIZE);
+		if (bytes == -1)
+			return (error_lst(bank));
+		else if (bytes == 0)
+		{
+			ft_lstlast(*bank)->buf[0] = '\0';
+			break ;
+		}
+		ft_lstadd_back(bank, ft_lstnew(buf));
 	}
 	lenlin = (ft_lstsize(*bank) * BUFFER_SIZE);
+	if (lenlin == BUFFER_SIZE && ft_lstlast(*bank)->buf[0] == '\0')
+		return (NULL);
 	return (put_in_line(bank, lenlin, start));
 }
 
@@ -118,6 +127,9 @@ char	*get_next_line(int fd)
 		start++;
 	}
 	line = read_line(fd, &bank, start);
+	if (!line)
+		return (NULL);
+
 	if (start == 0)
 	{
 		while (bank->buf[start] && bank->buf[start] != '\n')
@@ -127,7 +139,5 @@ char	*get_next_line(int fd)
 		}
 	}
 	bank = del_old_line(&bank, start);
-	if (!line)
-		return (NULL);
 	return (line);
 }
