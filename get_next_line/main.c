@@ -6,7 +6,7 @@ int	main()
 {
 	int	fd = open("/mnt/nfs/homes/rtissera/workspacev2/get_next_line/test.txt", O_RDONLY);
 	char	*line;
-	while ((line = get_next_line(fd)))
+	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("%s", line);
 		free(line);

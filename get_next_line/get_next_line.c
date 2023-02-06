@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:50:46 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/03 15:12:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/06 12:45:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 	line = malloc(sizeof(char) * (lenlin + 1));
 	i = decalage;
 	j = 0;
-	while (*lst && (*lst)->buf[0])
+	while ((*lst) && (*lst)->buf[0])
 	{
 		lst_next = (*lst)->next;
 		while ((*lst)->buf[i])
@@ -65,9 +65,9 @@ char	*put_in_line(t_list **lst, int lenlin, int decalage)
 			i++;
 			j++;
 		}
-		if ((*lst)->next)
-			free(*lst);
-		*lst = lst_next;
+		free(*lst);
+		if (lst_next)
+			*lst = lst_next;
 		i = 0;
 	}
 	return (line);
@@ -88,15 +88,15 @@ char	*read_line(int fd, t_list **bank, int start)
 		else if (bytes == 0)
 			return (NULL);
 		ft_lstadd_back(bank, ft_lstnew(buf));
-		while (is_new_line(ft_lstlast(*bank)->buf) == -1)
-		{
-			bytes = read(fd, buf, BUFFER_SIZE);
-			if (bytes == -1)
-				return (error_lst(bank));
-			else if (bytes == 0)
-				break ;
-			ft_lstadd_back(bank, ft_lstnew(buf));
-		}
+	}
+	while (is_new_line(ft_lstlast(*bank)->buf + start) == -1)
+	{
+	bytes = read(fd, buf, BUFFER_SIZE);
+	if (bytes == -1)
+		return (error_lst(bank));
+	else if (bytes == 0)
+		break ;
+	ft_lstadd_back(bank, ft_lstnew(buf));
 	}
 	lenlin = (ft_lstsize(*bank) * BUFFER_SIZE);
 	return (put_in_line(bank, lenlin, start));
@@ -113,11 +113,20 @@ char	*get_next_line(int fd)
 	start = 0;
 	if (bank)
 	{
-		while (bank->buf[start] && bank->buf[start - 1] != '\n')
+		while (bank->buf[start] && bank->buf[start] != '\n')
 			start++;
+		start++;
 	}
 	line = read_line(fd, &bank, start);
-	bank = del_old_line(bank, start);
+	if (start == 0)
+	{
+		while (bank->buf[start] && bank->buf[start] != '\n')
+		{
+				start++;
+			start++;
+		}
+	}
+	bank = del_old_line(&bank, start);
 	if (!line)
 		return (NULL);
 	return (line);
