@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:24:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/09 16:04:49 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:31:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	linelen(t_list **lst)
 	t_list	*lst_current;
 
 	i = 0;
-	size = 0;
+	size = 1;
 	lst_current = *lst;
-	while (lst_current->buf[i] && lst_current->buf[i] != '\n')
+	while (lst_current && lst_current->buf[i] && lst_current->buf[i] != '\n')
 	{
 		i++;
 		size++;
-		if (!lst_current->buf[i])
+		if (!lst_current->buf[i] && lst_current->next)
 		{
 			lst_current = lst_current->next;
 			i = 0;
@@ -55,7 +55,7 @@ char	*put_in_line(t_list **lst)
 	int		j;
 	int		size;
 	char	*line;
-	t_list	*lst_next;
+	t_list	*lst_current;
 
 	size = linelen(lst);
 	line = malloc(sizeof(char) * size + 1);
@@ -63,19 +63,19 @@ char	*put_in_line(t_list **lst)
 		return (NULL);
 	i = 0;
 	j = 0;
-	while (i <= size)
+	lst_current = *lst;
+	while (i < size)
 	{
-		line[i] = (*lst)->buf[j];
+		line[i] = (lst_current)->buf[j];
 		i++;
 		j++;
-		if (!(*lst)->buf[j])
+		if (!(lst_current)->buf[j])
 		{
-			lst_next = (*lst)->next;
-			free((*lst));
-			*lst = lst_next;
+			lst_current = lst_current->next;
 			j = 0;
 		}
 	}
+	line[i] = '\0';
 	return (line);
 }
 

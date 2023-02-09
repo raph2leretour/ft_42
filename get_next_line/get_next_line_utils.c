@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:30:02 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/09 17:15:29 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/09 19:37:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,17 @@ void	clear_old_line(t_list **lst)
 
 	i = 0;
 	j = 0;
-	size_old_line = linelen(lst) + 1;
+	size_old_line = linelen(lst);
 	if (!*lst)
 		return ;
-	if ((*lst)->buf[i + size_old_line] == '\0')
+	while ((*lst)->buf[i + size_old_line] == '\0')
 	{
-		lst_next = (*lst)->next;
+		if ((*lst)->next)
+			lst_next = (*lst)->next;
 		free(*lst);
-		*lst = lst_next;
-		return ;
+		if (lst_next)
+			*lst = lst_next;
+		i += BUFFER_SIZE;
 	}
 	while (j <= size_old_line)
 	{
