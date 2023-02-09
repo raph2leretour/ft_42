@@ -6,21 +6,43 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:24:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/08 19:48:03 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/09 16:04:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+int	linelen(t_list **lst)
+{
+	int		i;
+	int		size;
+	t_list	*lst_current;
+
+	i = 0;
+	size = 0;
+	lst_current = *lst;
+	while (lst_current->buf[i] && lst_current->buf[i] != '\n')
+	{
+		i++;
+		size++;
+		if (!lst_current->buf[i])
+		{
+			lst_current = lst_current->next;
+			i = 0;
+		}
+	}
+	return (size);
+}
+
 void	*read_error(t_list **lst)
 {
-	t_list	lst_next;
-	t_list	lst_current;
+	t_list	*lst_next;
+	t_list	*lst_current;
 
 	lst_current = *lst;
 	while (lst_current)
 	{
-		lst_next = lst_curent->next;
+		lst_next = lst_current->next;
 		free(lst_current);
 		lst_current = lst_next;
 	}
@@ -33,21 +55,14 @@ char	*put_in_line(t_list **lst)
 	int		j;
 	int		size;
 	char	*line;
-	t_list	lst_next;
+	t_list	*lst_next;
 
-	size = 0;
-	while ((*lst)->buf[j] && (*lst)->buf[j] != '\n')
-	{
-		j++;
-		size++;
-		if (!(*lst)->buf[j])
-		{
-			*lst = *lst->next;
-			j = 0;
-		}
-	}
+	size = linelen(lst);
 	line = malloc(sizeof(char) * size + 1);
+	if (!line)
+		return (NULL);
 	i = 0;
+	j = 0;
 	while (i <= size)
 	{
 		line[i] = (*lst)->buf[j];
@@ -67,7 +82,7 @@ char	*put_in_line(t_list **lst)
 t_list	*read_line(t_list **lst, int	fd)
 {
 	int		bytes;
-	char	*buf[BUFFER_SIZE + 1];
+	char	buf[BUFFER_SIZE + 1];
 
 	bytes = 0;
 	while (1)
@@ -98,5 +113,6 @@ char	*get_next_line(int fd)
 	line = put_in_line(&lst);
 	if (!line)
 		return (NULL);
+	clear_old_line(&lst);
 	return (line);
 }

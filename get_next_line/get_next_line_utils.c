@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 15:30:02 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/08 15:51:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/09 17:15:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,19 @@
 
 t_list	*ft_lstnew(char *buf)
 {
+	int		i;
 	t_list	*lst;
 
-	lst = malloc(sizeof(t_list))
+	lst = malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);
-	lst->buf = buf;
+	i = 0;
+	while (buf[i])
+	{
+		lst->buf[i] = buf[i];
+		i++;
+	}
+	lst->buf[i] = '\0';
 	lst->next = NULL;
 	return (lst);
 }
@@ -30,7 +37,7 @@ t_list	*ft_lstlast(t_list *lst)
 		return (NULL);
 	while (lst->next)
 		lst = lst->next;
-	return (lst->next);
+	return (lst);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
@@ -59,17 +66,30 @@ int	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-t_list	*clear_old_line(t_list **lst, int endline)
+void	clear_old_line(t_list **lst)
 {
 	int	i;
+	int	j;
+	int	size_old_line;
+	t_list	*lst_next;
 
 	i = 0;
+	j = 0;
+	size_old_line = linelen(lst) + 1;
 	if (!*lst)
-		return (NULL);
-	while ((*lst)->buf[i + endline])
+		return ;
+	if ((*lst)->buf[i + size_old_line] == '\0')
 	{
-		(*lst)->lst[i] = (*lst)->buf[i + endline];
-		i++;
+		lst_next = (*lst)->next;
+		free(*lst);
+		*lst = lst_next;
+		return ;
 	}
-	return (*lst);
+	while (j <= size_old_line)
+	{
+		(*lst)->buf[i] = (*lst)->buf[i + size_old_line];
+		i++;
+		j++;
+	}
+	(*lst)->buf[i] = '\0';
 }
