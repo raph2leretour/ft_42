@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 13:19:05 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/11 20:53:22 by rtissera         ###   ########.fr       */
+/*   Created: 2023/02/08 15:30:02 by rtissera          #+#    #+#             */
+/*   Updated: 2023/02/09 19:37:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,29 @@ int	ft_lstsize(t_list *lst)
 void	clear_old_line(t_list **lst)
 {
 	int	i;
+	int	j;
 	int	size_old_line;
 	t_list	*lst_next;
 
+	i = 0;
+	j = 0;
+	size_old_line = linelen(lst);
 	if (!*lst)
 		return ;
-	size_old_line = linelen(lst, 2);
-	while (size_old_line - BUFFER_SIZE > 0 || (*lst)->buf[size_old_line] == '\0')
+	while ((*lst)->buf[i + size_old_line] == '\0')
 	{
-		lst_next = (*lst)->next;
+		if ((*lst)->next)
+			lst_next = (*lst)->next;
 		free(*lst);
-		*lst = lst_next;
-		if (!(*lst))
-			return ;
-		size_old_line = linelen(lst, 2);
+		if (lst_next)
+			*lst = lst_next;
+		i += BUFFER_SIZE;
 	}
-	i = -1;
-	size_old_line = linelen(lst, 1);
-	while ((*lst)->buf[size_old_line + i++])
+	while (j <= size_old_line)
+	{
 		(*lst)->buf[i] = (*lst)->buf[i + size_old_line];
+		i++;
+		j++;
+	}
 	(*lst)->buf[i] = '\0';
 }

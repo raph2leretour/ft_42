@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 14:11:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/11 17:00:07 by rtissera         ###   ########.fr       */
+/*   Created: 2023/02/08 15:26:17 by rtissera          #+#    #+#             */
+/*   Updated: 2023/02/09 16:06:28 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
@@ -26,8 +26,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+int		linelen(t_list **lst);
 int		ft_lstsize(t_list *lst);
-int		linelen(t_list **lst, int boool);
 char	*get_next_line(int fd);
 char	*put_in_line(t_list **lst);
 void	*read_error(t_list **lst);
