@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 13:19:05 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/11 20:53:22 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:11:04 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_list	*ft_lstnew(char *buf)
 	int		i;
 	t_list	*lst;
 
+	if (!*buf)
+		return (NULL);
 	lst = malloc(sizeof(t_list));
 	if (!lst)
 		return (NULL);

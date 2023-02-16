@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 13:18:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/11 20:35:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/16 15:33:54 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	linelen(t_list **lst, int boool)
 	return (-size);
 }
 
-t_list	*read_line(t_list **lst, int	fd)
+t_list	*read_line(t_list **lst, int fd)
 {
 	int		bytes;
 	char	buf[BUFFER_SIZE + 1];
@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	char	*line;
 	static t_list	*lst = NULL;
 
-	if (!fd || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return read_error(&lst);
 	lst = read_line(&lst, fd);
 	if (!lst)
