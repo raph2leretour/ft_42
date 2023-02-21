@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:11:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/16 15:56:30 by raphael          ###   ########.fr       */
+/*   Updated: 2023/02/21 15:39:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_LINE_H
+#ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
@@ -29,7 +29,7 @@ typedef struct s_list
 int		ft_lstsize(t_list *lst);
 int		linelen(t_list **lst, int boool);
 char	*get_next_line(int fd);
-char	*put_in_line(t_list **lst);
+char	*put_in_line(t_list **lst, int i, int j);
 void	*read_error(t_list **lst);
 void	clear_old_line(t_list **lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);

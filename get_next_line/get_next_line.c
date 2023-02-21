@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 13:18:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/16 15:33:54 by raphael          ###   ########.fr       */
+/*   Updated: 2023/02/21 15:10:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,24 +75,18 @@ t_list	*read_line(t_list **lst, int fd)
 	return (*lst);
 }
 
-char	*put_in_line(t_list **lst)
+char	*put_in_line(t_list **lst, int i, int j)
 {
-	int		i;
-	int		j;
 	int		size;
 	char	*line;
 	t_list	*lst_current;
 
 	size = linelen(lst, 1);
 	if (size == 0)
-		return read_error(lst);
+		return (read_error(lst));
 	else if (size < 0)
-		size = size * - 1;
+		size = size * -1;
 	line = malloc(sizeof(char) * size + 1);
-	if (!line)
-		return read_error(lst);
-	i = 0;
-	j = 0;
 	lst_current = *lst;
 	while (i < size)
 	{
@@ -105,23 +99,22 @@ char	*put_in_line(t_list **lst)
 			j = 0;
 		}
 	}
-	line[i] = '\0';
-	return (line);
+	return (line[i] = '\0', line);
 }
 
 char	*get_next_line(int fd)
 {
-	char	*line;
+	char			*line;
 	static t_list	*lst = NULL;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return read_error(&lst);
+		return (read_error(&lst));
 	lst = read_line(&lst, fd);
 	if (!lst)
 		return (NULL);
-	line = put_in_line(&lst);
+	line = put_in_line(&lst, 0, 0);
 	if (!line)
-		return read_error(&lst);
+		return (read_error(&lst));
 	clear_old_line(&lst);
 	return (line);
 }

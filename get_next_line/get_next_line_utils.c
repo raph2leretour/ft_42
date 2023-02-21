@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 13:19:05 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/16 16:11:04 by raphael          ###   ########.fr       */
+/*   Updated: 2023/02/21 15:41:21 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,15 @@ int	ft_lstsize(t_list *lst)
 
 void	clear_old_line(t_list **lst)
 {
-	int	i;
-	int	size_old_line;
+	int		i;
+	int		size_old_line;
 	t_list	*lst_next;
 
 	if (!*lst)
 		return ;
 	size_old_line = linelen(lst, 2);
-	while (size_old_line - BUFFER_SIZE > 0 || (*lst)->buf[size_old_line] == '\0')
+	while (size_old_line - BUFFER_SIZE > 0
+		|| (*lst)->buf[size_old_line] == '\0')
 	{
 		lst_next = (*lst)->next;
 		free(*lst);
