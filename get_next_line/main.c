@@ -4,7 +4,7 @@
 
 int	main()
 {
-	int	fd = open("./gnlTester/files/big_line_no_nl", O_RDONLY);
+	int	fd = open("test.txt", O_RDONLY);
 	char	*line;
 	while ((line = get_next_line(fd)) != NULL)
 	{

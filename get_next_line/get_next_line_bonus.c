@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 13:18:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/22 12:02:57 by rtissera         ###   ########.fr       */
+/*   Created: 2023/02/22 12:18:54 by rtissera          #+#    #+#             */
+/*   Updated: 2023/02/23 03:40:10 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	*read_error(t_list **lst)
 {
@@ -112,16 +112,16 @@ char	*put_in_line(t_list **lst, int i, int j)
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static t_list	*lst = NULL;
+	static t_list	*lst[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (read_error(&lst));
-	lst = read_line(&lst, fd);
-	if (!lst)
 		return (NULL);
-	line = put_in_line(&lst, 0, 0);
+	lst[fd] = read_line(&lst[fd], fd);
+	if (!lst[fd])
+		return (NULL);
+	line = put_in_line(&lst[fd], 0, 0);
 	if (!line)
-		return (read_error(&lst));
-	clear_old_line(&lst);
+		return (NULL);
+	clear_old_line(&lst[fd]);
 	return (line);
 }
