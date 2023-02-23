@@ -6,9 +6,12 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:18:43 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/23 10:51:25 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:36:14 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
+int	main(int argc, char **argv)
+{
+}
