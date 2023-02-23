@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:18:54 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/23 03:40:10 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/23 04:52:34 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ char	*get_next_line(int fd)
 	char			*line;
 	static t_list	*lst[1024];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd >= 1024 || fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	lst[fd] = read_line(&lst[fd], fd);
 	if (!lst[fd])

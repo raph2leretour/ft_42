@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 14:11:11 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/22 12:15:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/02/23 04:58:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 420
+# endif
+
+# if BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
 # endif
 
 # include <unistd.h>
