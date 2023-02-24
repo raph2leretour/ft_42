@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/23 13:40:12 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/23 16:56:16 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/28 14:05:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-
-typedef struct	s_list
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int				*stock1;
-	struct s_list	*next;
-}	t_list;
+	t_list	*lst_todel;
 
-int	main(int argc, char **argv);
-
-#endif
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		lst_todel = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = lst_todel;
+	}
+}
