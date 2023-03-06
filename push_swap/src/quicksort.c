@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/06 20:38:12 by rtissera         ###   ########.fr       */
+/*   Created: 2023/03/06 11:51:38 by rtissera          #+#    #+#             */
+/*   Updated: 2023/03/06 21:05:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+t_list	*quicksort(t_list *stocka)
 {
-	int		boool;
-	t_list	stocka;
+	t_list	*head;
+	t_list	*tmp;
 
-	if (argc < 2)
-		return (0);
-	boool = checkarg(argv);
-	if (boool == 1)
-		return (ft_putchar_fd("Error\n", 1), 0);
-	stocka = atoi_list(argv);
-	boool = checksamearg(stocka);
-	if (boool == 1)
-		return (ft_putchar_fd("Error\n", 1), 0);
-	push_swap(stocka);
-	return (0);
+	head = lst;
+	tmp = ft_lstnew(lst->content);
+	lst = lst->next;
+	while (lst->content)
+	{
+		ft_lstadd_back(&tmp, ft_lstnew(lst->content));
+		lst = lst->next;
+	}
+	return (lst = head, tmp);
 }
