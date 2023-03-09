@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/06 20:38:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:13:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	main(int argc, char **argv)
 {
 	int		boool;
-	t_list	stocka;
+	t_list	*stocka;
+	t_list	*stockb;
+	t_list	*tmp;
 
 	if (argc < 2)
 		return (0);
@@ -26,6 +28,8 @@ int	main(int argc, char **argv)
 	boool = checksamearg(stocka);
 	if (boool == 1)
 		return (ft_putchar_fd("Error\n", 1), 0);
-	push_swap(stocka);
+	tmp = quicksort(stocka, argc);
+	stockb = presort(stocka, tmp, argc);
+	push_swap();
 	return (0);
 }

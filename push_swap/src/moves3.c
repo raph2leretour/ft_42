@@ -6,50 +6,54 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:30:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/01 13:54:59 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:48:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // Shift down all elements of stack a by 1, the last element becomes the first one.
-void	rra(t_list *stocka, t_list *stockb)
+t_list	*rra(t_list *stocka)
 {
-	if (ft_lstsize(stocka) < 2)
-		return ;
-	t_list	next_element;
-	t_list	current_element;
+	t_list	*head;
+	t_list	*lasta;
+	t_list	*lst_next;
 
-	if (!stocka->content)
-		return ;
-	next_element = stocka->next;
-	while (next_element->next)
+	if (ft_lstsize(stocka) < 1)
+		return (NULL);
+	head = stocka;
+	lst_next = stocka->next;
+	while (lst_next->next)
 	{
-		current_element = next_element;
-		next_element = next_element->next;
+		stocka = lst_next;
+		lst_next = stocka->next;
 	}
-	ft_lstadd_front(&stocka, next_element);
-	current_element->next = NULL;
+	lasta = lst_next;
+	stocka->next = NULL;
+	lasta->next = head;
+	return (lasta);
 }
 
 // Shift down all elements of stack b by 1, the last element becomes the first one.
-void	rrb(t_list *stocka, t_list *stockb)
+t_list	*rrb(t_list *stockb)
 {
-	if (ft_lstsize(stockb) < 2)
-		return ;
-	t_list	next_element;
-	t_list	current_element;
+	t_list	*head;
+	t_list	*lastb;
+	t_list	*lst_next;
 
-	if (!stockb->content)
-		return ;
-	next_element = stockb->next;
-	while (next_element->next)
+	if (ft_lstsize(stockb) < 1)
+		return (NULL);
+	head = stockb;
+	lst_next = stockb->next;
+	while (lst_next->next)
 	{
-		current_element = next_element;
-		next_element = next_element->next;
+		stockb = lst_next;
+		lst_next = stockb->next;
 	}
-	ft_lstadd_front(&stockb, next_element);
-	current_element->next = NULL;
+	lastb = lst_next;
+	stockb->next = NULL;
+	lastb->next = head;
+	return (lastb);
 }
 
 // rra and rrb at the same time.
