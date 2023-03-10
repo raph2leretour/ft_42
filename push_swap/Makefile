@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 09:14:01 by rtissera          #+#    #+#              #
-#    Updated: 2023/02/24 14:44:38 by rtissera         ###   ########.fr        #
+#    Updated: 2023/03/10 14:52:32 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,12 @@ SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:= \
 	main.c			\
+	src/utils.c		\
+	src/moves1.c	\
+	src/moves2.c	\
+	src/moves3.c	\
+	src/presort.c	\
+	src/quicksort.c	\
 	src/push_swap.c	\
 SRCS		:= $(SRCS:%=$(SRC_DIR)/$)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.C=$(OBJ_DIR)/%.o)
@@ -82,6 +88,9 @@ re:
 
 run: re
 	-./$(NAME)
+
+info-%:
+	$(MAKE) --dry-run --always-make $* | grep -v "info"
 
 print-%:
 	$(info '$*'='$($*)')

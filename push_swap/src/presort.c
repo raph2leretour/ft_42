@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:05:44 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/09 11:53:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:12:48y rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	medianificator(t_list *lst, int argc)
 t_list	*presort(t_list *stocka, t_list *tmp, int argc)
 {
 	int		i;
+	int		test;
 	int		mediane;
 	t_list	*stockb;
+	t_list	*toprint;
 
 	i = 0;
 	mediane = medianificator(tmp, argc);
@@ -42,10 +44,13 @@ t_list	*presort(t_list *stocka, t_list *tmp, int argc)
 		while (i < argc)
 		{
 			if (stocka->content > mediane)
-				pb(stocka, stockb);
+				test = pb(stockb);
 			else
-				ra(stocka, stockb);
+				test = ra(stocka);
+			if (test != 0)
+				return ();
 			i++;
 		}
+		i += mediane;
 	}
 }
