@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:51:38 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/08 16:10:15 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/13 15:51:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 t_list	*ft_lstcpy(t_list *lst)
 {
@@ -18,7 +18,7 @@ t_list	*ft_lstcpy(t_list *lst)
 	t_list	*cpy;
 
 	head = lst;
-	cpy= ft_lstnew(lst->content);
+	cpy = ft_lstnew(lst->content);
 	lst = lst->next;
 	while (lst->content)
 	{

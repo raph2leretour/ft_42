@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/08 16:13:00 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:01:51 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "include/push_swap.h"
 
 int	main(int argc, char **argv)
 {

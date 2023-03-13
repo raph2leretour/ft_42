@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:06:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/08 14:06:48 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:10:13 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
 int	checkarg(char **argv)
 {
@@ -24,7 +24,7 @@ int	checkarg(char **argv)
 		while (argv[i][j])
 		{
 			if (ft_isdigit(argv[i][i]) != 1)
-			return (1);
+				return (1);
 			j++;
 		}
 		i++;
@@ -58,7 +58,7 @@ int	checksamearg(t_list *stocka)
 	head = stocka;
 	while (lst->content)
 	{
-		lst_cur = lst->next
+		lst_cur = lst->next;
 		while (lst_cur->content)
 		{
 			if (lst->content == lst_cur->content)
@@ -71,6 +71,17 @@ int	checksamearg(t_list *stocka)
 }
 
 void	lst_clean(t_list *lst)
+{
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		free(lst);
+		lst = lst->next;
+	}
+}
+
+void	struct_clean(t_struct *lst)
 {
 	if (!lst)
 		return ;

@@ -6,49 +6,42 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:28:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/10 14:19:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:11:34 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../include/push_swap.h"
 
-// Shift up all elements of stack a by 1, the first element becomes the last one.
-int	ra(t_list *stocka)
+void	ra(t_list *stocka, bool log)
 {
 	t_list	*nexta;
 
 	if (ft_lstsize(stocka) < 1)
-		return (1);
+		return ;
 	nexta = stocka->next;
 	ft_lstadd_back(&stocka, stocka);
 	stocka = nexta;
-	return (0);
+	if (log)
+		ft_putstr_fd("ra\n", 1);
 }
 
-// Shift up all elements of stack b by 1, the first element becomes the last one.
-int	rb(t_list *stockb)
+void	rb(t_list *stockb, bool log)
 {
 	t_list	*nextb;
 
 	if (ft_lstsize(stockb) < 1)
-		return (1);
+		return ;
 	nextb = stockb->next;
 	ft_lstadd_back(&stockb, stockb);
 	stockb = nextb;
-	return (0);
+	if (log)
+		ft_putstr_fd("rb\n", 1);
 }
 
-// ra and rb at the same time.
-int	rr(t_list *stocka, t_list *stockb)
+void	rr(t_list *stocka, t_list *stockb, bool log)
 {
-	int	test;
-
-	test = ra(stocka, stockb);
-	if (test != 0)
-		return (1);
-	test = rb(stocka, stockb);
-	if (test != 0)
-		return (1);
-	else
-		return (0);
+	ra(stocka, stockb, 0);
+	rb(stocka, stockb, 0);
+	if (log)
+		ft_putstr_fd("rr\n", 1);
 }
