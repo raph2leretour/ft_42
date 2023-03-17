@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:07:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/27 17:23:38 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:43:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 /************************************************/
 typedef struct s_list
 {
-	int				*content;
+	int				content;
 	struct s_list	*next;
 }	t_list;
 

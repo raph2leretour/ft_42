@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/13 17:21:30 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/17 13:34:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 /************************************************/
 /*   INCLUDES                                   */
 /************************************************/
+# include <stdbool.h>
 # include "libft.h"
 
 /************************************************/
@@ -33,29 +34,39 @@ typedef struct s_struct
 /************************************************/
 /*   FUNCTIONS                                  */
 /************************************************/
+// int			medianificator(t_list *lst, int argc);
+// void		rb(t_list *stockb, bool log);
+// void		rra(t_list *stocka, bool log);
+// void		struct_clean(t_struct *lst);
+// void		sa(t_list *stocka, bool log);
+// void		sb(t_list *stockb, bool log);
+// void		ss(t_list *stocka, t_list *stockb, bool log);
+// void		rr(t_list *stocka, t_list *stockb, bool log);
+// void		rrr(t_list *stocka, t_list *stockb, bool log);
+// void		ft_structadd_back(t_struct **lst, t_struct *new);
+// t_list		*presort(t_list *stocka, t_list *tmp, int argc);
+// t_struct	*ft_structnew(char *buf);
+// t_struct	*ft_structlast(t_struct *lst);
+int			ft_isdigit(int c);
 int			ft_max(t_list *lst);
-int			checkarg(char **argv);
+int			ft_lstsize(t_list *lst);
+int			ft_atoi(const char *nptr);
 int			main(int argc, char **argv);
-int			checksamearg(t_list *stocka);
-int			medianificator(t_list *lst, int argc);
-void		lst_clean(t_list *lst);
-void		struct_clean(t_struct *lst);
-void		sa(t_list *stocka, bool log);
-void		sb(t_list *stockb, bool log);
-void		ra(t_list *stocka, bool log);
-void		rb(t_list *stockb, bool log);
-void		rra(t_list *stocka, bool log);
-void		ss(t_list *stocka, t_list *stockb, bool log);
-void		pa(t_list *stocka, t_list *stockb, bool log);
-void		pb(t_list *stocka, t_list *stockb, bool log);
-void		rr(t_list *stocka, t_list *stockb, bool log);
-void		rrr(t_list *stocka, t_list *stockb, bool log);
-void		ft_structadd_back(t_struct **lst, t_struct *new);
-void		big_sort(t_list *stocka, t_stack *stockb, bool log);
-static void	push_last_bit_one(t_list *a, t_list *b, int bit_max, bool log);
-t_list		*atoi_list(char **argv);
-t_list		*presort(t_list *stocka, t_list *tmp, int argc);
-t_struct	*ft_structnew(char *buf);
-t_struct	*ft_structlast(t_struct *lst);
+bool		checkarg(char **argv);
+bool		checksamearg(t_list *stocka);
+void		lst_clean(t_list **lst);
+void		push_swap(t_list *stocka);
+void		ra(t_list **stocka, bool log);
+void		ft_putstr_fd(char *s, int fd);
+void		ft_lstadd_back(t_list **lst, t_list *new);
+void		ft_lstadd_front(t_list **lst, t_list *new);
+void		pa(t_list **stocka, t_list **stockb, bool log);
+void		pb(t_list **stocka, t_list **stockb, bool log);
+void		big_sort(t_list *stocka, t_list *stockb, bool log);
+void		push_last_bit_one(t_list **a, t_list **b, int bit_max, bool log);
+size_t		ft_strlen(const char *s);
+t_list		*ft_lstnew(int content);
+t_list		*atoi_list(int argc, char **argv);
+t_list		*ft_lstlast(t_list *lst);
 
 #endif
