@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/17 13:34:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:52:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,16 @@ int			ft_atoi(const char *nptr);
 int			main(int argc, char **argv);
 bool		checkarg(char **argv);
 bool		checksamearg(t_list *stocka);
+void		ra(t_list **stocka);
 void		lst_clean(t_list **lst);
 void		push_swap(t_list *stocka);
-void		ra(t_list **stocka, bool log);
 void		ft_putstr_fd(char *s, int fd);
+void		pa(t_list **stocka, t_list **stockb);
+void		pb(t_list **stocka, t_list **stockb);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
-void		pa(t_list **stocka, t_list **stockb, bool log);
-void		pb(t_list **stocka, t_list **stockb, bool log);
-void		big_sort(t_list *stocka, t_list *stockb, bool log);
-void		push_last_bit_one(t_list **a, t_list **b, int bit_max, bool log);
+void		big_sort(t_list *stocka, t_list *stockb);
+void		push_last_bit_one(t_list **a, t_list **b, int bit_max);
 size_t		ft_strlen(const char *s);
 t_list		*ft_lstnew(int content);
 t_list		*atoi_list(int argc, char **argv);

@@ -6,47 +6,13 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:04:02 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/17 13:14:56 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/21 13:53:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-void	sa(t_list *stocka, bool log)
-{
-	t_list	*next_element;
-
-	if (ft_lstsize(stocka) < 2)
-		return ;
-	next_element = stocka->next;
-	stocka->next = stocka;
-	stocka = next_element;
-	if (log)
-		ft_putstr_fd("sa\n", 1);
-}
-
-void	sb(t_list *stockb, bool log)
-{
-	t_list	*next_element;
-
-	if (ft_lstsize(stockb) < 2)
-		return ;
-	next_element = stockb->next;
-	stockb->next = stockb;
-	stockb = next_element;
-	if (log)
-		ft_putstr_fd("sb\n", 1);
-}
-
-void	ss(t_list *stocka, t_list *stockb, bool log)
-{
-	sa(stocka, false);
-	sb(stockb, false);
-	if (log)
-		ft_putstr_fd("ss\n", 1);
-}
-
-void	pa(t_list **stocka, t_list **stockb, bool log)
+void	pa(t_list **stocka, t_list **stockb)
 
 {
 	t_list	*headb;
@@ -57,11 +23,10 @@ void	pa(t_list **stocka, t_list **stockb, bool log)
 	ft_lstadd_front(stocka, ft_lstnew((*stockb)->content));
 	free(*stockb);
 	*stockb = headb;
-	if (log)
-		ft_putstr_fd("pb\n", 1);
+	ft_putstr_fd("pa\n", 1);
 }
 
-void	pb(t_list **stocka, t_list **stockb, bool log)
+void	pb(t_list **stocka, t_list **stockb)
 {
 	t_list	*heada;
 
@@ -71,6 +36,25 @@ void	pb(t_list **stocka, t_list **stockb, bool log)
 	ft_lstadd_front(stockb, ft_lstnew((*stocka)->content));
 	free(*stocka);
 	*stocka = heada;
-	if (log)
-		ft_putstr_fd("pa\n", 1);
+	ft_putstr_fd("pb\n", 1);
+}
+
+void	ra(t_list **stocka)
+{
+	int		itmp;
+	t_list	*ltmp;
+	t_list	*ltmp_next;
+
+	if (!*stocka || ft_lstsize(*stocka) < 1)
+		return ;
+	itmp = (*stocka)->content;
+	ltmp = *stocka;
+	while (ltmp->next)
+	{
+		ltmp_next = ltmp->next;
+		ltmp->content = ltmp_next->content;
+		ltmp = ltmp->next;
+	}
+	ltmp->content = itmp;
+	ft_putstr_fd("ra\n", 1);
 }

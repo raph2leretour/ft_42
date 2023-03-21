@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/24 09:14:01 by rtissera          #+#    #+#              #
-#    Updated: 2023/03/17 12:43:10 by rtissera         ###   ########.fr        #
+#    Created: 2023/03/21 13:34:58 by rtissera          #+#    #+#              #
+#    Updated: 2023/03/21 14:08:00 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,11 @@ NAME		:= push_swap
 
 SRC_DIR		:= src
 OBJ_DIR		:= obj
-SRCS		:=	\
-	main.c				\
+SRCS		:=				\
+	main.c					\
 	utils/utils1.c			\
 	utils/utils2.c			\
 	moves/moves1.c			\
-	moves/moves2.c			\
 	sort/push_swap.c		\
 	libft/ft_atoi.c			\
 	libft/ft_lstnew.c		\
@@ -87,9 +86,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re:
-	$(NAME) fclean
-	$(NAME) all
+re: fclean all
 
 #------------------------------------------------#
 #   SPEC                                         #
