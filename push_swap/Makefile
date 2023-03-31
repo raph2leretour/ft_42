@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/21 13:34:58 by rtissera          #+#    #+#              #
-#    Updated: 2023/03/21 14:08:00 by rtissera         ###   ########.fr        #
+#    Updated: 2023/03/31 14:58:07 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS		:=				\
 	main.c					\
 	utils/utils1.c			\
 	utils/utils2.c			\
-	moves/moves1.c			\
+	moves/moves.c			\
 	sort/push_swap.c		\
 	libft/ft_atoi.c			\
 	libft/ft_lstnew.c		\
@@ -86,10 +86,14 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
+norminette:
+	norminette include
+	norminette src
+
 re: fclean all
 
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#
-.PHONY: clean fclean re
+.PHONY: clean fclean norminette re
 .SILENT:

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/21 13:52:46 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:58:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,6 @@ typedef struct s_struct
 /************************************************/
 /*   FUNCTIONS                                  */
 /************************************************/
-// int			medianificator(t_list *lst, int argc);
-// void		rb(t_list *stockb, bool log);
-// void		rra(t_list *stocka, bool log);
-// void		struct_clean(t_struct *lst);
-// void		sa(t_list *stocka, bool log);
-// void		sb(t_list *stockb, bool log);
-// void		ss(t_list *stocka, t_list *stockb, bool log);
-// void		rr(t_list *stocka, t_list *stockb, bool log);
-// void		rrr(t_list *stocka, t_list *stockb, bool log);
-// void		ft_structadd_back(t_struct **lst, t_struct *new);
-// t_list		*presort(t_list *stocka, t_list *tmp, int argc);
-// t_struct	*ft_structnew(char *buf);
-// t_struct	*ft_structlast(t_struct *lst);
 int			ft_isdigit(int c);
 int			ft_max(t_list *lst);
 int			ft_lstsize(t_list *lst);
