@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/31 14:58:38 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/05 15:27:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,20 @@
 /************************************************/
 /*   INCLUDES                                   */
 /************************************************/
+# include <unistd.h>
+# include <limits.h>
+# include <stdlib.h>
 # include <stdbool.h>
-# include "libft.h"
 
 /************************************************/
 /*   STRUCTURES                                 */
 /************************************************/
+typedef struct s_list
+{
+	int				content;
+	struct s_list	*next;
+}	t_list;
+
 typedef struct s_struct
 {
 	char			*content;
