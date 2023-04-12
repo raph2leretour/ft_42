@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/05 15:27:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:41:01 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int			ft_atoi(const char *nptr);
 int			main(int argc, char **argv);
 bool		checkarg(char **argv);
 bool		checksamearg(t_list *stocka);
+bool		checksortarg(t_list *stocka);
+bool		checkmaxintarg(int argc, char **argv);
 void		ra(t_list **stocka);
 void		lst_clean(t_list **lst);
 void		push_swap(t_list *stocka);

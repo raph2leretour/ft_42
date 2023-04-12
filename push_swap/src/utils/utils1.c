@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:06:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/17 13:35:26 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:26:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ bool	checksamearg(t_list *stocka)
 		while (stocka_cur)
 		{
 			if (stocka->content == stocka_cur->content)
-				return (lst_clean(&stocka), false);
+				return (lst_clean(&head), false);
 			stocka_cur = stocka_cur->next;
 		}
 		stocka = stocka->next;

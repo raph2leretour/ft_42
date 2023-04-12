@@ -6,20 +6,9 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [
-            "3",
-            "5",
             "2",
-            "45",
-            "3213",
-            "55",
-            "6",
-            "1",
-            "56",
-            "88",
-            "25",
-            "45",
-            "654",
-            "88"
+            "3",
+            "4"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

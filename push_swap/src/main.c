@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/21 14:06:35 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:51:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ int	main(int argc, char **argv)
 	test = checksamearg(stocka);
 	if (!test)
 		return (ft_putstr_fd("Error\n", 1), 0);
+	test = checksortarg(stocka);
+	if (!test)
+		return (0);
 	push_swap(stocka);
 	return (0);
 }
