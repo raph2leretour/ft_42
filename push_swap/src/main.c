@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/13 15:23:14 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:22:41 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	test = checksortarg(stocka);
 	if (!test)
 		return (0);
+	convertnumb(argc, &stocka);
 	push_swap(stocka);
 	return (0);
 }

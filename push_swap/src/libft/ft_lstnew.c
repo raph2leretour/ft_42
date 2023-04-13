@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 15:33:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/14 14:32:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/13 18:28:06 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int content)
 	if (!link)
 		return (NULL);
 	link->content = content;
+	link->numb = 0;
 	link->next = NULL;
 	return (link);
 }

@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/13 14:53:19 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/13 18:31:46 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 typedef struct s_list
 {
 	int				content;
+	int				numb;
 	struct s_list	*next;
 }	t_list;
 
@@ -46,6 +47,7 @@ int			ft_isdigit(int c);
 int			ft_max(t_list *lst);
 int			ft_lstsize(t_list *lst);
 int			main(int argc, char **argv);
+int			ft_min(int oldmin, t_list *lst);
 bool		checkarg(char **argv);
 bool		checksamearg(t_list *stocka);
 bool		checksortarg(t_list *stocka);
@@ -56,9 +58,10 @@ void		push_swap(t_list *stocka);
 void		ft_putstr_fd(char *s, int fd);
 void		pa(t_list **stocka, t_list **stockb);
 void		pb(t_list **stocka, t_list **stockb);
+void		convertnumb(int argc, t_list **stocka);
+void		big_sort(t_list *stocka, t_list *stockb);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
-void		big_sort(t_list *stocka, t_list *stockb);
 void		push_last_bit_one(t_list **a, t_list **b, int bit_max);
 size_t		ft_strlen(const char *s);
 t_list		*ft_lstnew(int content);
