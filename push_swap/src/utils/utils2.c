@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:44:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/12 15:55:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:19:08 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,43 +48,4 @@ bool	checksortarg(t_list *stocka)
 		stocka = stocka->next;
 	}
 	return (lst_clean(&head), false);
-}
-
-bool	checkmaxintarg(int argc, char **argv)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-
-		}
-	}
-}
-
-{
-	int	res;
-	int	sig;
-
-	res = 0;
-	sig = 1;
-	while (((*nptr >= 9) && (*nptr <= 13)) || (*nptr == 32))
-		nptr++;
-	if (*nptr == 45)
-	{
-		sig *= -1;
-		nptr++;
-	}
-	else if (*nptr == 43)
-		nptr++;
-	while ((*nptr >= 48) && (*nptr <= 57))
-	{
-		res = (res * 10) + *nptr - 48;
-		nptr++;
-	}
-	return (res * sig);
 }

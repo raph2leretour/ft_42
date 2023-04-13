@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/12 15:41:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/13 14:53:19 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_struct
 int			ft_isdigit(int c);
 int			ft_max(t_list *lst);
 int			ft_lstsize(t_list *lst);
-int			ft_atoi(const char *nptr);
 int			main(int argc, char **argv);
 bool		checkarg(char **argv);
 bool		checksamearg(t_list *stocka);
@@ -65,5 +64,6 @@ size_t		ft_strlen(const char *s);
 t_list		*ft_lstnew(int content);
 t_list		*atoi_list(int argc, char **argv);
 t_list		*ft_lstlast(t_list *lst);
+long int	ft_atoi(const char *nptr);
 
 #endif
