@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:44:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/13 18:29:19 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/15 13:54:08 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	ft_min(int oldmin, t_list *lst)
 
 	if (!lst)
 		return (INT_MIN);
-	min = lst->content;
 	head = lst;
+	min = ft_max(lst);
 	while (lst)
 	{
 		if (lst->content < min && lst->content > oldmin)
@@ -77,11 +77,11 @@ void	convertnumb(int argc, t_list **stocka)
 	i = -1;
 	head = *stocka;
 	min = ft_min(INT_MIN, *stocka);
-	while (i < argc)
+	while (i++ < argc)
 	{
 		if ((*stocka)->content == min)
 		{
-			(*stocka)->numb = i++;
+			(*stocka)->numb = i;
 			min = ft_min(min, head);
 		}
 		*stocka = (*stocka)->next;
