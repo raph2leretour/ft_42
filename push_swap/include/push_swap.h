@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/15 13:51:50 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/22 13:17:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,20 @@ bool		checksortarg(t_list *stocka);
 bool		checkmaxintarg(int argc, char **argv);
 void		ra(t_list **stocka);
 void		lst_clean(t_list **lst);
-void		push_swap(t_list *stocka);
 void		ft_putstr_fd(char *s, int fd);
+void		push_swap(int argc, t_list *stocka);
 void		pa(t_list **stocka, t_list **stockb);
 void		pb(t_list **stocka, t_list **stockb);
 void		convertnumb(int argc, t_list **stocka);
 void		big_sort(t_list *stocka, t_list *stockb);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
+void		littlesort(t_list **stocka, t_list **stockb);
 void		push_last_bit_one(t_list **a, t_list **b, int bit_max);
-size_t		ft_strlen(const char *s);
 t_list		*ft_lstnew(int content);
-t_list		*atoi_list(int argc, char **argv);
 t_list		*ft_lstlast(t_list *lst);
+t_list		*atoi_list(int argc, char **argv);
+size_t		ft_strlen(const char *s);
 long int	ft_atoi(const char *nptr);
 
 #endif

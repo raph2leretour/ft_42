@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:02:56 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/13 18:22:41 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/22 13:13:34 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 		return (ft_putstr_fd("Error\n", 1), 0);
 	stocka = atoi_list(argc, argv);
 	if (!stocka)
-		return (0);
+		return (ft_putstr_fd("Error\n", 1), 0);
 	test = checksamearg(stocka);
 	if (!test)
 		return (ft_putstr_fd("Error\n", 1), 0);
@@ -32,6 +32,6 @@ int	main(int argc, char **argv)
 	if (!test)
 		return (0);
 	convertnumb(argc, &stocka);
-	push_swap(stocka);
+	push_swap(argc, stocka);
 	return (0);
 }

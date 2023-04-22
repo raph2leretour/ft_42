@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/13 18:24:10 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/22 13:29:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
+
+void	littlesort(t_list **stocka, t_list **stockb)
+{
+	if ((*stocka)->content == )
+}
 
 void	push_last_bit_one(t_list **a, t_list **b, int bit_max)
 {
@@ -49,10 +54,13 @@ void	big_sort(t_list *stocka, t_list *stockb)
 	lst_clean(&stockb);
 }
 
-void	push_swap(t_list *stocka)
+void	push_swap(int argc, t_list *stocka)
 {
 	t_list	*stockb;
 
 	stockb = NULL;
-	big_sort(stocka, stockb);
+	if (argc == 3)
+		littlesort(stocka, stockb);
+	else
+		big_sort(stocka, stockb);
 }
