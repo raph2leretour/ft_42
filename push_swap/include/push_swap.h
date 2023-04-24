@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/22 13:17:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:54:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ bool		checkarg(char **argv);
 bool		checksamearg(t_list *stocka);
 bool		checksortarg(t_list *stocka);
 bool		checkmaxintarg(int argc, char **argv);
+void		sa(t_list **stocka);
 void		ra(t_list **stocka);
+void		rra(t_list **stocka);
 void		lst_clean(t_list **lst);
 void		ft_putstr_fd(char *s, int fd);
 void		push_swap(int argc, t_list *stocka);

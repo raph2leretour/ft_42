@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/22 13:29:42 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:28:04 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	littlesort(t_list **stocka, t_list **stockb)
 {
-	if ((*stocka)->content == )
 }
 
 void	push_last_bit_one(t_list **a, t_list **b, int bit_max)
@@ -60,7 +59,7 @@ void	push_swap(int argc, t_list *stocka)
 
 	stockb = NULL;
 	if (argc == 3)
-		littlesort(stocka, stockb);
+		littlesort(&stocka, &stockb);
 	else
 		big_sort(stocka, stockb);
 }

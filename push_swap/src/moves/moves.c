@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves1.c                                           :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 16:04:02 by rtissera          #+#    #+#             */
-/*   Updated: 2023/03/21 13:53:17 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/24 14:56:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,39 @@ void	ra(t_list **stocka)
 	}
 	ltmp->content = itmp;
 	ft_putstr_fd("ra\n", 1);
+}
+
+void	sa(t_list **stocka)
+{
+	t_list	*lst;
+	t_list	*lst_next;
+
+	if (!*stocka || ft_lstsize(*stocka) < 2)
+		return ;
+	lst = *stocka;
+	lst_next = (*stocka)->next;
+	lst->next = lst_next->next;
+	lst_next->next = lst;
+	*stocka = lst_next;
+	ft_putstr_fd("sa\n", 1);
+}
+
+void	rra(t_list **stocka)
+{
+	int		i;
+	t_list	*head;
+	t_list	*lst_last;
+
+	i = ft_lstsize(*stocka);
+	head = *stocka;
+	lst_last = ft_lstlast(*stocka);
+	while (i > 2)
+	{
+		*stocka = (*stocka)->next;
+		i--;
+	}
+	(*stocka)->next = NULL;
+	lst_last->next = head;
+	*stocka = lst_last;
+	ft_putstr_fd("rra\n", 1);
 }
