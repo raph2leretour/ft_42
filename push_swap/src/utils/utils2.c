@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:44:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/15 17:05:38 by raphael          ###   ########.fr       */
+/*   Updated: 2023/04/25 16:01:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,20 @@ int	ft_min(int oldmin, t_list *lst)
 	return (lst = head, min);
 }
 
-void	convertnumb(int argc, t_list **stocka)
+void	convertnumb(int argc, t_list **stocka, int i)
 {
-	int		i;
 	int		min;
 	t_list	*head;
 
-	i = 0;
 	head = *stocka;
 	min = ft_min(INT_MIN, *stocka);
 	while (i < argc)
 	{
 		if ((*stocka)->content == min)
 		{
-			(*stocka)->numb = i++;
+			(*stocka)->numb = i;
 			min = ft_min(min, head);
+			i++;
 		}
 		*stocka = (*stocka)->next;
 		if (!*stocka)
@@ -95,4 +94,15 @@ void	convertnumb(int argc, t_list **stocka)
 		*stocka = (*stocka)->next;
 	}
 	*stocka = head;
+}
+
+t_list	*headificator(t_list *a)
+{
+	while (a)
+	{
+		if (a->content < 4)
+			return (a);
+		a = a->next;
+	}
+	return (a);
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/24 18:52:42 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:39:52 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,15 @@ void		ft_putstr_fd(char *s, int fd);
 void		push_swap(int argc, t_list *stocka);
 void		pa(t_list **stocka, t_list **stockb);
 void		pb(t_list **stocka, t_list **stockb);
-void		convertnumb(int argc, t_list **stocka);
 void		big_sort(t_list *stocka, t_list *stockb);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
+void		convertnumb(int argc, t_list **stocka, int i);
 void		littlesort2(t_list **a, t_list **b, t_list *head);
 void		push_last_bit_one(t_list **a, t_list **b, int bit_max);
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);
+t_list		*headificator(t_list *a);
 t_list		*atoi_list(int argc, char **argv);
 size_t		ft_strlen(const char *s);
 long int	ft_atoi(const char *nptr);

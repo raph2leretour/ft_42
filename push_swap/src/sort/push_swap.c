@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/24 18:54:07 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/25 15:46:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	littlesort(t_list **a)
 	t_list	*n;
 
 	n = (*a)->next;
-	if ((*a)->content == 1 && n->content == 0)
+	if ((*a)->content == 2 && n->content == 1)
 		sa(a);
-	else if ((*a)->content == 1 && n->content == 3)
+	else if ((*a)->content == 2 && n->content == 3)
 		rra(a);
-	else if ((*a)->content == 3 && n->content == 0)
-		ra(a);
 	else if ((*a)->content == 3 && n->content == 1)
+		ra(a);
+	else if ((*a)->content == 3 && n->content == 2)
 	{
 		sa(a);
 		rra(a);
@@ -41,26 +41,24 @@ void	littlesort2(t_list **a, t_list **b, t_list *head)
 	{
 		if ((*a)->content > 3)
 			pb(a, b);
-		*a = (*a)->next;
+		else
+			*a = (*a)->next;
 	}
 	*a = head;
 	littlesort(a);
-	if (*b)
+	if ((*b)->content == 4)
 	{
-		if ((*b)->content == 4)
-		{
-			pa(a, b);
-			ra(a);
-			pa(a, b);
-			ra(a);
-		}
-		else
-		{
-			pa(a, b);
-			pa(a, b);
-			ra(a);
-			ra(a);
-		}
+		pa(a, b);
+		ra(a);
+		pa(a, b);
+		ra(a);
+	}
+	else
+	{
+		pa(a, b);
+		pa(a, b);
+		ra(a);
+		ra(a);
 	}
 }
 
@@ -109,7 +107,7 @@ void	push_swap(int argc, t_list *stocka)
 	if (argc == 4)
 		littlesort(&stocka);
 	else if (argc == 6)
-		littlesort2(&stocka, &stockb, NULL);
+		littlesort2(&stocka, &stockb, headificator(stocka));
 	else
 		big_sort(stocka, stockb);
 }
