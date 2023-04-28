@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/11 16:44:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/25 16:01:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:05:44 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,4 @@ void	convertnumb(int argc, t_list **stocka, int i)
 		*stocka = (*stocka)->next;
 	}
 	*stocka = head;
-}
-
-t_list	*headificator(t_list *a)
-{
-	while (a)
-	{
-		if (a->content < 4)
-			return (a);
-		a = a->next;
-	}
-	return (a);
 }

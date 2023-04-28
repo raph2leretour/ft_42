@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/25 15:46:43 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/04/28 15:23:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ void	littlesort(t_list **a)
 	t_list	*n;
 
 	n = (*a)->next;
-	if ((*a)->content == 2 && n->content == 1)
+	if ((*a)-> content == 1 && n->content == 2)
+		return ;
+	else if ((*a)->content == 2 && n->content == 1)
 		sa(a);
 	else if ((*a)->content == 2 && n->content == 3)
 		rra(a);
@@ -35,16 +37,18 @@ void	littlesort(t_list **a)
 	}
 }
 
-void	littlesort2(t_list **a, t_list **b, t_list *head)
+void	littlesort2(t_list **a, t_list **b, int argc)
 {
-	while (*a)
+	int	i;
+
+	i = -1;
+	while (i++ < argc)
 	{
 		if ((*a)->content > 3)
 			pb(a, b);
 		else
-			*a = (*a)->next;
+			ra(a);
 	}
-	*a = head;
 	littlesort(a);
 	if ((*b)->content == 4)
 	{
@@ -105,9 +109,17 @@ void	push_swap(int argc, t_list *stocka)
 
 	stockb = NULL;
 	if (argc == 4)
+	{
 		littlesort(&stocka);
+		lst_clean(&stocka);
+		lst_clean(&stockb);
+	}
 	else if (argc == 6)
-		littlesort2(&stocka, &stockb, headificator(stocka));
+	{
+		littlesort2(&stocka, &stockb, argc);
+		lst_clean(&stocka);
+		lst_clean(&stockb);
+	}
 	else
 		big_sort(stocka, stockb);
 }

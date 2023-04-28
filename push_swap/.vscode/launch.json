@@ -6,11 +6,11 @@
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [
+            "1",
             "2",
-            "12",
-            "10",
-            "11",
-            "4"
+            "3",
+            "-1",
+            "0"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
