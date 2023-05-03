@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 10:19:31 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/28 15:06:28 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/03 09:20:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void		pb(t_list **stocka, t_list **stockb);
 void		big_sort(t_list *stocka, t_list *stockb);
 void		ft_lstadd_back(t_list **lst, t_list *new);
 void		ft_lstadd_front(t_list **lst, t_list *new);
-void		littlesort2(t_list **a, t_list **b, int argc);
 void		convertnumb(int argc, t_list **stocka, int i);
+void		littlesort2(t_list **a, t_list **b, int argc, int i);
 void		push_last_bit_one(t_list **a, t_list **b, int bit_max);
 t_list		*ft_lstnew(int content);
 t_list		*ft_lstlast(t_list *lst);

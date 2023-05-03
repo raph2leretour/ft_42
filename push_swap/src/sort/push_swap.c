@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/04/28 15:23:47 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/03 09:20:40 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,15 @@ void	littlesort(t_list **a)
 	}
 }
 
-void	littlesort2(t_list **a, t_list **b, int argc)
+void	littlesort2(t_list **a, t_list **b, int argc, int i)
 {
-	int	i;
-
-	i = -1;
-	while (i++ < argc)
+	while (i < argc)
 	{
 		if ((*a)->content > 3)
 			pb(a, b);
 		else
 			ra(a);
+		i++;
 	}
 	littlesort(a);
 	if ((*b)->content == 4)
@@ -116,7 +114,7 @@ void	push_swap(int argc, t_list *stocka)
 	}
 	else if (argc == 6)
 	{
-		littlesort2(&stocka, &stockb, argc);
+		littlesort2(&stocka, &stockb, argc, 0);
 		lst_clean(&stocka);
 		lst_clean(&stockb);
 	}
