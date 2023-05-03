@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 14:03:00 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/03 09:20:40 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/03 10:04:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	push_swap(int argc, t_list *stocka)
 	}
 	else if (argc == 6)
 	{
-		littlesort2(&stocka, &stockb, argc, 0);
+		littlesort2(&stocka, &stockb, argc, 1);
 		lst_clean(&stocka);
 		lst_clean(&stockb);
 	}
