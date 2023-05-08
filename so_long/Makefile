@@ -6,23 +6,31 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/05 15:23:14 by rtissera         ###   ########.fr        #
+#    Updated: 2023/05/08 14:41:53 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= fdf
+NAME		:= so_long
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
 #------------------------------------------------#
 
-SRC_DIR		:= src
-OBJ_DIR		:= obj
-SRCS		:= main.c
-SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
-OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-MLX			:= minilibx-linux/libmlx.a
-
+SRC_DIR			:= src
+OBJ_DIR			:= obj
+SRCS			:=			\
+	main.c					\
+	utils/utils.c			\
+	printf/ft_putu.c		\
+	printf/ft_strlen.c		\
+	printf/ft_printf.c		\
+	printf/ft_putnbr.c		\
+	printf/ft_putstr.c		\
+	printf/ft_putchar.c		\
+	printf/ft_putnbr_base.c
+SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
+OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+MLX				:= minilibx-linux/libmlx.a
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
@@ -65,8 +73,11 @@ norminette:
 
 re: fclean all
 
+run: re
+	-./$(NAME)
+
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#
-.PHONY: clean fclean norminette re
+.PHONY: clean fclean norminette re run
 .SILENT:

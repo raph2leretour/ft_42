@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/05 15:37:25 by rtissera         ###   ########.fr       */
+/*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/08 15:01:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/FdF.h"
-#include "../minilibx-linux/mlx.h"
+#include "../../include/so_long.h"
 
-int	main(int argc, char **argv)
+int	ft_handle_key(int key, t_vars *vars)
 {
-	void*	mlx_ptr;
-	char*	win_ptr;
+	if (key == 65307)
+		ft_clear_vars(vars);
+	ft_printf("la touche enofncee est : { %d }\n", key);
+	return (0);
+}
 
-	(void) argc;
-	(void) argv;
-	printf("connard\n");
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 400000, 400000, "zeldaaaaaaaaaaaaaaaaaaa");
+int	ft_clear_vars(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	mlx_destroy_display(vars->mlx);
+	free(vars->mlx);
+	exit(0);
 	return (0);
 }

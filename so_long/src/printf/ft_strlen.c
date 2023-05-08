@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/05 15:37:25 by rtissera         ###   ########.fr       */
+/*   Created: 2022/12/06 13:22:59 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/08 14:35:03 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/FdF.h"
-#include "../minilibx-linux/mlx.h"
+#include "../../include/so_long.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	void*	mlx_ptr;
-	char*	win_ptr;
+	int	i;
 
-	(void) argc;
-	(void) argv;
-	printf("connard\n");
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 400000, 400000, "zeldaaaaaaaaaaaaaaaaaaa");
-	return (0);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
