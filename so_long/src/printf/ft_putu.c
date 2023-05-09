@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 14:04:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/08 14:35:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:10:23 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/ft_printf.h"
 
 int	ft_putu(unsigned int n)
 {

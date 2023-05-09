@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 13:15:33 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/08 14:35:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:11:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/ft_printf.h"
 
 int	ft_putchar(int c)
 {

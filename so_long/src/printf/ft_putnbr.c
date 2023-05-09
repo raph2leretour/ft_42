@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 14:55:15 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/08 14:35:53 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:11:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../include/ft_printf.h"
 
 int	ft_putnbr(int n)
 {
