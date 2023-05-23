@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/08 14:41:53 by rtissera         ###   ########.fr        #
+#    Updated: 2023/05/23 18:30:01 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,11 @@ SRC_DIR			:= src
 OBJ_DIR			:= obj
 SRCS			:=			\
 	main.c					\
-	utils/utils.c			\
+	utils.c					\
+	check_map.c				\
+	print_map.c				\
+	init_sprite.c			\
+	print_sprite.c			\
 	printf/ft_putu.c		\
 	printf/ft_strlen.c		\
 	printf/ft_printf.c		\
