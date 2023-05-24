@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/24 14:23:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/08 13:56:45 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/18 15:51:51 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-bool	check_format(char *map_path)
+void	ft_bzero(void *s, size_t n)
 {
-}
+	size_t	i;
+	char	*str;
 
-bool	check_endable(char *map_path)
-{
-}
-
-bool	check_map(char *map_path)
-{
+	i = 0;
+	str = (char *)s;
+	while ((i < n))
+	{
+		str[i] = 0;
+		i++;
+	}
 }

@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/24 14:23:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/23 15:41:41 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/24 19:00:52 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-bool	check_format(char *map_path)
+t_list	*ft_lstlast(t_list *lst)
 {
-}
-
-bool	check_endable(char *map_path)
-{
-}
-
-bool	check_map(char *map_path)
-{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

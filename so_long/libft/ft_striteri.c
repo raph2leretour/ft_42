@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/24 14:23:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/15 11:09:09 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/17 19:02:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-bool	check_format(char *map_path)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-}
+	size_t	i;
 
-bool	check_endable(char *map_path)
-{
-}
-
-bool	check_map(char *map_path)
-{
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			(*f)(i, &s[i]);
+			i++;
+		}
+	}
 }

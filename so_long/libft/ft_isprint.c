@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/24 14:23:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/07 18:45:16 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/09 17:39:23 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-
-bool	check_format(char *map_path)
+int	ft_isprint(int c)
 {
-}
-
-bool	check_endable(char *map_path)
-{
-}
-
-bool	check_map(char *map_path)
-{
+	if ((c >= 32) && (c <= 126))
+		return (1);
+	else
+		return (0);
 }

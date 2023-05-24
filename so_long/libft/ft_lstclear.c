@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/24 14:23:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/23 16:56:16 by rtissera          #+#    #+#             */
+/*   Updated: 2022/11/28 14:05:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "libft.h"
 
-bool	check_format(char *map_path)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-}
+	t_list	*lst_todel;
 
-bool	check_endable(char *map_path)
-{
-}
-
-bool	check_map(char *map_path)
-{
+	if (!lst || !del)
+		return ;
+	while (*lst)
+	{
+		lst_todel = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = lst_todel;
+	}
 }
