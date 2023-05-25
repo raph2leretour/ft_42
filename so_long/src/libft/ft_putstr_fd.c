@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 15:33:19 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/23 16:33:30 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/15 16:01:43 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/25 16:51:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/so_long.h"
 
-t_list	*ft_lstnew(void *content)
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*link;
-
-	link = malloc(sizeof(t_list));
-	if (!link)
-		return (NULL);
-	link->content = content;
-	link->next = NULL;
-	return (link);
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

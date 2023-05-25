@@ -6,20 +6,20 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:18:17 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/09 15:07:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:59:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/get_next_line_bonus.h"
 
-t_list	*ft_lstnew(char *buf)
+t_gnl	*ft_lstnew(char *buf)
 {
 	int		i;
-	t_list	*lst;
+	t_gnl	*lst;
 
 	if (!*buf)
 		return (NULL);
-	lst = malloc(sizeof(t_list));
+	lst = malloc(sizeof(t_gnl));
 	if (!lst)
 		return (NULL);
 	i = 0;
@@ -33,7 +33,7 @@ t_list	*ft_lstnew(char *buf)
 	return (lst);
 }
 
-t_list	*ft_lstlast(t_list *lst)
+t_gnl	*ft_lstlast(t_gnl *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -42,9 +42,9 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_gnl **lst, t_gnl *new)
 {
-	t_list	*last_lst;
+	t_gnl	*last_lst;
 
 	if (!*lst)
 	{
@@ -55,7 +55,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	last_lst->next = new;
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_gnl *lst)
 {
 	int	i;
 
@@ -68,11 +68,11 @@ int	ft_lstsize(t_list *lst)
 	return (i);
 }
 
-void	clear_old_line(t_list **lst)
+void	clear_old_line(t_gnl **lst)
 {
 	int		i;
 	int		size_old_line;
-	t_list	*lst_next;
+	t_gnl	*lst_next;
 
 	if (!*lst)
 		return ;

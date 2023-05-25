@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:56:01 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/14 23:45:52 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:03:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *nptr)
+#include "../../include/so_long.h"
+
+long int	ft_atoi(const char *nptr)
 {
-	int	res;
-	int	sig;
+	long int	res;
+	long int	sig;
 
 	res = 0;
 	sig = 1;

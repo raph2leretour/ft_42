@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/23 15:41:41 by rtissera          #+#    #+#             */
-/*   Updated: 2022/11/24 19:00:52 by rtissera         ###   ########.fr       */
+/*   Created: 2022/11/07 18:06:45 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/25 17:03:30 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../include/so_long.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int	ft_isdigit(int c)
 {
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	if ((c >= 48) && (c <= 57))
+		return (1);
+	else
+		return (0);
 }

@@ -6,16 +6,16 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:18:54 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/09 15:06:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:00:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/get_next_line_bonus.h"
 
-void	*read_error(t_list **lst)
+void	*read_error(t_gnl **lst)
 {
-	t_list	*lst_next;
-	t_list	*lst_current;
+	t_gnl	*lst_next;
+	t_gnl	*lst_current;
 
 	if (!lst || !*lst)
 		return (NULL);
@@ -30,11 +30,11 @@ void	*read_error(t_list **lst)
 	return (NULL);
 }
 
-int	linelen(t_list **lst, int boool)
+int	linelen(t_gnl **lst, int boool)
 {
 	int		i;
 	int		size;
-	t_list	*lst_current;
+	t_gnl	*lst_current;
 
 	i = 0;
 	size = 0;
@@ -56,14 +56,14 @@ int	linelen(t_list **lst, int boool)
 	return (-size);
 }
 
-t_list	*read_line(t_list **lst, int fd)
+t_gnl	*read_line(t_gnl **lst, int fd)
 {
 	int		bytes;
-	t_list	*new;
+	t_gnl	*new;
 
 	while (linelen(lst, 1) <= 0)
 	{
-		new = malloc(sizeof(t_list));
+		new = malloc(sizeof(t_gnl));
 		if (!new)
 			return (read_error(lst), NULL);
 		new->buf[0] = '\0';
@@ -82,11 +82,11 @@ t_list	*read_line(t_list **lst, int fd)
 	return (*lst);
 }
 
-char	*put_in_line(t_list **lst, int i, int j)
+char	*put_in_line(t_gnl **lst, int i, int j)
 {
 	int		size;
 	char	*line;
-	t_list	*lst_current;
+	t_gnl	*lst_current;
 
 	size = linelen(lst, 1);
 	if (size == 0)
@@ -112,7 +112,7 @@ char	*put_in_line(t_list **lst, int i, int j)
 char	*get_next_line(int fd)
 {
 	char			*line;
-	static t_list	*lst[1024];
+	static t_gnl	*lst[1024];
 
 	if (fd >= 1024 || fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);

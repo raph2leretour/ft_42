@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 12:19:29 by rtissera          #+#    #+#             */
-/*   Updated: 2023/02/23 04:56:29 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:58:27 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct s_list
+typedef struct s_gnl
 {
 	char			buf[BUFFER_SIZE + 1];
-	struct s_list	*next;
-}	t_list;
+	struct s_gnl	*next;
+}	t_gnl;
 
-int		ft_lstsize(t_list *lst);
-int		linelen(t_list **lst, int boool);
+int		ft_lstsize(t_gnl *lst);
+int		linelen(t_gnl **lst, int boool);
 char	*get_next_line(int fd);
-char	*put_in_line(t_list **lst, int i, int j);
-void	*read_error(t_list **lst);
-void	clear_old_line(t_list **lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lstnew(char *buf);
-t_list	*ft_lstlast(t_list *lst);
-t_list	*read_line(t_list **lst, int fd);
+char	*put_in_line(t_gnl **lst, int i, int j);
+void	*read_error(t_gnl **lst);
+void	clear_old_line(t_gnl **lst);
+void	ft_lstadd_back(t_gnl **lst, t_gnl *new);
+t_gnl	*ft_lstnew(char *buf);
+t_gnl	*ft_lstlast(t_gnl *lst);
+t_gnl	*read_line(t_gnl **lst, int fd);
 
 #endif
