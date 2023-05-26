@@ -6,11 +6,11 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/25 17:10:39 by rtissera         ###   ########.fr        #
+#    Updated: 2023/05/26 15:12:48 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= so_long
+NAME		:= pipex
 
 #------------------------------------------------#
 #   INGREDIENTS                                  #
@@ -19,35 +19,13 @@ NAME		:= so_long
 SRC_DIR			:= src
 OBJ_DIR			:= obj
 SRCS			:=			\
-	main.c					\
-	utils.c					\
-	check_map.c				\
-	print_map.c				\
-	init_sprite.c			\
-	print_sprite.c			\
-	libft/ft_atoi.c			\
-	printf/ft_putu.c		\
-	libft/ft_lstnew.c		\
-	libft/ft_isdigit.c		\
-	libft/ft_lstlast.c		\
-	printf/ft_strlen.c		\
-	printf/ft_printf.c		\
-	printf/ft_putnbr.c		\
-	printf/ft_putstr.c		\
-	libft/ft_lstsize.c		\
-	printf/ft_putchar.c		\
-	libft/ft_putstr_fd.c	\
-	libft/ft_lstadd_back.c	\
-	libft/ft_lstadd_front.c	\
-	printf/ft_putnbr_base.c
+	main.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-MLX				:= minilibx-linux/libmlx.a
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
 CPPFLAGS	:= -I include
-L_FLAGS		:= -lX11 -lXext -lm
 
 #------------------------------------------------#
 #   UTENSILS                                     #
@@ -64,7 +42,7 @@ DIR_DUP		= mkdir -p $(@D)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) $(MLX) $(L_FLAGS)
+	$(CC) $(OBJS) -o $(NAME)
 	$(info CREATED $(NAME))
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
