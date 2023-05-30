@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/29 14:51:29 by rtissera         ###   ########.fr        #
+#    Updated: 2023/05/30 16:31:41 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	$(info CREATED $(NAME))
 	clear
-	toilet CONPILED	-F border --metal
+	toilet COMPILED	-F border --metal
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
