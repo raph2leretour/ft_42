@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 14:46:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/27 15:41:14 by rtissera         ###   ########.fr        #
+#    Updated: 2023/05/30 22:10:00 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,13 @@ SRCS		:=					\
 	bonus/ft_lstclear.c			\
 	bonus/ft_lstdelone.c		\
 	bonus/ft_lstadd_back.c		\
-	bonus/ft_lstadd_front.c
+	bonus/ft_lstadd_front.c		\
+	printf/ft_putu.c			\
+	printf/ft_putstr.c			\
+	printf/ft_putnbr.c			\
+	printf/ft_printf.c			\
+	printf/ft_putchar.c			\
+	printf/ft_putnbr_base.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build

@@ -6,23 +6,37 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:07:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/26 14:37:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:11:23 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+/************************************************/
+/*   WRAPPER                                    */
+/************************************************/
 #ifndef LIBFT_H
 # define LIBFT_H
 
+/************************************************/
+/*   INCLUDES                                   */
+/************************************************/
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdarg.h>
 
+/************************************************/
+/*   STRUCTURES                                 */
+/************************************************/
 typedef struct s_list
 {
 	char			*content;
 	struct s_list	*next;
 }	t_list;
 
+/************************************************/
+/*   FUNCTIONS                                  */
+/************************************************/
+//mandatory
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -68,5 +82,14 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(char *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+//printf
+int		ft_putnbr(int n);
+int		ft_putchar(int c);
+int		ft_putstr(char *s);
+int		ft_putu(unsigned int n);
+int		ft_printf(const char *str, ...);
+int		ft_putvoid(unsigned long int n);
+int		ft_putnbr_base(unsigned long int n, int base);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:39:14 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/27 15:23:25 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:51:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 /*   INCLUDES                                   */
 /************************************************/
 # include <stdbool.h>
+# include <stdio.h>
+# include <errno.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include "../libft/include/libft.h"
 
 /************************************************/

@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putu.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/26 14:38:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/30 22:55:41 by rtissera         ###   ########.fr       */
+/*   Created: 2022/12/05 14:04:49 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/30 22:10:44 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../../include/libft.h"
 
-int	main(int argc, char **argv, char **envp)
+int	ft_putu(unsigned int n)
 {
-	int	f1;
-	int	f2;
+	int				i;
+	char			c;
+	long long int	nb;
 
-	if (argc != 5)
+	i = 0;
+	c = 0;
+	nb = n;
+	if (nb < 10)
 	{
-		ft_printf("Wrong argument number\n");
-		exit(0);
+		c = nb + 48;
+		i += ft_putchar(c);
 	}
-	(void) envp;
-	f1 = open(argv[1], O_RDONLY);
-	f2 = open(argv[4], O_CREAT | O_RDWR | O_TRUNC, 0644);
-	if (f1 < 0 || f2 < 0)
-		return (-1);
-	// pipex(f1, f2, argv, envp);
-	return (0);
+	if (nb >= 10)
+	{
+		i += ft_putu(nb / 10);
+		i += ft_putu(nb % 10);
+	}
+	return (i);
 }
