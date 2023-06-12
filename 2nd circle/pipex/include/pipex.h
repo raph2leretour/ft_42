@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:39:14 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/31 18:25:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:56:05 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 /*   FUNCTIONS                                  */
 /************************************************/
 int		main(int ac, char **av, char **env);
+char	*get_path(char *cmd, char **env);
 void	execificator(char *cmd, char **env);
 void	pipex(int f1, int f2, char **av, char **env);
 void	child_process(int f1, int end[2], char **av, char **env);

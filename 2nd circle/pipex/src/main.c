@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:57:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/31 18:31:45 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:54:27 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 void	execificator(char *cmd, char **env)
 {
-	(void) cmd;
-	(void) env;
+	char	*path;
+	char	**s_cmd;
+
+	s_cmd = ft_split(cmd, ' ');
+	path = get_path(cmd, env);
 }
 
 void	child_process(int f1, int end[2], char **av, char **env)
@@ -62,5 +65,7 @@ int	main(int ac, char **av, char **env)
 	f1 = open(av[1], O_RDONLY, 0777);
 	f2 = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
 	pipex(f1, f2, av, env);
+	close(f1);
+	close(f2);
 	return (0);
 }
