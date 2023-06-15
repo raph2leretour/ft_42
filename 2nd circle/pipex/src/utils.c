@@ -6,13 +6,13 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:54:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/15 04:30:38 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:36:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-void	iwanttofree(char **tofree)
+void	iwanttobreakfree(char **tofree)
 {
 	int	i;
 
@@ -28,42 +28,40 @@ void	iwanttofree(char **tofree)
 char	*get_env(char **env)
 {
 	int		i;
-	char	*penv;
 
 	i = 0;
-	penv = env[i];
-	while (ft_strnstr(penv, "PATH=", 5) == 0)
+	while (env[i])
 	{
-		penv = *env[i];
+		if (ft_strnstr(env[i], "PATH=", 5) == 0)
+			return (env[i]);
 		i++;
 	}
+	return (NULL);
 }
 
-char	*get_path(char **s_cmd, char **env)
+char	*get_path(char **splitcmd, char **env)
 {
 	char	*penv;
 	char	*path;
-	char	*exec;
+	char	*execpath;
 	char	**paths;
 
-	penv = NULL;
-	while (ft_strnstr(penv, "PATH=", 5) == 0)
-	{
-		penv = *env;
-		env++;
-	}
+	penv = get_env(env);
+	if (!penv)
+		return (ft_printf("Error: command not found"), NULL);
 	paths = ft_split(penv + 5, ':');
 	while (*paths)
 	{
-		path = ft_strjoin(*paths, '/');
-		exec = ft_strjoin(*paths, s_cmd[0]);
+		path = ft_strjoin(*paths, "/");
+		execpath = ft_strjoin(*paths, splitcmd[0]);
 		free(path);
-		if (access(exec, F_OK | X_OK) == 0)
+		if (access(execpath, F_OK | X_OK) == 0)
 		{
-			free(s_cmd);
-			return (exec);
+			free(splitcmd);
+			return (execpath);
 		}
-		free(exec);
+		free(execpath);
 	}
-	iwanttofree(paths);
+	iwanttobreakfree(paths);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:57:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/15 04:13:48 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/15 18:39:25 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,18 @@
 void	execificator(char *cmd, char **env)
 {
 	char	*path;
-	char	**s_cmd;
+	char	**splitcmd;
 
-	s_cmd = ft_split(cmd, ' ');
-	path = get_path(s_cmd, env);
+	splitcmd = ft_split(cmd, ' ');
+	path = get_path(splitcmd, env);
+	if (!path)
+		path = cmd;
+	if (execve(path, splitcmd, env) == -1)
+	{
+		iwanttobreakfree(splitcmd);
+		ft_printf("Error: command not found");
+		exit (0);
+	}
 }
 
 void	child_process(int f1, int end[2], char **av, char **env)
@@ -37,7 +45,7 @@ void	parent_process(int f2, int end[2], char **av, char **env)
 	dup2(f2, 1);
 	dup2(end[0], 0);
 	close(end[1]);
-	execificator(av[2], env);
+	execificator(av[3], env);
 }
 
 void	pipex(int f1, int f2, char **av, char **env)
