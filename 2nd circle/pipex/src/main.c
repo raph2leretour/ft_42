@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:57:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/12 15:54:27 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/15 04:13:48 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	execificator(char *cmd, char **env)
 	char	**s_cmd;
 
 	s_cmd = ft_split(cmd, ' ');
-	path = get_path(cmd, env);
+	path = get_path(s_cmd, env);
 }
 
 void	child_process(int f1, int end[2], char **av, char **env)
