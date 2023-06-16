@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:57:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/16 16:59:11 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/16 19:19:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	pipex(int f1, int f2, char **av, char **env)
 	int		end[2];
 	pid_t	parent;
 
-	pipe(end);
+	if (pipe(end) == -1)
+		exit (-1);
 	parent = fork();
 	if (parent < 0)
 		return (perror("Fork"));
