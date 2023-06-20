@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:57:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/16 19:19:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:12:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	parent_process(int f2, int end[2], char **av, char **env)
 {
 	int	status;
 
-	// ft_printf("f2: %d\nend[2]: %d\n", f2, end[0]);
+	ft_printf("f2: %d\nend[2]: %d\n", f2, end[0]);
 	waitpid(-1, &status, 0);
 	ft_printf("waitpid check");
 	dup2(f2, 1);
@@ -82,7 +82,7 @@ int	main(int ac, char **av, char **env)
 		perror("Error");
 		exit(-1);
 	}
-	f2 = open(av[4], O_CREAT | O_RDWR | O_TRUNC, 0777);
+	f2 = open(av[4],O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (f2 == -1)
 	{
 		perror("Error");
