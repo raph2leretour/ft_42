@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 14:39:14 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/15 18:12:07 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/23 18:22:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 int		main(int ac, char **av, char **env);
 char	*get_path(char **s_cmd, char **env);
 char	*get_env(char **env);
+void	error(void);
 void	iwanttobreakfree(char **tofree);
 void	execificator(char *cmd, char **env);
-void	pipex(int f1, int f2, char **av, char **env);
-void	child_process(int f1, int end[2], char **av, char **env);
-void	parent_process(int f2, int end[2], char **av, char **env);
+void	child_process(char **av, char **env, int fd[2]);
+void	parent_process(char **av, char **env, int fd[2]);
 
 #endif

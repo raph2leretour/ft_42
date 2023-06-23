@@ -6,11 +6,27 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:54:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/15 18:36:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/23 18:22:52 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+
+void	execificator(char *cmd, char **env)
+{
+	char	*path;
+	char	**splitcmd;
+
+	splitcmd = ft_split(cmd, ' ');
+	path = get_path(splitcmd, env);
+	if (!path)
+		path = cmd;
+	if (execve(path, splitcmd, env) == -1)
+	{
+		iwanttobreakfree(splitcmd);
+		error();
+	}
+}
 
 void	iwanttobreakfree(char **tofree)
 {
@@ -64,4 +80,10 @@ char	*get_path(char **splitcmd, char **env)
 	}
 	iwanttobreakfree(paths);
 	return (NULL);
+}
+
+void	error(void)
+{
+	perror("Error");
+	exit(EXIT_FAILURE);
 }
