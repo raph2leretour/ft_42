@@ -6,13 +6,13 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:54:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/27 08:46:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/27 09:40:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/pipex.h"
 
-void	execificator(char *cmd, char **env)
+void	execificator(char *cmd, char **env, int fd[2])
 {
 	char	*path;
 	char	**scmd;
@@ -24,11 +24,20 @@ void	execificator(char *cmd, char **env)
 		path = get_path(scmd[0], env);
 	if (!path)
 		path = cmd;
-	if (execve(path, scmd, env) == -1)
+	if (!path || execve(path, scmd, env) == -1)
 	{
 		iwanttobreakfree(scmd);
+		if (!path)
+		{
+			if (fd)
+			{
+				close(fd[0]);
+				close(fd[1]);
+			}
+		}
 		error();
 	}
+	iwanttobreakfree(scmd);
 }
 
 void	iwanttobreakfree(char **tofree)
@@ -62,9 +71,10 @@ char	*get_path(char *scmd, char **env)
 		path = ft_strjoin(paths[j], "/");
 		execpath = ft_strjoin(path, scmd);
 		free(path);
-		if (access(execpath, F_OK | X_OK) == 0)
+		if (access(execpath, F_OK) == 0)
 			return (execpath);
 		free(execpath);
+		j++;
 	}
 	iwanttobreakfree(paths);
 	return (NULL);
