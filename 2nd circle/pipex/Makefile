@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/06/15 03:25:44 by rtissera         ###   ########.fr        #
+#    Updated: 2023/06/27 08:44:27 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT_DIR		:= libft
 FT_PRINTF_DIR	:= libftprintf
 SRCS			:=	\
 	main.c			\
-	utils.c
+	utils/utils.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT			:= $(LIBFT_DIR)/libft.a
@@ -49,7 +49,6 @@ all: $(LIBFT) $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(OBJS) -o $(NAME) $(LIBFT)
 	$(info CREATED $(NAME))
-	toilet COMPILED	-F border --metal
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
@@ -63,23 +62,18 @@ $(LIBFT):
 clean:
 	make -C $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
-	toilet CLEAN -F border --metal
 
 fclean: clean
 	make -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
-	toilet FCLEAN -F border --metal
 
 norminette:
 	norminette include
 	norminette src
-	toilet NORMINETTE -F border --metal
 
 re: fclean all
 
 run: re
-	clear
-	toilet RUN -F border --metal
 	-./$(NAME)
 
 #------------------------------------------------#

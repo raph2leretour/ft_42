@@ -6,24 +6,27 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:54:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/23 18:22:52 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/27 08:46:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/pipex.h"
+#include "../../include/pipex.h"
 
 void	execificator(char *cmd, char **env)
 {
 	char	*path;
-	char	**splitcmd;
+	char	**scmd;
 
-	splitcmd = ft_split(cmd, ' ');
-	path = get_path(splitcmd, env);
+	scmd = ft_split(cmd, ' ');
+	if (ft_strnstr(cmd, "/", ft_strlen(cmd)) != NULL)
+		path = scmd[0];
+	else
+		path = get_path(scmd[0], env);
 	if (!path)
 		path = cmd;
-	if (execve(path, splitcmd, env) == -1)
+	if (execve(path, scmd, env) == -1)
 	{
-		iwanttobreakfree(splitcmd);
+		iwanttobreakfree(scmd);
 		error();
 	}
 }
@@ -41,41 +44,26 @@ void	iwanttobreakfree(char **tofree)
 	free(tofree);
 }
 
-char	*get_env(char **env)
+char	*get_path(char *scmd, char **env)
 {
 	int		i;
-
-	i = 0;
-	while (env[i])
-	{
-		if (ft_strnstr(env[i], "PATH=", 5) == 0)
-			return (env[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-char	*get_path(char **splitcmd, char **env)
-{
-	char	*penv;
+	int		j;
 	char	*path;
 	char	*execpath;
 	char	**paths;
 
-	penv = get_env(env);
-	if (!penv)
-		return (ft_printf("Error: command not found"), NULL);
-	paths = ft_split(penv + 5, ':');
-	while (*paths)
+	i = 0;
+	while (ft_strnstr(env[i], "PATH", 4) == 0)
+		i++;
+	paths = ft_split(env[i] + 5, ':');
+	j = 0;
+	while (paths[j])
 	{
-		path = ft_strjoin(*paths, "/");
-		execpath = ft_strjoin(*paths, splitcmd[0]);
+		path = ft_strjoin(paths[j], "/");
+		execpath = ft_strjoin(path, scmd);
 		free(path);
 		if (access(execpath, F_OK | X_OK) == 0)
-		{
-			free(splitcmd);
 			return (execpath);
-		}
 		free(execpath);
 	}
 	iwanttobreakfree(paths);
