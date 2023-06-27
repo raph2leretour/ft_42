@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:54:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/27 09:40:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:30:21 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_path(char *scmd, char **env)
 	char	**paths;
 
 	i = 0;
-	while (ft_strnstr(env[i], "PATH", 4) == 0)
+	while (env[i] && ft_strnstr(env[i], "PATH", 4) == 0)
 		i++;
 	paths = ft_split(env[i] + 5, ':');
 	j = 0;
