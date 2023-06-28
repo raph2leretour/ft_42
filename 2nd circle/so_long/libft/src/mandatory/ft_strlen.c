@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:48:40 by raphael          ###   ########.fr       */
+/*   Created: 2022/11/08 13:55:43 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/26 16:09:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/libft.h"
 
-// void	print_map(t_vars vars, t_sprite sprite, char *map_path)
-// {
-// }
+size_t	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

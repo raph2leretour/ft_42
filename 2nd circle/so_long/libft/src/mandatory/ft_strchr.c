@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:48:40 by raphael          ###   ########.fr       */
+/*   Created: 2022/11/08 15:57:40 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/26 16:10:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/libft.h"
 
-// void	print_map(t_vars vars, t_sprite sprite, char *map_path)
-// {
-// }
+char	*ft_strchr(const char *s, int c)
+{
+	size_t	i;
+	char	c2;
+
+	i = 0;
+	c2 = (char)c;
+	while ((s[i] && (c2 != s[i])))
+		i++;
+	if (s[i] == c2)
+		return ((char *)s + i);
+	return (NULL);
+}

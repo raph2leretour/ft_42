@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:48:40 by raphael          ###   ########.fr       */
+/*   Created: 2022/11/23 15:39:13 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/26 16:07:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/libft.h"
 
-// void	print_map(t_vars vars, t_sprite sprite, char *map_path)
-// {
-// }
+void	ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new->next = *lst;
+	*lst = new;
+}

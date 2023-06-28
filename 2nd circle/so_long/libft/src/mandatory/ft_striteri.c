@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:48:40 by raphael          ###   ########.fr       */
+/*   Created: 2022/11/15 11:09:09 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/26 16:10:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/libft.h"
 
-// void	print_map(t_vars vars, t_sprite sprite, char *map_path)
-// {
-// }
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	size_t	i;
+
+	i = 0;
+	if (s)
+	{
+		while (s[i])
+		{
+			(*f)(i, &s[i]);
+			i++;
+		}
+	}
+}

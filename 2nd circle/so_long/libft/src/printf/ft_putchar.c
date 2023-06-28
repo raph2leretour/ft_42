@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:48:40 by raphael          ###   ########.fr       */
+/*   Created: 2022/12/06 13:15:33 by rtissera          #+#    #+#             */
+/*   Updated: 2023/05/30 22:12:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/libft.h"
 
-// void	print_map(t_vars vars, t_sprite sprite, char *map_path)
-// {
-// }
+int	ft_putchar(int c)
+{
+	write(1, &c, 1);
+	return (1);
+}

@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/05/23 17:41:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:57:42 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	error(void)
+{
+	perror("Error");
+	exit(EXIT_FAILURE);
+}
 
 int	close_window(t_vars *vars)
 {

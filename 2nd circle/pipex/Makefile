@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
+#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/06/27 08:44:27 by rtissera         ###   ########.fr        #
+#    Updated: 2023/06/28 17:15:28 by raphael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,12 @@ NAME		:= pipex
 SRC_DIR			:= src
 OBJ_DIR			:= obj
 LIBFT_DIR		:= libft
-FT_PRINTF_DIR	:= libftprintf
 SRCS			:=	\
 	main.c			\
 	utils/utils.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT			:= $(LIBFT_DIR)/libft.a
-FT_PRINTF		:= $(FT_PRINTF_DIR)/libftprintf.a
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror

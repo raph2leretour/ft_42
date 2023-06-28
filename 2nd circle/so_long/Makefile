@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
+#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/25 17:10:39 by rtissera         ###   ########.fr        #
+#    Updated: 2023/06/28 17:53:53 by raphael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,31 +18,19 @@ NAME		:= so_long
 
 SRC_DIR			:= src
 OBJ_DIR			:= obj
+LIBFT_DIR		:= libft
+MLX_DIR			:= minilibx-linux
 SRCS			:=			\
 	main.c					\
 	utils.c					\
 	check_map.c				\
 	print_map.c				\
 	init_sprite.c			\
-	print_sprite.c			\
-	libft/ft_atoi.c			\
-	printf/ft_putu.c		\
-	libft/ft_lstnew.c		\
-	libft/ft_isdigit.c		\
-	libft/ft_lstlast.c		\
-	printf/ft_strlen.c		\
-	printf/ft_printf.c		\
-	printf/ft_putnbr.c		\
-	printf/ft_putstr.c		\
-	libft/ft_lstsize.c		\
-	printf/ft_putchar.c		\
-	libft/ft_putstr_fd.c	\
-	libft/ft_lstadd_back.c	\
-	libft/ft_lstadd_front.c	\
-	printf/ft_putnbr_base.c
+	print_sprite.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-MLX				:= minilibx-linux/libmlx.a
+LIBFT			:= $(LIBFT_DIR)/libft.a
+MLX				:= $(MLX_DIR)/libmlx.a
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
@@ -61,22 +49,28 @@ DIR_DUP		= mkdir -p $(@D)
 #   RECIPES                                      #
 #------------------------------------------------#
 
-all: $(NAME)
+all: $(LIBFT) $(MLX) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME) $(MLX) $(L_FLAGS)
-	$(info CREATED $(NAME))
+	$(CC) $(OBJS) -o $(NAME) $(LIBFT) $(MLX) $(L_FLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	$(info CREATED $@)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
+
+$(MLX):
+	make -C $(MLX_DIR)
 
 clean:
+	make -C $(LIBFT_DIR) clean
+	make -C $(MLX_DIR) clean
 	$(RM) $(OBJS)
-	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
+	make -C $(LIBFT_DIR) fclean
 	$(RM) $(NAME)
 
 norminette:
@@ -92,4 +86,3 @@ run: re
 #   SPEC                                         #
 #------------------------------------------------#
 .PHONY: clean fclean norminette re run
-.SILENT:
