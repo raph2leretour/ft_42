@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
+#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 14:46:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/05/30 22:10:00 by rtissera         ###   ########.fr        #
+#    Updated: 2023/06/28 18:53:44 by raphael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,55 +16,57 @@ NAME		:= libft.a
 #   INGREDIENTS                                  #
 #------------------------------------------------#
 SRC_DIR		:= src
-SRCS		:=					\
-	mandatory/ft_atoi.c			\
-	mandatory/ft_itoa.c			\
-	mandatory/ft_bzero.c		\
-	mandatory/ft_split.c		\
-	mandatory/ft_strdup.c		\
-	mandatory/ft_calloc.c		\
-	mandatory/ft_memcmp.c		\
-	mandatory/ft_memchr.c		\
-	mandatory/ft_memcpy.c		\
-	mandatory/ft_memset.c		\
-	mandatory/ft_strchr.c		\
-	mandatory/ft_substr.c		\
-	mandatory/ft_strlen.c		\
-	mandatory/ft_strjoin.c		\
-	mandatory/ft_memmove.c		\
-	mandatory/ft_strlcpy.c		\
-	mandatory/ft_isalpha.c		\
-	mandatory/ft_strmapi.c		\
-	mandatory/ft_strnstr.c		\
-	mandatory/ft_strtrim.c		\
-	mandatory/ft_tolower.c		\
-	mandatory/ft_strlcat.c		\
-	mandatory/ft_isalnum.c		\
-	mandatory/ft_isascii.c		\
-	mandatory/ft_isprint.c		\
-	mandatory/ft_strncmp.c		\
-	mandatory/ft_strrchr.c		\
-	mandatory/ft_toupper.c		\
-	mandatory/ft_striteri.c		\
-	mandatory/ft_putnbr_fd.c	\
-	mandatory/ft_putstr_fd.c	\
-	mandatory/ft_putendl_fd.c	\
-	mandatory/ft_putchar_fd.c	\
-	bonus/ft_lstmap.c			\
-	bonus/ft_lstnew.c			\
-	bonus/ft_lstlast.c			\
-	bonus/ft_lstsize.c			\
-	bonus/ft_lstiter.c			\
-	bonus/ft_lstclear.c			\
-	bonus/ft_lstdelone.c		\
-	bonus/ft_lstadd_back.c		\
-	bonus/ft_lstadd_front.c		\
-	printf/ft_putu.c			\
-	printf/ft_putstr.c			\
-	printf/ft_putnbr.c			\
-	printf/ft_printf.c			\
-	printf/ft_putchar.c			\
-	printf/ft_putnbr_base.c
+SRCS		:=							\
+	mandatory/ft_atoi.c					\
+	mandatory/ft_itoa.c					\
+	mandatory/ft_bzero.c				\
+	mandatory/ft_split.c				\
+	mandatory/ft_strdup.c				\
+	mandatory/ft_calloc.c				\
+	mandatory/ft_memcmp.c				\
+	mandatory/ft_memchr.c				\
+	mandatory/ft_memcpy.c				\
+	mandatory/ft_memset.c				\
+	mandatory/ft_strchr.c				\
+	mandatory/ft_substr.c				\
+	mandatory/ft_strlen.c				\
+	mandatory/ft_strjoin.c				\
+	mandatory/ft_memmove.c				\
+	mandatory/ft_strlcpy.c				\
+	mandatory/ft_isalpha.c				\
+	mandatory/ft_strmapi.c				\
+	mandatory/ft_strnstr.c				\
+	mandatory/ft_strtrim.c				\
+	mandatory/ft_tolower.c				\
+	mandatory/ft_strlcat.c				\
+	mandatory/ft_isalnum.c				\
+	mandatory/ft_isascii.c				\
+	mandatory/ft_isprint.c				\
+	mandatory/ft_strncmp.c				\
+	mandatory/ft_strrchr.c				\
+	mandatory/ft_toupper.c				\
+	mandatory/ft_striteri.c				\
+	mandatory/ft_putnbr_fd.c			\
+	mandatory/ft_putstr_fd.c			\
+	mandatory/ft_putendl_fd.c			\
+	mandatory/ft_putchar_fd.c			\
+	bonus/ft_lstmap.c					\
+	bonus/ft_lstnew.c					\
+	bonus/ft_lstlast.c					\
+	bonus/ft_lstsize.c					\
+	bonus/ft_lstiter.c					\
+	bonus/ft_lstclear.c					\
+	bonus/ft_lstdelone.c				\
+	bonus/ft_lstadd_back.c				\
+	bonus/ft_lstadd_front.c				\
+	printf/ft_putu.c					\
+	printf/ft_putstr.c					\
+	printf/ft_putnbr.c					\
+	printf/ft_printf.c					\
+	printf/ft_putchar.c					\
+	printf/ft_putnbr_base.c				\
+	get_next_line/get_next_line.c		\
+	get_next_line/get_next_line_utils.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR	:= .build
