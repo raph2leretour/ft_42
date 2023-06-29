@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:57:42 by raphael          ###   ########.fr       */
+/*   Updated: 2023/06/29 16:24:04 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_handle_key(int key, t_vars *vars)
 	*/
 	if (key == 65307)
 		ft_clear_vars(vars);
-	ft_printf("la touche enfoncee est : { %d }\n", key);
+	ft_printf_fd(1, "la touche enfoncee est : { %d }\n", key);
 	return (0);
 }
 

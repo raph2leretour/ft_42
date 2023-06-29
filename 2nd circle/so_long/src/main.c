@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 18:47:42 by raphael          ###   ########.fr       */
+/*   Updated: 2023/06/29 16:23:34 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	(void) argv;
 	if (argc != 2)
 	{
-		ft_printf("Error: Bad Arguments\n");
+		ft_printf_fd(2, "Error: Bad Arguments\n");
 		exit(EXIT_FAILURE);
 	}
 	vars.mlx = mlx_init();
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	sprite = init_sprite();
 	print_sprite(vars, sprite.collectible, 0, 0);
 	mlx_key_hook(vars.win, ft_handle_key, &vars);
-	mlx_hook(vars.win, 17, 1L << 17, &close_window, &vars);
+	mlx_hook(vars.win, 17, 1l << 17, &close_window, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

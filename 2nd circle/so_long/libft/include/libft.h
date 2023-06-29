@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 14:07:42 by rtissera          #+#    #+#             */
-/*   Updated: 2023/06/28 17:05:59 by raphael          ###   ########.fr       */
+/*   Updated: 2023/06/29 16:02:53 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,10 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_atoi(const char *nptr);
+int		ft_putnbr_fd(int n, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
+int		ft_putendl_fd(char *s, int fd);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 char	*ft_itoa(int n);
@@ -73,10 +77,6 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 void	ft_bzero(void *s, size_t n);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -99,13 +99,10 @@ t_list	*ft_lstnew(char *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 //printf
-int		ft_putnbr(int n);
-int		ft_putchar(int c);
-int		ft_putstr(char *s);
-int		ft_putu(unsigned int n);
-int		ft_printf(const char *str, ...);
-int		ft_putvoid(unsigned long int n);
-int		ft_putnbr_base(unsigned long int n, int base);
+int		ft_putu_fd(unsigned int n, int fd);
+int		ft_printf_fd(int fd, const char *str, ...);
+int		ft_putvoid_fd(unsigned long int n, int fd);
+int		ft_putnbr_base_fd(unsigned long int n, int base, int fd);
 
 //get_next_line
 int		linelen(t_buff **lst, int boool);
