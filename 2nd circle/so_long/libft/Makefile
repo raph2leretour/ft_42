@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
+#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/26 14:46:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/06/29 15:58:24 by raphael          ###   ########.fr        #
+#    Updated: 2023/07/03 13:38:45 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,9 +59,9 @@ SRCS		:=							\
 	bonus/ft_lstdelone.c				\
 	bonus/ft_lstadd_back.c				\
 	bonus/ft_lstadd_front.c				\
-	printf/ft_putu_fd.c					\
-	printf/ft_printf_fd.c				\
-	printf/ft_putnbr_base_fd.c			\
+	ft_printf_fd/ft_putu_fd.c			\
+	ft_printf_fd/ft_printf_fd.c			\
+	ft_printf_fd/ft_putnbr_base_fd.c	\
 	get_next_line/get_next_line.c		\
 	get_next_line/get_next_line_utils.c
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
@@ -90,12 +90,10 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	$(info CREATED $(NAME))
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	$(info CREATED $@)
 
 -include $(DEPS)
 
@@ -114,4 +112,3 @@ re:
 #------------------------------------------------#
 
 .PHONY: clean fclean re
-.SILENT:
