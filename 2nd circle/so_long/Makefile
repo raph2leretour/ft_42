@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
+#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/06/28 17:53:53 by raphael          ###   ########.fr        #
+#    Updated: 2023/09/01 09:01:21 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ SRCS			:=			\
 	main.c					\
 	utils.c					\
 	check_map.c				\
-	print_map.c				\
 	init_sprite.c			\
 	print_sprite.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
