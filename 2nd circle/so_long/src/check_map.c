@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/01 10:06:35 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/01 12:05:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ bool	check_map_shape(int map_fd)
 		y = 0;
 		while (line[y])
 			y++;
-		if ((y < 3) || (x > 1 && witness_y != y))
+		if ((y < 3) || (x > 0 && witness_y != y)
+			|| !check_map_content(line))
 			return (free(line), false);
 		free(line);
 		line = get_next_line(map_fd);
@@ -47,9 +48,21 @@ bool	check_map_shape(int map_fd)
 	return (free(line), true);
 }
 
-// bool	check_endable(int map_fd)
-// {
-// }
+bool	check_map_content(char *line)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		if (line[i] != '0' && line[i] != '1'
+			&& line[i] != 'C' && line[i] != 'E'
+			&& line[i] != 'P')
+			return (false);
+		i++;
+	}
+	return (true);
+}
 
 bool	check_map(char *map_path)
 {
