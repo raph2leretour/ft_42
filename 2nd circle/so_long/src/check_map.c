@@ -5,16 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 18:28:27 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/01 08:53: by rtissera         ###   ########.fr       */
+/*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
+/*   Updated: 2023/09/01 10:06:35 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-// bool	check_map_path(char *map_path)
-// {
-// }
+bool	check_map_path(char *map_path)
+{
+	if (!ft_strncmp(map_path + ft_strlen(map_path) - 4, ".ber", 4))
+		return (true);
+	return (false);
+}
 
 bool	check_map_shape(int map_fd)
 {
@@ -52,9 +55,11 @@ bool	check_map(char *map_path)
 {
 	int	map_fd;
 
+	if (!check_map_path(map_path))
+		return (false);
 	map_fd = open(map_path, O_RDONLY, 0777);
 	if (!check_map_shape(map_fd))
-		return	(false);
+		return (close(map_fd), false);
 	close(map_fd);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/01 08:52:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/01 09:29:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,9 @@ int	close_window(t_vars *vars)
 
 int	ft_handle_key(int key, t_vars *vars)
 {
-	/*
-	if (key == keycode pour fleche droite)
-		tu vas swap ton sprite char avec ton sprite sol
-	-->check que ca soit pas un mur
-	*/
+	// if (key == keycode pour fleche droite)
+	// 	tu vas swap ton sprite char avec ton sprite sol
+	// -->check que ca soit pas un mur
 	if (key == 65307)
 		ft_clear_vars(vars);
 	ft_printf_fd(1, "la touche enfoncee est : { %d }\n", key);
