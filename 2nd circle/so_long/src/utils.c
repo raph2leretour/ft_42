@@ -6,17 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/01 09:29:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:55:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
-void	error(void)
-{
-	perror("Error");
-	exit(EXIT_FAILURE);
-}
 
 int	close_window(t_vars *vars)
 {
@@ -42,4 +36,12 @@ int	ft_clear_vars(t_vars *vars)
 	free(vars->mlx);
 	exit(0);
 	return (0);
+}
+
+size_t	malloc_strlcpy(char *dst, const char *src, size_t size)
+{
+	dst = malloc((sizeof(char) * size + 1));
+	if (!dst)
+		return (0);
+	return (ft_strlcpy(dst, src, size));
 }

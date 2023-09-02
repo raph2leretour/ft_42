@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/01 09:01:21 by rtissera         ###   ########.fr        #
+#    Updated: 2023/09/02 11:55:25 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ MLX_DIR			:= minilibx-linux
 SRCS			:=			\
 	main.c					\
 	utils.c					\
+	error.c					\
 	check_map.c				\
 	init_sprite.c			\
 	print_sprite.c

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/01 12:05:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/02 11:39:13 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,22 @@ bool	check_map_path(char *map_path)
 	if (!ft_strncmp(map_path + ft_strlen(map_path) - 4, ".ber", 4))
 		return (true);
 	return (false);
+}
+
+bool	check_line_content(char *line)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		if (line[i] != '0' && line[i] != '1'
+			&& line[i] != 'C' && line[i] != 'E'
+			&& line[i] != 'P')
+			return (false);
+		i++;
+	}
+	return (true);
 }
 
 bool	check_map_shape(int map_fd)
@@ -37,7 +53,7 @@ bool	check_map_shape(int map_fd)
 		while (line[y])
 			y++;
 		if ((y < 3) || (x > 0 && witness_y != y)
-			|| !check_map_content(line))
+			|| !check_line_content(line))
 			return (free(line), false);
 		free(line);
 		line = get_next_line(map_fd);
@@ -46,22 +62,6 @@ bool	check_map_shape(int map_fd)
 	if (x < 3)
 		return (free(line), false);
 	return (free(line), true);
-}
-
-bool	check_map_content(char *line)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'C' && line[i] != 'E'
-			&& line[i] != 'P')
-			return (false);
-		i++;
-	}
-	return (true);
 }
 
 bool	check_map(char *map_path)
