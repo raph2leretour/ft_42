@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/05 14:22:19 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/05 17:50:50 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 t_map	read_map(int map_fd)
 {
-	char		*line;
 	t_map		map;
 	unsigned int	y;
 
-	line = get_next_line(map_fd);
-	map.y_max = ft_strlen(line) - 1;
 	map.x_max = 0;
-	while (line)
+	while (map.map[map.x_max])
 	{
+		map.map[map.x_max] = get_next_line(map_fd);
+		if (map.x_max == 0)
+			map.y_max = ft_strlen(map.map[map.x_max]) - 1;
 		y = 0;
-		while (line[y])
+		while (map.map[map.x_max])
 			y++;
+		if (y < 3 || (map.x_max > 0 && map.y_max != y)
+			|| !check_line_content(map.map[map.x_max]))
+			return (clear(map.map), map);
+		map.x_max++;
+	}
+	if (map.x_max < 3)
+		return (clear(map.map), map);
+	return (map);
 }

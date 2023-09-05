@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/02 11:39:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/05 17:50:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,34 @@ bool	check_line_content(char *line)
 	return (true);
 }
 
-bool	check_map_shape(int map_fd)
-{
-	char			*line;
-	unsigned int	x;
-	unsigned int	y;
-	unsigned int	witness_y;
+// bool	check_map_shape(int map_fd)
+// {
+// 	char			*line;
+// 	unsigned int	x;
+// 	unsigned int	y;
+// 	unsigned int	witness_y;
 
-	x = 0;
-	witness_y = 0;
-	line = get_next_line(map_fd);
-	while (line)
-	{
-		if (x == 1)
-			witness_y = y;
-		y = 0;
-		while (line[y])
-			y++;
-		if ((y < 3) || (x > 0 && witness_y != y)
-			|| !check_line_content(line))
-			return (free(line), false);
-		free(line);
-		line = get_next_line(map_fd);
-		x++;
-	}
-	if (x < 3)
-		return (free(line), false);
-	return (free(line), true);
-}
+// 	x = 0;
+// 	witness_y = 0;
+// 	line = get_next_line(map_fd);
+// 	while (line)
+// 	{
+// 		if (x == 1)
+// 			witness_y = y;
+// 		y = 0;
+// 		while (line[y])
+// 			y++;
+// 		if ((y < 3) || (x > 0 && witness_y != y)
+// 			|| !check_line_content(line))
+// 			return (free(line), false);
+// 		free(line);
+// 		line = get_next_line(map_fd);
+// 		x++;
+// 	}
+// 	if (x < 3)
+// 		return (free(line), false);
+// 	return (free(line), true);
+// }
 
 bool	check_map(char *map_path)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/05 13:39:36 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/05 17:45:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int			close_window(t_vars *vars);
 int			ft_clear_vars(t_vars *vars);
 int			ft_handle_key(int key, t_vars *vars);
 bool		check_map(char *map_path);
+bool		check_line_content(char *line);
 void		error(void);
 void		clear(char **tab);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
