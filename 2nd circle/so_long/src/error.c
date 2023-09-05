@@ -6,15 +6,18 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:54:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/02 11:55:08 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/05 18:28:44 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	error(void)
+void	error(char *str)
 {
-	perror("Error");
+	if (!str)
+		perror("Error");
+	else
+		ft_printf_fd(2, "%s", str);
 	exit(EXIT_FAILURE);
 }
 
