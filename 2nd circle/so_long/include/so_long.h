@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/02 11:49:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/05 13:39:36 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,12 @@ typedef struct s_sprite {
 	char	*exit;
 }	t_sprite;
 
+typedef struct s_map {
+	char			**map;
+	unsigned int	x_max;
+	unsigned int	y_max;
+}	t_map;
+
 /************************************************/
 /*   FUNCTIONS                                  */
 /************************************************/
@@ -55,6 +61,7 @@ void		error(void);
 void		clear(char **tab);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
 void		print_map(t_vars vars, t_sprite sprite, char *map_path);
+t_map		read_map(int map_fd);
 size_t		malloc_strlcpy(char *dst, const char *src, size_t size);
 t_sprite	init_sprite(void);
 

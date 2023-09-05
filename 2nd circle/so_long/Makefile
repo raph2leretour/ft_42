@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
+#    By: raphael <raphael@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/02 11:55:25 by rtissera         ###   ########.fr        #
+#    Updated: 2023/09/05 13:37:20 by raphael          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			:=			\
 	main.c					\
 	utils.c					\
 	error.c					\
+	read_map.c				\
 	check_map.c				\
 	init_sprite.c			\
 	print_sprite.c
