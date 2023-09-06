@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:54:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/05 18:28:44 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:19:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	error(char *str)
 	if (!str)
 		perror("Error");
 	else
-		ft_printf_fd(2, "%s", str);
+		ft_printf_fd(2, "Error: %s", str);
 	exit(EXIT_FAILURE);
 }
 

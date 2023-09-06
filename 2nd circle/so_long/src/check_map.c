@@ -6,36 +6,29 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/05 18:27:17 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:28:54 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-bool	check_map_path(char *map_path)
-{
-	if (!ft_strncmp(map_path + ft_strlen(map_path) - 4, ".ber", 4))
-		return (true);
-	return (false);
-}
+// bool	check_line_content(char *line)
+// {
+// 	unsigned int	i;
 
-bool	check_line_content(char *line)
-{
-	unsigned int	i;
+// 	i = 0;
+// 	while (line[i] && line[i] != '\n')
+// 	{
+// 		if (line[i] != '0' && line[i] != '1'
+// 			&& line[i] != 'C' && line[i] != 'E'
+// 			&& line[i] != 'P')
+// 			return (false);
+// 		i++;
+// 	}
+// 	return (true);
+// }
 
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'C' && line[i] != 'E'
-			&& line[i] != 'P')
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
-// bool	check_map_shape(int map_fd)
+// void	check_map_shape(t_map map)
 // {
 // 	char			*line;
 // 	unsigned int	x;
@@ -64,15 +57,9 @@ bool	check_line_content(char *line)
 // 	return (free(line), true);
 // }
 
-bool	check_map(char *map_path)
-{
-	int	map_fd;
-
-	if (!check_map_path(map_path))
-		return (false);
-	map_fd = open(map_path, O_RDONLY, 0777);
-	if (!check_map_shape(map_fd))
-		return (close(map_fd), false);
-	close(map_fd);
-	return (true);
-}
+// void	check_map(t_map map)
+// {
+// 	if (!ft_strncmp(map_path + ft_strlen(map_path) - 4, ".ber", 4))
+// 		return (true);
+// 	check_map_shape(map);
+// }

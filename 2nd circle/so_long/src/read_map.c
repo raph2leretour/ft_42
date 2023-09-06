@@ -6,34 +6,30 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/05 18:14:14 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/06 17:31:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_map	read_map(int map_fd)
+t_map	read_map(char *map_path)
 {
-	t_map		map;
+	int				map_fd;
+	char			*line;
+	char			*c_map;
+	t_map			map;
 	unsigned int	y;
 
-	map.x_max = 0;
-	map.map[map.x_max] = get_next_line(map_fd);
-	while (map.map[map.x_max])
+	map_fd = open(map_path, O_RDONLY, -777);
+	line = get_next_line(map_fd);
+	ft_strlcpy(c_map, line, ft_strlen(line));
+	while (line)
 	{
-		if (map.x_max == 0)
-			map.y_max = ft_strlen(map.map[map.x_max]) - 1;
-		y = 0;
-		while (map.map[map.x_max])
-			y++;
-		y--;
-		if (y < 3 || (map.x_max > 0 && map.y_max != y)
-			|| !check_line_content(map.map[map.x_max]))
-			return (clear(map.map), map);
-		map.x_max++;
-		map.map[map.x_max] = get_next_line(map_fd);
+		c_map = ft_strjoin(c_map, line);
+		free(line);
+		line = get_next_line(map_fd);
 	}
-	if (map.x_max < 3)
-		return (clear(map.map), map);
+	map.map = ft_split(c_map, '\n');
+	close (map_fd);
 	return (map);
 }
