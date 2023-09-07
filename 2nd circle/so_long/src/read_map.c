@@ -6,31 +6,35 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 15:25:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:26:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-t_map	read_map(char *map_path)
+t_map	read_map(int map_fd)
 {
-	int				map_fd;
 	char			*line;
 	char			*c_map;
 	t_map			map;
-	unsigned int	y;
 
-	map.path = map_path;
-	map_fd = open(map.path, O_RDONLY, -777);
 	line = get_next_line(map_fd);
-	//mettre substr en fait
-	ft_strlcpy(c_map, line, ft_strlen(line));
+	if (!line)
+		error("Empty File\n");
+	map.x_max = 0;
+	map.y_max = ft_strlen(line) - 1;
 	while (line)
 	{
-		c_map = ft_strjoin(c_map, line);
+		if (map.x_max == 0)
+			c_map = ft_substr(line, 0, ft_strlen(line));
+		else
+			c_map = ft_strjoin(c_map, line);
 		free(line);
 		line = get_next_line(map_fd);
+		map.x_max++;
 	}
+	if (map.x_max == 0)
+		error("Empty Map\n");
 	map.map = ft_split(c_map, '\n');
 	close (map_fd);
 	return (map);

@@ -6,60 +6,54 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 15:07:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:03:48 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-bool	check_line_content(char *line)
+void	check_map_content(t_map map)
 {
-	unsigned int	i;
+	unsigned int	x;
+	unsigned int	y;
 
-	i = 0;
-	while (line[i] && line[i] != '\n')
+	x = 0;
+	while (map.map[x])
 	{
-		if (line[i] != '0' && line[i] != '1'
-			&& line[i] != 'C' && line[i] != 'E'
-			&& line[i] != 'P')
-			return (false);
-		i++;
+		y = 0;
+		while (map.map[x][y])
+		{
+			if (map.map[x][y] != '1' && map.map[x][y] != '0' &&
+				map.map[x][y] != 'P' && map.map[x][y] != 'E' &&
+				map.map[x][y] != 'C')
+				error("Invalid Character\n");
+			y++;
+		}
+		x++;
 	}
-	return (true);
 }
 
 void	check_map_shape(t_map map)
 {
-	char			*line;
 	unsigned int	x;
 	unsigned int	y;
-	unsigned int	witness_y;
 
 	x = 0;
-	witness_y = 0;
-	line = get_next_line(map_fd);
-	while (line)
+	while (map.map[x])
 	{
-		if (x == 1)
-			witness_y = y;
 		y = 0;
-		while (line[y])
+		while (map.map[x][y])
 			y++;
-		if ((y < 3) || (x > 0 && witness_y != y)
-			|| !check_line_content(line))
-			return (free(line), false);
-		free(line);
-		line = get_next_line(map_fd);
+		if (x > 0 && map.y_max != y)
+			error("Map Is Not Rectangular\n");
 		x++;
 	}
-	if (x < 3)
-		return (free(line), false);
-	return (free(line), true);
 }
 
 void	check_map(t_map map)
 {
-	if (!ft_strncmp(map.path + ft_strlen(map.path) - 4, ".ber", 4))
-		error("Invallid Path\n");
+	if (map.x_max < 3 || map.y_max < 3)
+		error("Map Is Too Small\n");
 	check_map_shape(map);
+	check_map_content(map);
 }
