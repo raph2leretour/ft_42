@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 17:16:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:59:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct s_map {
 	char			**map;
 	unsigned int	x_max;
 	unsigned int	y_max;
+	unsigned int	cP;
+	unsigned int	cE;
+	unsigned int	cC;
 }	t_map;
 
 /************************************************/
