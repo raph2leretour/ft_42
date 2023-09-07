@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/06 17:31:11 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:25:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ t_map	read_map(char *map_path)
 	t_map			map;
 	unsigned int	y;
 
-	map_fd = open(map_path, O_RDONLY, -777);
+	map.path = map_path;
+	map_fd = open(map.path, O_RDONLY, -777);
 	line = get_next_line(map_fd);
+	//mettre substr en fait
 	ft_strlcpy(c_map, line, ft_strlen(line));
 	while (line)
 	{

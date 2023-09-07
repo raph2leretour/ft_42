@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/06 17:29:32 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:09:56 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int	main(int argc, char **argv)
 	t_sprite	sprite;
 
 	if (argc != 2)
-	{
-		ft_printf_fd(2, "Error: Bad Arguments\n");
-		exit(EXIT_FAILURE);
-	}
+		error("Bad Arguments\n");
 	map = read_map(argv[1]);
 	check_map(map);
 	vars.mlx = mlx_init();
