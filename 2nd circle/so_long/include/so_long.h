@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 17:59:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:05:53 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ typedef struct s_map {
 	char			**map;
 	unsigned int	x_max;
 	unsigned int	y_max;
-	unsigned int	cP;
-	unsigned int	cE;
-	unsigned int	cC;
+	unsigned int	cp;
+	unsigned int	ce;
+	unsigned int	cc;
 }	t_map;
 
 /************************************************/
@@ -61,7 +61,7 @@ int			ft_clear_vars(t_vars *vars);
 int			ft_handle_key(int key, t_vars *vars);
 void		error(char *str);
 void		clear(char **tab);
-void		check_map(t_map map);
+void		check_map(t_map *map);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
 void		print_map(t_vars vars, t_sprite sprite, char *map_path);
 t_map		read_map(int map_fd);
