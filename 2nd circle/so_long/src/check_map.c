@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 19:07:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:09:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	check_map_content(t_map *map)
 			while ((*map).map[x][y])
 			{
 				if ((*map).map[x][y] != '1')
-					error("Map Must Be Surrounded By Walls\n");
+					clearror((*map).map, "Map Must Be Surrounded By Walls\n");
 				y++;
 			}
 		}
@@ -67,7 +67,7 @@ void	check_map_content(t_map *map)
 		x++;
 	}
 	if ((*map).cc < 1 || (*map).cp != 1 || (*map).ce != 1)
-		error("Map Must Contain 1 E, At Least 1 C, And 1 P\n");
+		clearror((*map).map, "Map Must Contain 1 E, At Least 1 C, And 1 P\n");
 }
 
 void	check_map_shape(t_map map)

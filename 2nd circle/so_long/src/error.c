@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:54:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/06 17:19:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:49:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,10 @@ void	clear(char **tab)
 		i++;
 	}
 	free(tab);
+}
+
+void	clearror(char **tab, char *str)
+{
+	clear(tab);
+	error(str);
 }
