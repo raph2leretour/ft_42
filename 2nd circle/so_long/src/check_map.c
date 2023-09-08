@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/08 18:26:15 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/08 19:53:44 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,18 @@ void	check_map_possible(t_map map)
 	y = 1;
 	c_map = mapcpy(map);
 	findstart(map, &x, &y);
-	while (findaway(map, &x, &y))
-		drop(&c_map, x, y);
+	while (findaway(map, &x, &y, '1'))
+	{
+		while (!findaway(map, &x, &y, 'V'))
+			drop(&c_map, x, y);
+	}
+	if (c_map.cc != map.cc || c_map.ce != map.ce || c_map.cp != map.cp)
+	{
+		clear(c_map.map);
+		clear(map.map);
+		error("Map Is Not Finishable\n");
+	}
+	clear(c_map.map);
 }
 
 void	check_map(t_map *map)

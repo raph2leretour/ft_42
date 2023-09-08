@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/07 19:07:33 by rtissera         ###   ########.fr        #
+#    Updated: 2023/09/08 19:52:20 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS			:=			\
 	main.c					\
 	utils.c					\
 	error.c					\
+	parsing.c				\
 	read_map.c				\
 	check_map.c				\
 	init_sprite.c			\
@@ -75,7 +76,8 @@ fclean: clean
 	$(RM) $(NAME)
 
 norminette:
-	norminette include src
+	norminette include
+	norminette src
 
 re: fclean all
 
