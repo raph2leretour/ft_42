@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/08 12:54:51 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/08 18:26:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,16 @@ void	check_map_shape(t_map map)
 
 void	check_map_possible(t_map map)
 {
-	(void)map;
+	unsigned int	x;
+	unsigned int	y;
+	t_map			c_map;
+
+	x = 1;
+	y = 1;
+	c_map = mapcpy(map);
+	findstart(map, &x, &y);
+	while (findaway(map, &x, &y))
+		drop(&c_map, x, y);
 }
 
 void	check_map(t_map *map)
