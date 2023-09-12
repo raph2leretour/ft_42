@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/10 18:05:16 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:57:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		error(char *str);
 void		clear(char **tab);
 void		check_map(t_map *map);
 void		clearror(char **tab, char *str);
-void		drop(t_map *c_map, unsigned int x, unsigned int y);
+void		drop(t_map c_map, unsigned int x, unsigned int y);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
 void		findstart(t_map map, unsigned int *x, unsigned int *y);
 void		print_map(t_vars vars, t_sprite sprite, char *map_path);

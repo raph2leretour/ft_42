@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/10 18:29:31 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/12 14:57:27 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,12 @@ void	check_map_possible(t_map *map)
 	if (!c_map.map)
 		clearror((*map).map, "Cannot Copy The Map\n");
 	findstart((*map), &x, &y);
-	while (findaway((*map), &x, &y, 'V'))
-		drop(&c_map, x, y);
+	while (findaway((*map), &x, &y, '1'))
+		drop(c_map, x, y);
 	if (c_map.cc != (*map).cc || c_map.ce != (*map).ce || c_map.cp != (*map).cp)
 	{
-		clear(c_map.map);
+		if (c_map.map)
+			clear(c_map.map);
 		clear((*map).map);
 		error("Map Is Not Finishable\n");
 	}
