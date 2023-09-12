@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/12 19:23:48 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/13 01:18:40 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,8 @@ void	check_map_possible(t_map *map)
 	findstart(map);
 	x = (*map).p_x;
 	y = (*map).p_y;
-	drop(c_map, x, y);
-	ft_printf_fd(1, " ce = %d cc = %d\n", c_map.ce, c_map.cc);
-	findaway(c_map, x, y, '2');
-	ft_printf_fd(1, " ce = %d cc = %d\n", c_map.ce, c_map.cc);
-	ft_printf_fd(1, " ce = %d cc = %d\n", (*map).ce, (*map).cc);
+	c_map = drop(c_map, x, y);
+	ft_printf_fd(1, "vlan\n");
 	if (c_map.cc != (*map).cc || c_map.ce != (*map).ce)
 	{
 		clear(c_map.map);
@@ -119,7 +116,7 @@ void	check_map_possible(t_map *map)
 void	check_map(t_map *map)
 {
 	if (!((*map).x_max >= 3 && (*map).y_max >= 5)
-		|| !((*map).x_max >= 5 && (*map).y_max >= 3))
+		&& !((*map).x_max >= 5 && (*map).y_max >= 3))
 		error("Map Is Too Small\n");
 	check_map_shape((*map));
 	check_map_content(map);

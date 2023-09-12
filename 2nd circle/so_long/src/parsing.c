@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/12 19:23:39 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/13 01:00:33 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,32 +63,50 @@ void	findstart(t_map *map)
 	}
 }
 
-int	findaway(t_map map, unsigned int x, unsigned int y, char c)
+t_map	findaway(t_map map, unsigned int x, unsigned int y)
 {
-	drop(map, x, y);
 	ft_printf_fd(1, "y = %d x = %d", y, x);
 	ft_printf_fd(1, " ce = %d cc = %d\n", map.ce, map.cc);
-	if (map.map[x][y - 1] && map.map[x][y - 1] != c
+	if (map.map[x][y - 1] && map.map[x][y - 1] != '2'
 		&& map.map[x][y - 1] != '1')
-		return (findaway(map, x, y - 1, c));
-	else if (map.map[(x - 1)][y] && map.map[x - 1][y] != c
+	{
+		ft_printf_fd(1, "tchak\n");
+		return (drop(map, x, y - 1));
+	}
+	else if (map.map[(x - 1)][y] && map.map[x - 1][y] != '2'
 		&& map.map[x - 1][y] != '1')
-		return (findaway(map, x - 1, y, c));
-	else if (map.map[x][y + 1] && map.map[x][y + 1] != c
+	{
+		ft_printf_fd(1, "vroum\n");
+		return (drop(map, x - 1, y));
+	}
+	else if (map.map[x][y + 1] && map.map[x][y + 1] != '2'
 		&& map.map[x][y + 1] != '1')
-		return (findaway(map, x, y + 1, c));
-	else if (map.map[x + 1][y] && map.map[x + 1][y] != c
+	{
+		ft_printf_fd(1, "wiuuu\n");
+		return (drop(map, x, y + 1));
+	}
+	else if (map.map[x + 1][y] && map.map[x + 1][y] != '2'
 		&& map.map[x + 1][y] != '1')
-		return (findaway(map, x + 1, y, c));
+	{
+		ft_printf_fd(1, "brrr\n");
+		return (drop(map, x + 1, y));
+	}
 	else
-		return (0);
+	{
+		ft_printf_fd(1, "pouet\n");
+		return (map);
+	}
 }
 
-void	drop(t_map map, unsigned int x, unsigned int y)
+t_map	drop(t_map map, unsigned int x, unsigned int y)
 {
+	ft_printf_fd(1, "boum\n");
 	if (map.map[x][y] == 'E')
 		map.ce++;
 	else if (map.map[x][y] == 'C')
 		map.cc++;
+	ft_printf_fd(1, "crack\n");
 	map.map[x][y] = '2';
+	ft_printf_fd(1, "paf\n");
+	return (findaway(map, x, y));
 }

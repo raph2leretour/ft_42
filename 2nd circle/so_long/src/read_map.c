@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/07 18:21:11 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/13 01:17:58 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_map	read_map(int map_fd)
 		line = get_next_line(map_fd);
 		map.x_max++;
 	}
-	map.x_max--;
 	if (map.x_max == 0)
 		error("Empty Map\n");
 	map.map = ft_split(c_map, '\n');
