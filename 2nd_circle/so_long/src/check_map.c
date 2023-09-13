@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/13 01:18:40 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/13 19:34:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_line_content(t_map *map, char *line)
 	y = 0;
 	while (line[y + 1])
 	{
-		if ((y == 0 && line[y] != '1') || (y == (*map).y_max && line[y] != '1'))
+		if ((y == 0 && line[y] != '1') || (y == (*map).y && line[y] != '1'))
 		{
 			clear((*map).map);
 			error("Map Muste Be Surrounded By Walls\n");
@@ -52,7 +52,7 @@ void	check_map_content(t_map *map)
 	(*map).cc = 0;
 	while ((*map).map[x])
 	{
-		if (x == 0 || x == (*map).x_max)
+		if (x == 0 || x == (*map).x)
 		{
 			y = 0;
 			while ((*map).map[x][y])
@@ -81,7 +81,7 @@ void	check_map_shape(t_map map)
 		y = 0;
 		while (map.map[x][y])
 			y++;
-		if (x > 0 && map.y_max != y)
+		if (x > 0 && map.y != y)
 		{
 			clear(map.map);
 			error("Map Is Not Rectangular\n");
@@ -103,7 +103,6 @@ void	check_map_possible(t_map *map)
 	x = (*map).p_x;
 	y = (*map).p_y;
 	c_map = drop(c_map, x, y);
-	ft_printf_fd(1, "vlan\n");
 	if (c_map.cc != (*map).cc || c_map.ce != (*map).ce)
 	{
 		clear(c_map.map);
@@ -115,8 +114,8 @@ void	check_map_possible(t_map *map)
 
 void	check_map(t_map *map)
 {
-	if (!((*map).x_max >= 3 && (*map).y_max >= 5)
-		&& !((*map).x_max >= 5 && (*map).y_max >= 3))
+	if (!((*map).x >= 3 && (*map).y >= 5)
+		&& !((*map).x >= 5 && (*map).y >= 3))
 		error("Map Is Too Small\n");
 	check_map_shape((*map));
 	check_map_content(map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/13 00:41:03 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/13 19:45:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_sprite {
 
 typedef struct s_map {
 	char			**map;
-	unsigned int	x_max;
-	unsigned int	y_max;
+	unsigned int	x;
+	unsigned int	y;
 	unsigned int	p_x;
 	unsigned int	p_y;
 	unsigned int	cp;
@@ -66,13 +66,12 @@ void		clear(char **tab);
 void		check_map(t_map *map);
 void		findstart(t_map *map);
 void		clearror(char **tab, char *str);
+void		print_map(t_sprite sprite, t_vars vars, t_map map);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
-void		print_map(t_vars vars, t_sprite sprite, char *map_path);
 t_map		mapcpy(t_map *map);
 t_map		read_map(int map_fd);
 t_map		drop(t_map c_map, unsigned int x, unsigned int y);
 t_map		findaway(t_map map, unsigned int x, unsigned int y);
-size_t		malloc_strlcpy(char *dst, const char *src, size_t size);
 t_sprite	init_sprite(void);
 
 #endif

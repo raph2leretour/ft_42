@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/08 16:08:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:18:07 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,4 @@ int	ft_clear_vars(t_vars *vars)
 	free(vars->mlx);
 	exit(0);
 	return (0);
-}
-
-size_t	malloc_strlcpy(char *dst, const char *src, size_t size)
-{
-	dst = malloc((sizeof(char) * size + 1));
-	if (!dst)
-		return (0);
-	return (ft_strlcpy(dst, src, size));
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/08 16:01:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:46:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,11 @@ int	main(int argc, char **argv)
 	map = read_map(open(argv[1], O_RDONLY, 0777));
 	check_map(&map);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1000, 1000, "so_long");
+	vars.win = mlx_new_window(vars.mlx, map.y * 80, map.x * 80, "so_long");
 	vars.height = 80;
 	vars.width = 80;
 	sprite = init_sprite();
-	print_sprite(vars, sprite.collectible, 0, 0);
-	print_sprite(vars, sprite.character, 80, 0);
-	print_sprite(vars, sprite.exit, 160, 0);
-	print_sprite(vars, sprite.floor, 240, 0);
-	print_sprite(vars, sprite.wall, 320, 0);
+	print_map(sprite, vars, map);
 	mlx_key_hook(vars.win, ft_handle_key, &vars);
 	mlx_hook(vars.win, 17, 1l << 17, &close_window, &vars);
 	mlx_loop(vars.mlx);
