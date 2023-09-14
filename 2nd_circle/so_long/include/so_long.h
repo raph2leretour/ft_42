@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/13 19:45:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/14 14:50:08 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_map {
 /************************************************/
 int			close_window(t_vars *vars);
 int			ft_clear_vars(t_vars *vars);
-int			ft_handle_key(int key, t_vars *vars);
+int			ft_handle_key(int key, t_vars *vars, t_map *map);
 void		error(char *str);
 void		clear(char **tab);
 void		check_map(t_map *map);
