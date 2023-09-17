@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/14 14:50:08 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/17 16:43:09 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@
 /************************************************/
 /*   STRUCTURES                                 */
 /************************************************/
-typedef struct s_vars {
-	void	*mlx;
-	void	*win;
-	int		width;
-	int		height;
-}	t_vars;
-
 typedef struct s_sprite {
 	char	*collectible;
 	char	*character;
@@ -43,6 +36,14 @@ typedef struct s_sprite {
 	char	*wall;
 	char	*exit;
 }	t_sprite;
+
+typedef struct s_image {
+	void	*collectible;
+	void	*character;
+	void	*floor;
+	void	*wall;
+	void	*exit;
+}	t_image;
 
 typedef struct s_map {
 	char			**map;
@@ -55,17 +56,30 @@ typedef struct s_map {
 	unsigned int	cc;
 }	t_map;
 
+typedef struct s_vars {
+	void		*mlx;
+	void		*win;
+	int			width;
+	int			height;
+	t_map		m;
+	t_sprite	sprite;
+}	t_vars;
+
 /************************************************/
 /*   FUNCTIONS                                  */
 /************************************************/
 int			close_window(t_vars *vars);
 int			ft_clear_vars(t_vars *vars);
-int			ft_handle_key(int key, t_vars *vars, t_map *map);
+int			ft_handle_key(int key, t_vars *vars);
 void		error(char *str);
 void		clear(char **tab);
 void		check_map(t_map *map);
 void		findstart(t_map *map);
 void		clearror(char **tab, char *str);
+void		move_up(t_vars *vrs, t_map *map, t_sprite sprite);
+void		move_down(t_vars *vrs, t_map *map, t_sprite sprite);
+void		move_left(t_vars *vrs, t_map *map, t_sprite sprite);
+void		move_right(t_vars *vrs, t_map *map, t_sprite sprite);
 void		print_map(t_sprite sprite, t_vars vars, t_map map);
 void		print_sprite(t_vars vars, char *sprite, int x, int y);
 t_map		mapcpy(t_map *map);

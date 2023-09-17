@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/14 14:54:34 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/17 16:20:27 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,24 @@
 
 int	main(int argc, char **argv)
 {
-	t_map		map;
-	t_vars		vars;
+	t_vars		vrs;
 	t_sprite	sprite;
 
 	if (argc != 2)
 		error("Bad Arguments\n");
 	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".ber", 4))
 		error("Invalid Path\n");
-	map = read_map(open(argv[1], O_RDONLY, 0777));
-	check_map(&map);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, map.y * 80, map.x * 80, "so_long");
-	vars.height = 80;
-	vars.width = 80;
+	vrs.m = read_map(open(argv[1], O_RDONLY, 0777));
+	check_map(&vrs.m);
+	vrs.mlx = mlx_init();
+	vrs.win = mlx_new_window(vrs.mlx, vrs.m.y * 80, vrs.m.x * 80, "so_long");
+	vrs.width = 80 * vrs.m.p_y;
+	vrs.height = 80 * vrs.m.p_x;
 	sprite = init_sprite();
-	print_map(sprite, vars, map);
-	mlx_key_hook(vars.win, ft_handle_key, &vars);
-	mlx_hook(vars.win, 17, 1l << 17, &close_window, &vars);
-	mlx_loop(vars.mlx);
+	print_map(sprite, vrs, vrs.m);
+	clear(vrs.m.map);
+	mlx_key_hook(vrs.win, ft_handle_key, &vrs);
+	mlx_hook(vrs.win, 17, 1l << 17, &close_window, &vrs);
+	mlx_loop(vrs.mlx);
 	return (0);
 }

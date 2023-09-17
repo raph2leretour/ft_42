@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:54:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/12 13:45:31 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/17 13:07:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	error(char *str)
 {

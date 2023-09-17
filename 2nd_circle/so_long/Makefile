@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/13 19:45:05 by rtissera         ###   ########.fr        #
+#    Updated: 2023/09/17 13:45:57 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ LIBFT_DIR		:= libft
 MLX_DIR			:= minilibx-linux
 SRCS			:=			\
 	main.c					\
+	move.c					\
 	utils.c					\
 	error.c					\
 	parsing.c				\

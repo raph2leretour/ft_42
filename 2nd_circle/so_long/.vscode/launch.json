@@ -5,7 +5,7 @@
 			"type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "args": ["${workspaceFolder}/maps/valid_maps/lilmap.ber"],
+            "args": ["${workspaceFolder}/maps/valid_maps/map.ber"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
