@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/17 16:43:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:45:19 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ typedef struct s_sprite {
 }	t_sprite;
 
 typedef struct s_image {
-	void	*collectible;
-	void	*character;
-	void	*floor;
-	void	*wall;
-	void	*exit;
+	void	*col;
+	void	*cha;
+	void	*flo;
+	void	*wal;
+	void	*exi;
 }	t_image;
 
 typedef struct s_map {
@@ -62,6 +62,7 @@ typedef struct s_vars {
 	int			width;
 	int			height;
 	t_map		m;
+	t_image		img;
 	t_sprite	sprite;
 }	t_vars;
 
@@ -76,12 +77,12 @@ void		clear(char **tab);
 void		check_map(t_map *map);
 void		findstart(t_map *map);
 void		clearror(char **tab, char *str);
-void		move_up(t_vars *vrs, t_map *map, t_sprite sprite);
-void		move_down(t_vars *vrs, t_map *map, t_sprite sprite);
-void		move_left(t_vars *vrs, t_map *map, t_sprite sprite);
-void		move_right(t_vars *vrs, t_map *map, t_sprite sprite);
-void		print_map(t_sprite sprite, t_vars vars, t_map map);
-void		print_sprite(t_vars vars, char *sprite, int x, int y);
+void		move_up(t_vars *vrs, t_map *map);
+void		move_down(t_vars *vrs, t_map *map);
+void		move_left(t_vars *vrs, t_map *map);
+void		move_right(t_vars *vrs, t_map *map);
+void		print_map(t_sprite sprite, t_vars *vars, t_map map);
+void		*print_sprite(t_vars vars, char *sprite, int x, int y);
 t_map		mapcpy(t_map *map);
 t_map		read_map(int map_fd);
 t_map		drop(t_map c_map, unsigned int x, unsigned int y);
