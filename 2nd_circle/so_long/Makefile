@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/17 13:45:57 by rtissera         ###   ########.fr        #
+#    Updated: 2023/09/18 15:56:09 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,8 @@ SRCS			:=			\
 	read_map.c				\
 	check_map.c				\
 	print_map.c				\
-	init_sprite.c			\
-	print_sprite.c
+	init_image.c			\
+	init_sprite.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 LIBFT			:= $(LIBFT_DIR)/libft.a

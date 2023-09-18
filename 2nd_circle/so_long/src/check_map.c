@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/13 19:34:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:01:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ void	check_map_possible(t_map *map)
 	findstart(map);
 	x = (*map).p_x;
 	y = (*map).p_y;
-	c_map = drop(c_map, x, y);
+	c_map.p_x = (*map).p_x;
+	c_map.p_y = (*map).p_y;
+	c_map = findaway(c_map, (*map).p_x, (*map).p_y);
 	if (c_map.cc != (*map).cc || c_map.ce != (*map).ce)
 	{
 		clear(c_map.map);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/14 14:03:21 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/18 16:12:50 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ t_map	mapcpy(t_map *map)
 	c_map.map = ft_split(c_line, '\n');
 	c_map.cc = 0;
 	c_map.ce = 0;
-	c_map.cp = 0;
+	free(line);
+	free(c_line);
 	return (c_map);
 }
 
@@ -76,22 +77,22 @@ t_map	findaway(t_map map, unsigned int x, unsigned int y)
 	if (map.map[x] && map.map[x][y - 1]
 		&& map.map[x][y - 1] != '2' && map.map[x][y - 1] != '1')
 	{
-		return (drop(map, x, y - 1));
+		map = drop(map, x, y - 1);
 	}
-	else if (map.map[x - 1] && map.map[x - 1][y]
+	if (map.map[x - 1] && map.map[x - 1][y]
 		&& map.map[x - 1][y] != '2' && map.map[x - 1][y] != '1')
 	{
-		return (drop(map, x - 1, y));
+		map = drop(map, x - 1, y);
 	}
-	else if (map.map[x] && map.map[x][y + 1]
+	if (map.map[x] && map.map[x][y + 1]
 		&& map.map[x][y + 1] != '2' && map.map[x][y + 1] != '1')
 	{
-		return (drop(map, x, y + 1));
+		map = drop(map, x, y + 1);
 	}
-	else if (map.map[x + 1] && map.map[x + 1][y]
+	if (map.map[x + 1] && map.map[x + 1][y]
 		&& map.map[x + 1][y] != '2' && map.map[x + 1][y] != '1')
 	{
-		return (drop(map, x + 1, y));
+		map = drop(map, x + 1, y);
 	}
 	return (map);
 }

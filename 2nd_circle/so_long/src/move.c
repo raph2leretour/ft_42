@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 13:45:25 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 11:41:28 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:02:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	move_up(t_vars *vrs, t_map *map)
 {
-	ft_printf_fd(1, "case visee: %d,%d == %c\n", ((*vrs).height / 80) - 1, (*vrs).width / 80, (*map).map[((*vrs).height / 80) - 1][(*vrs).width / 80]);
 	if ((*map).map[((*vrs).height / 80) - 1][(*vrs).width / 80] == 'E'
 		&& (*map).cc == 0)
 	{
@@ -37,7 +36,6 @@ void	move_up(t_vars *vrs, t_map *map)
 
 void	move_left(t_vars *vrs, t_map *map)
 {
-	ft_printf_fd(1, "case visee: %d,%d == %c\n", ((*vrs).height / 80), ((*vrs).width / 80) - 1, (*map).map[((*vrs).height / 80)][((*vrs).width / 80) - 1]);
 	if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] == 'E'
 		&& (*map).cc == 0)
 	{
@@ -47,7 +45,7 @@ void	move_left(t_vars *vrs, t_map *map)
 	if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] != '1'
 		&& (*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] != 'E')
 	{
-		if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] != 'C')
+		if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] == 'C')
 		{
 			(*map).map[(*vrs).height / 80][((*vrs).width / 80) - 1] = '0';
 			(*map).cc--;
@@ -60,7 +58,6 @@ void	move_left(t_vars *vrs, t_map *map)
 
 void	move_down(t_vars *vrs, t_map *map)
 {
-	ft_printf_fd(1, "case visee: %d,%d == %c\n", ((*vrs).height / 80) + 1, (*vrs).width / 80, (*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80]);
 	if ((*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] == 'E'
 		&& (*map).cc == 0)
 	{
@@ -70,7 +67,7 @@ void	move_down(t_vars *vrs, t_map *map)
 	if ((*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] != '1'
 		&& (*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] != 'E')
 	{
-		if ((*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] != 'C')
+		if ((*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] == 'C')
 		{
 			(*map).map[((*vrs).height / 80) + 1][(*vrs).width / 80] = '0';
 			(*map).cc--;
@@ -83,7 +80,6 @@ void	move_down(t_vars *vrs, t_map *map)
 
 void	move_right(t_vars *vrs, t_map *map)
 {
-	ft_printf_fd(1, "case visee: %d,%d == %c\n", ((*vrs).height / 80), ((*vrs).width / 80) + 1, (*map).map[((*vrs).height / 80)][((*vrs).width / 80) + 1]);
 	if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] == 'E'
 		&& (*map).cc == 0)
 	{
@@ -93,7 +89,7 @@ void	move_right(t_vars *vrs, t_map *map)
 	if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] != '1'
 		&& (*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] != 'E')
 	{
-		if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] != 'C')
+		if ((*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] == 'C')
 		{
 			(*map).map[(*vrs).height / 80][((*vrs).width / 80) + 1] = '0';
 			(*map).cc--;

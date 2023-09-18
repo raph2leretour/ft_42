@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 11:54:13 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/17 13:07:42 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:00:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	clear(char **tab)
 	unsigned int	i;
 
 	i = 0;
-	if (!tab || !tab[i])
-		return ;
 	while (tab[i])
 	{
 		free(tab[i]);
