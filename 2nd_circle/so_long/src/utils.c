@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 16:03:23 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:35:03 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,10 @@ int	close_window(t_vars *vars)
 int	ft_handle_key(int key, t_vars *vars)
 {
 	if (key == 65307)
+	{
+		clear((*vars).m.map);
 		ft_clear_vars(vars);
+	}
 	else if (key == 119 || key == 65362)
 	{
 		move_up(vars, &(*vars).m);

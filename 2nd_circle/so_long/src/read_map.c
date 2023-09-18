@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 16:21:14 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:40:51 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,6 @@ t_map	read_map(int map_fd)
 		error("Empty Map\n");
 	}
 	map.map = ft_split(c_map, '\n');
-	close (map_fd);
+	free(c_map);
 	return (map);
 }

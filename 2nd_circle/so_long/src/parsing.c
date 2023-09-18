@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 16:12:50 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:24:51 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_map	mapcpy(t_map *map)
 	c_map.x = 0;
 	line = next_line_get(map, c_map);
 	if (!line)
-		error("Cannot Copy An Empty Map\n");
+		clearror((*map).map, "Cannot Copy An Empty Map\n");
 	while ((*map).map[c_map.x])
 	{
 		if (c_map.x == 0)
