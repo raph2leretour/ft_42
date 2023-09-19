@@ -6,11 +6,23 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 14:06:18 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:34:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	close_error(int fd, char *s)
+{
+	close(fd);
+	error(s);
+}
+
+void	close_free_error(int fd, char *s1, char *s2)
+{
+	free(s1);
+	close_error(fd, s2);
+}
 
 t_map	read_map(int map_fd)
 {
@@ -20,10 +32,7 @@ t_map	read_map(int map_fd)
 
 	line = get_next_line(map_fd);
 	if (!line)
-	{
-		close(map_fd);
-		error("Empty File\n");
-	}
+		close_error(map_fd, "Empty Map\n");
 	map.x = 0;
 	map.y = ft_strlen(line) - 1;
 	while (line)
@@ -38,11 +47,7 @@ t_map	read_map(int map_fd)
 	}
 	free(line);
 	if (map.x == 0)
-	{
-		free(c_map);
-		close (map_fd);
-		error("Empty Map\n");
-	}
+		close_free_error(map_fd, c_map, "Empty Map\n");
 	map.map = ft_split(c_map, '\n');
 	free(c_map);
 	return (map);

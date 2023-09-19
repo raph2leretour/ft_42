@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:27:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:35:03 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_map_content(t_map *map)
 	map->cc = 0;
 	while (map->map[x])
 	{
-		if (x == 0 || x == map->x)
+		if (x == 0 || x == map->x - 1)
 		{
 			y = 0;
 			while (map->map[x][y])

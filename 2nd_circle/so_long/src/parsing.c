@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:33:15 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:45:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_map	mapcpy(t_map *map)
 	c_map.x = 0;
 	line = next_line_get(map, c_map);
 	if (!line)
-		clearror((*map).map, "Cannot Copy An Empty Map\n");
-	while ((*map).map[c_map.x])
+		clearror(map->map, "Cannot Copy An Empty Map\n");
+	while (map->map[c_map.x])
 	{
 		if (c_map.x == 0)
 			c_line = ft_substr(line, 0, ft_strlen(line));
@@ -55,15 +55,15 @@ void	findstart(t_map *map)
 	unsigned int	y;
 
 	x = 1;
-	while ((*map).map[x])
+	while (map->map[x])
 	{
 		y = 1;
-		while ((*map).map[x][y])
+		while (map->map[x][y])
 		{
-			if ((*map).map[x][y] == 'P')
+			if (map->map[x][y] == 'P')
 			{
-				(*map).p_x = x;
-				(*map).p_y = y;
+				map->p_x = x;
+				map->p_y = y;
 				return ;
 			}
 			y++;

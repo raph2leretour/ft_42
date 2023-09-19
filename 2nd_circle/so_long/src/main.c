@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 18:42:32 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:50:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY, 0777);
 	if (!fd)
 		error("");
-	vrs.m = read_map(fd);
+	vrs.map = read_map(fd);
 	close(fd);
-	check_map(&vrs.m);
-	vrs.mlx = mlx_init();
-	vrs.win = mlx_new_window(vrs.mlx, vrs.m.y * 80, vrs.m.x * 80, "so_long");
-	vrs.width = 80 * vrs.m.p_y;
-	vrs.height = 80 * vrs.m.p_x;
+	check_map(&vrs.map);
+	vrs.m = mlx_init();
+	vrs.w = mlx_new_window(vrs.m, vrs.map.y * 80, vrs.map.x * 80, "so_long");
+	vrs.width = 80 * vrs.map.p_y;
+	vrs.height = 80 * vrs.map.p_x;
 	sprite = init_sprite();
 	vrs.img = init_image(sprite, vrs);
-	print_map(&vrs, vrs.m);
-	mlx_key_hook(vrs.win, ft_handle_key, &vrs);
-	mlx_hook(vrs.win, 17, 1l << 17, &close_window, &vrs);
-	mlx_loop(vrs.mlx);
+	print_map(&vrs, vrs.map);
+	mlx_key_hook(vrs.w, ft_handle_key, &vrs);
+	mlx_hook(vrs.w, 17, 1l << 17, &close_window, &vrs);
+	mlx_loop(vrs.m);
 	return (0);
 }
