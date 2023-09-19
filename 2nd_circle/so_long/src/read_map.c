@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 18:40:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:06:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_map	read_map(int map_fd)
 		if (map.x == 0)
 			c_map = ft_substr(line, 0, ft_strlen(line));
 		else
-			c_map = ft_strjoin(c_map, line);
+			c_map = free_strjoin(c_map, line);
 		free(line);
 		line = get_next_line(map_fd);
 		map.x++;

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 18:24:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:19:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_map	mapcpy(t_map *map)
 		if (c_map.x == 0)
 			c_line = ft_substr(line, 0, ft_strlen(line));
 		else
-			c_line = ft_strjoin(c_line, line);
-		c_line = ft_strjoin(c_line, "\n");
+			c_line = free_strjoin(c_line, line);
+		c_line = free_strjoin(c_line, "\n");
 		free(line);
 		line = next_line_get(map, c_map);
 		c_map.x++;

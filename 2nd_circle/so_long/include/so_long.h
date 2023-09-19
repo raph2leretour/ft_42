@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 15:56:35 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:21:34 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ typedef struct s_map {
 }	t_map;
 
 typedef struct s_vars {
-	void		*mlx;
-	void		*win;
+	void		*m;
+	void		*w;
 	int			width;
 	int			height;
-	t_map		m;
+	t_map		map;
 	t_image		img;
 }	t_vars;
 
@@ -71,10 +71,12 @@ typedef struct s_vars {
 int			close_window(t_vars *vars);
 int			ft_clear_vars(t_vars *vars);
 int			ft_handle_key(int key, t_vars *vars);
+char		*free_strjoin(char *s1, char *s2);
 void		error(char *str);
 void		clear(char **tab);
 void		check_map(t_map *map);
 void		findstart(t_map *map);
+void		free_image(t_image image);
 void		clearror(char **tab, char *str);
 void		move_up(t_vars *vrs, t_map *map);
 void		move_down(t_vars *vrs, t_map *map);
