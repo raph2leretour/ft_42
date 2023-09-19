@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 14:19:45 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/19 15:33:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	*next_line_get(t_map *map, t_map c_map)
 {
 	unsigned int	len;
 
-	len = ft_strlen((*map).map[c_map.x]);
-	return (ft_substr((*map).map[c_map.x], 0, len));
+	len = ft_strlen(map->map[c_map.x]);
+	return (ft_substr(map->map[c_map.x], 0, len));
 }
 
 t_map	mapcpy(t_map *map)
