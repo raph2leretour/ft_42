@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 19:35:47 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:19:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:12:04 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	print_map(t_vars *v, t_map map)
 {

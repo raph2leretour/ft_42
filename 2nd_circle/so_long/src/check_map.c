@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 19:24:47 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/20 14:13:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	check_line_content(t_map *map, char *line)
 {
@@ -114,7 +114,10 @@ void	check_map(t_map *map)
 {
 	if (!(map->x >= 3 && map->y >= 5)
 		&& !(map->x >= 5 && map->y >= 3))
+	{
+		clear(map->map);
 		error("Map Is Too Small\n");
+	}
 	check_map_shape((*map));
 	check_map_content(map);
 	check_map_possible(map);

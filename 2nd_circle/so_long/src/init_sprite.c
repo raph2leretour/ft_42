@@ -6,11 +6,11 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:05:35 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/18 15:29:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:11:50 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 t_sprite	init_sprite(void)
 {
