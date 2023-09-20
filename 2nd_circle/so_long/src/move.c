@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 13:45:25 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:23:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:21:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	move_up(t_vars *v, t_map *m)
 	if (m->map[(v->height / 80) - 1][v->width / 80] != '1'
 		&& m->map[(v->height / 80) - 1][v->width / 80] != 'E')
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		if (m->map[(v->height / 80) - 1][v->width / 80] == 'C')
 		{
 			m->map[(v->height / 80) - 1][v->width / 80] = '0';
@@ -45,6 +47,8 @@ void	move_left(t_vars *v, t_map *m)
 	if (m->map[v->height / 80][(v->width / 80) - 1] != '1'
 		&& m->map[v->height / 80][(v->width / 80) - 1] != 'E')
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		if (m->map[v->height / 80][(v->width / 80) - 1] == 'C')
 		{
 			m->map[v->height / 80][(v->width / 80) - 1] = '0';
@@ -67,6 +71,8 @@ void	move_down(t_vars *v, t_map *m)
 	if (m->map[(v->height / 80) + 1][v->width / 80] != '1'
 		&& m->map[(v->height / 80) + 1][v->width / 80] != 'E')
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		if (m->map[(v->height / 80) + 1][v->width / 80] == 'C')
 		{
 			m->map[(v->height / 80) + 1][v->width / 80] = '0';
@@ -89,6 +95,8 @@ void	move_right(t_vars *v, t_map *m)
 	if (m->map[v->height / 80][(v->width / 80) + 1] != '1'
 		&& m->map[v->height / 80][(v->width / 80) + 1] != 'E')
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		if (m->map[v->height / 80][(v->width / 80) + 1] == 'C')
 		{
 			m->map[v->height / 80][(v->width / 80) + 1] = '0';

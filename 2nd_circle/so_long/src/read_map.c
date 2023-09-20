@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 14:12:10 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:18:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ t_map	read_map(int map_fd)
 	if (map.x == 0)
 		close_free_error(map_fd, c_map, "Empty Map\n");
 	map.map = ft_split(c_map, '\n');
-	free(c_map);
-	return (map);
+	map.mv_nb = 0;
+	return (free(c_map), map);
 }

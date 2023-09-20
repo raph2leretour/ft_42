@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:21:34 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:18:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_map {
 	unsigned int	cp;
 	unsigned int	ce;
 	unsigned int	cc;
+	unsigned int	mv_nb;
 }	t_map;
 
 typedef struct s_vars {
