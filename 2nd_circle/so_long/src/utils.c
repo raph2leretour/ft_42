@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:36:45 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/19 15:25:19 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:30:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,19 @@ int	ft_handle_key(int key, t_vars *vars)
 
 int	ft_clear_vars(t_vars *vars)
 {
-	mlx_destroy_image(vars->m, vars->img.cha);
-	mlx_destroy_image(vars->m, vars->img.col);
-	mlx_destroy_image(vars->m, vars->img.flo);
-	mlx_destroy_image(vars->m, vars->img.wal);
-	mlx_destroy_image(vars->m, vars->img.exi);
+	if (vars->img.created)
+	{
+		if (vars->img.cha)
+			mlx_destroy_image(vars->m, vars->img.cha);
+		if (vars->img.col)
+			mlx_destroy_image(vars->m, vars->img.col);
+		if (vars->img.flo)
+			mlx_destroy_image(vars->m, vars->img.flo);
+		if (vars->img.wal)
+			mlx_destroy_image(vars->m, vars->img.wal);
+		if (vars->img.exi)
+			mlx_destroy_image(vars->m, vars->img.exi);
+	}
 	mlx_destroy_window(vars->m, vars->w);
 	mlx_destroy_display(vars->m);
 	free(vars->m);

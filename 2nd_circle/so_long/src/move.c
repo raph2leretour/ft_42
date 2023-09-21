@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 13:45:25 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 14:21:17 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:50:56 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	move_up(t_vars *v, t_map *m)
 	if (m->map[(v->height / 80) - 1][v->width / 80] == 'E'
 		&& m->cc == 0)
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		clear(v->map.map);
 		ft_clear_vars(v);
 	}
@@ -41,6 +43,8 @@ void	move_left(t_vars *v, t_map *m)
 	if (m->map[v->height / 80][(v->width / 80) - 1] == 'E'
 		&& m->cc == 0)
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		clear(v->map.map);
 		ft_clear_vars(v);
 	}
@@ -65,6 +69,8 @@ void	move_down(t_vars *v, t_map *m)
 	if (m->map[(v->height / 80) + 1][v->width / 80] == 'E'
 		&& m->cc == 0)
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		clear(v->map.map);
 		ft_clear_vars(v);
 	}
@@ -89,6 +95,8 @@ void	move_right(t_vars *v, t_map *m)
 	if (m->map[v->height / 80][(v->width / 80) + 1] == 'E'
 		&& m->cc == 0)
 	{
+		v->map.mv_nb++;
+		ft_printf_fd(1, "Nombre de mouvements: %d\n", v->map.mv_nb);
 		clear(v->map.map);
 		ft_clear_vars(v);
 	}

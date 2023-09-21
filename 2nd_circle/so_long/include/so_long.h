@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 15:34:52 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/21 16:29:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_image {
 	void	*flo;
 	void	*wal;
 	void	*exi;
+	int		created;
 }	t_image;
 
 typedef struct s_map {
@@ -64,6 +65,7 @@ typedef struct s_vars {
 	int			height;
 	t_map		map;
 	t_image		img;
+	t_sprite	s;
 }	t_vars;
 
 /************************************************/
@@ -88,7 +90,7 @@ t_map		mapcpy(t_map *map);
 t_map		read_map(int map_fd);
 t_map		findaway(t_map map, unsigned int x, unsigned int y);
 t_map		drop(t_map c_map, unsigned int x, unsigned int y, int i);
-t_image		init_image(t_sprite sprite, t_vars vars);
+t_image		init_image(t_vars vars);
 t_sprite	init_sprite(void);
 
 #endif

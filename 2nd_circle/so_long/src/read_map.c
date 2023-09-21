@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 10:03:09 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 14:18:45 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:55:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_map	read_map(int map_fd)
 
 	line = get_next_line(map_fd);
 	if (!line)
-		close_error(map_fd, "Empty Map\n");
+		close_error(map_fd, "Cannot Read The Map\n");
 	map.x = 0;
 	map.y = ft_strlen(line) - 1;
 	while (line)
