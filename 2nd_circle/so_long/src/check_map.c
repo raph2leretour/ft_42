@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 09:28:06 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 18:04:56 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:02:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	check_line_content(t_map *map, char *line)
 	unsigned int	y;
 
 	y = 0;
-	while (line[y + 1])
+	while (line[y])
 	{
-		if ((y == 0 && line[y] != '1') || (y == map->y && line[y] != '1'))
+		if ((y == 0 && line[y] != '1') || (y == map->y - 1 && line[y] != '1'))
 		{
-			clear(map->map);
-			error("Map Muste Be Surrounded By Walls\n");
+			clearror(map->map, "Map Muste Be Surrounded By Walls\n");
 		}
 		if (line[y] == '1' || line[y] == '0')
 			y += 0;
@@ -87,6 +86,11 @@ void	check_map_shape(t_map map)
 			error("Map Is Not Rectangular\n");
 		}
 		x++;
+	}
+	if (x != map.x)
+	{
+		clear(map.map);
+		error("Empty Line(s)\n");
 	}
 }
 

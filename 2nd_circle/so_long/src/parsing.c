@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:32:24 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/20 15:48:32 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/26 14:42:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,11 @@ t_map	drop(t_map map, unsigned int x, unsigned int y, int i)
 		}
 		if (i == 2)
 		{
-			return (findaway(map, x - 1, y));
+			return (findaway(map, x, y - 1));
 		}
 		if (i == 3)
 		{
-			return (findaway(map, x, y - 1));
+			return (findaway(map, x - 1, y));
 		}
 	}
 	else if (map.map[x][y] == 'C')

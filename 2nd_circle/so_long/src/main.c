@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 20:47:23 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/21 16:41:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:14:09 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv, char **env)
 	fd = open(argv[1], O_RDONLY, 0777);
 	if (!fd)
 		error("Cannot Generate A File Descriptor\n");
-	vrs.map = read_map(fd);
+	vrs.map = read_map(fd, "\0", "\0");
 	close(fd);
 	check_map(&vrs.map);
 	vrs.m = mlx_init();

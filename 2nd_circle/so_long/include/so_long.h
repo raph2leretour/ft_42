@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 15:20:04 by rtissera          #+#    #+#             */
-/*   Updated: 2023/09/21 16:29:43 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:14:22 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		move_left(t_vars *vrs, t_map *map);
 void		move_right(t_vars *vrs, t_map *map);
 void		print_map(t_vars *vars, t_map map);
 t_map		mapcpy(t_map *map);
-t_map		read_map(int map_fd);
+t_map		read_map(int map_fd, char *line, char *c_map);
 t_map		findaway(t_map map, unsigned int x, unsigned int y);
 t_map		drop(t_map c_map, unsigned int x, unsigned int y, int i);
 t_image		init_image(t_vars vars);
