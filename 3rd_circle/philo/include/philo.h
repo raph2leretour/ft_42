@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/09/30 11:39:43 by raphael          ###   ########.fr       */
+/*   Updated: 2023/09/30 15:51:30 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,18 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
+# include <pthread.h>
 
 /************************************************/
 /*   STRUCTURES                                 */
 /************************************************/
+typedef struct s_mutex {
+	pthread_mutex_t	mutex;
+}	t_mutex;
 
 /************************************************/
 /*   FUNCTIONS                                  */
 /************************************************/
+void	*routine(t_mutex mutex);
 
 #endif
