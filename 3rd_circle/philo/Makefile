@@ -6,7 +6,7 @@
 #    By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/05 13:41:30 by rtissera          #+#    #+#              #
-#    Updated: 2023/09/30 14:57:26 by rtissera         ###   ########.fr        #
+#    Updated: 2023/10/04 15:54:27 by rtissera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,10 @@ SRC_DIR			:= src
 OBJ_DIR			:= obj
 SRCS			:=	\
 	main.c			\
-	routine.c
+	init.c			\
+	routine.c		\
+	destroy.c		\
+	atouille.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

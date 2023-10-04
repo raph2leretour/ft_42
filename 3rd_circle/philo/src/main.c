@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:27:39 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/03 16:08:03 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:40:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,26 @@
 int	main(int ac, char **av, char **env)
 {
 	t_data		data;
-	t_mtx		mtx;
-	pthread_t	p1;
+	t_philo		philo;
 
 	(void) env;
-	if (ac == 5)
+	if (ac == 5 && ac == 6)
 	{
 		data = init_data(av);
-		mtx = init_mtx(data);
-		pthread_mutex_init(&mtx.mtx, NULL);
-		if (pthread_create(&p1, NULL, routine(mtx), NULL) != 0)
+		if (!data)
 			return (1);
-		if (pthread_join(p1, NULL) != 0)
+		philo = init_philo(data);
+		if (pthread_create(&p1, NULL, routine(philo, data), NULL) != 0)
+		{
+			destroy_philo(philo);
 			return (2);
-		pthread_mutex_destroy(&mtx.mtx);
+		}
+		if (pthread_join(p1, NULL) != 0)
+		{
+			destroy_philo(philo);
+			return (3);
+		}
+		destroy_fork(philo);
 	}
 	return (0);
 }

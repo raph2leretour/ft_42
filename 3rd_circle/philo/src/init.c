@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/03 16:27:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:27:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,41 @@ t_data	init_data(char **argv)
 {
 	t_data	data;
 
-	data.number_of_philosophers = argv[1][0];
-	data.time_to_die = argv[2][0];
-	data.time_to_eat = argv[3][0];
-	data.time_to_sleep = argv[4][0];
+	data.number_of_philosophers = atouille(argv[1]);
+	if (data.number_of_philosophers < 1)
+		return (NULL);
+	data.time_to_die = atouille(argv[2]);
+	if (data.time_to_die < 0)
+		return (NULL);
+	data.time_to_eat = atouille(argv[3]);
+	if (data.time_to_eat < 0)
+		return (NULL);
+	data.time_to_sleep = atouille(argv[4]);
+	if (data.time_to_sleep < 0)
+		return (NULL);
+	if (argv[5])
+	{
+		data.number_of_times_each_philosopher_must_eat = atouille(argv[5]);
+		if (data.number_of_times_each_philosopher_must_eat < 0)
+			return (NULL);
+	}
 	return (data);
 }
 
-t_mtx	init_mtx(t_data data)
+t_philo	init_philo(t_data data)
 {
 	int		i;
-	t_mtx	mtx;
-	t_mtx	head;
+	t_philo	philo;
+	t_philo	head;
 
-	pthread_mutex_init(&mtx.mtx, NULL);
-	head = mtx;
-	mtx->data = data;
+	pthread_mutex_init(&philo.fork, NULL);
+	head = philo;
 	i = 1;
 	while (i < data.number_of_pilosophers)
 	{
-		pthread_mutex_init(&mtx.mtx, NULL);
-		mtx->data = data;
-		mtx = mtx->next;
+		pthread_mutex_init(&philo.fork, NULL);
+		philo = philo->next;
 	}
-	mtx->next = NULL;
+	philo->next = NULL;
 	return (head);
 }
