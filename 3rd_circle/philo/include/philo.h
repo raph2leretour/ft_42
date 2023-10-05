@@ -6,13 +6,10 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/04 15:59:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:37:56 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/************************************************/
-/*   WRAPPER                                    */
-/************************************************/
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -29,18 +26,28 @@
 /*   STRUCTURES                                 */
 /************************************************/
 typedef struct s_data {
-	int		number_of_philosophers;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		number_of_times_each_philosopher_must_eat;
-	int		start_time;
+	int				nbr_of_philo;
+	long			time_to_die;
+	long			time_to_eat;
+	long			time_to_sleep;
+	int				nbr_each_philo_must_eat;
+	long			start_time;
+	pthread_t		philo_died_m;
+	int				philo_died;
+	pthread_mutex_t	all_forks[200];
+	struct s_philo	*philo;
+
 }	t_data;
 
 typedef struct s_philo {
-	pthread_t		*philo;
-	pthread_mutex_t	fork;
-	t_philo			*next;
+	pthread_t			*philo;
+	pthread_mutex_t		*left_fork;
+	pthread_mutex_t		*right_fork;
+	pthread_mutex_t		nb_meals_m;
+	int					nb_meals_v;
+	pthread_mutex_t		time_last_meal_m;
+	long				time_last_meal_v;
+	struct s_data		*data;
 }	t_philo;
 
 /************************************************/
