@@ -6,12 +6,13 @@ NAME		:= philo
 
 SRC_DIR			:= src
 OBJ_DIR			:= obj
-SRCS			:=	\
-	main.c			\
-	init.c			\
-	routine.c		\
-	destroy.c		\
-	atouille.c
+SRCS			:=		\
+	main.c				\
+	init.c				\
+	routine.c			\
+	destroy.c			\
+	atouille.c			\
+	get_time_in_ms.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
