@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/05 17:30:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:42:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <pthread.h>
+# include <sys/time.h>
 
 /************************************************/
 /*   STRUCTURES                                 */

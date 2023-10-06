@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/05 17:29:22 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/06 14:15:53 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	init_treads(t_philo *philo)
 		}
 		i++;
 	}
+	philo->philo[i] = NULL;
 }
 
 t_data	init_data(char **argv)
@@ -65,5 +66,6 @@ int	init_philo(t_data *philo)
 			return (1);
 		i++;
 	}
+	philo->all[i] = NULL;
 	return (0);
 }
