@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:27:39 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/06 16:49:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:19:27 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac == 5 || ac == 6)
 	{
-		init_data(av, &data);
-		if (!data.time_to_sleep)
+		if (init_data(ac, av, &data))
 			return (1);
 		if (init_philo(&philo))
 			return (2);

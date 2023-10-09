@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/06 18:39:59 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:16:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_threads(t_philo *philo)
 	}
 }
 
-int	init_data(char **argv, t_data *data)
+int	init_data(int argc, char **argv, t_data *data)
 {
 	data->nbr_of_philo = atouille(argv[1]);
 	if (data->nbr_of_philo < 0)
@@ -43,7 +43,7 @@ int	init_data(char **argv, t_data *data)
 	if (data->time_to_sleep < 0)
 		return (4);
 	data->nbr_each_philo_must_eat = -1;
-	if (argv[5])
+	if (argc == 5)
 	{
 		data->nbr_each_philo_must_eat = atouille(argv[5]);
 		if (data->nbr_each_philo_must_eat < 0)

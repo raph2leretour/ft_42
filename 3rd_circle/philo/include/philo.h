@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/06 18:40:29 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:16:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		eating(t_data data);
 int		thinking(t_data data);
 int		sleeping(t_data data);
 int		init_philo(t_philo *philo);
-int		init_data(char **argv, t_data *data);
+int		init_data(int argc, char **argv, t_data *data);
 long	get_time_in_ms(void);
 void	destroy_fork(t_philo philo);
 void	init_threads(t_philo *philo);
