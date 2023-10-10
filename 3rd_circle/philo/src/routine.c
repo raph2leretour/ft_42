@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:50:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/06 18:30:30 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/10 15:29:54 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	*routine(void *philou)
 {
-	t_philo	*philo;
+	t_data	*data;
 
-	philo = (t_philo *)philou;
-	return (philou);
+	data = (t_data *)philou;
+	return (NULL);
 }
 
 int	sleeping(t_data data)

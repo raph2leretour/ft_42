@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:27:39 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/09 14:19:27 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:05:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 int	main(int ac, char **av)
 {
 	t_data		data;
-	t_philo		philo;
 
 	if (ac == 5 || ac == 6)
 	{
-		if (init_data(ac, av, &data))
+		if (init_args(ac, av, &data))
 			return (1);
-		if (init_philo(&philo))
+		if (init_forks(&data))
 			return (2);
-		init_threads(&philo);
-		join_threads(&philo);
-		destroy_fork(philo);
+		if (init_threads(&data))
+			return (3);
+		if (join_threads(&data))
+			return (4);
+		destroy_fork(data);
 	}
 	return (0);
 }
