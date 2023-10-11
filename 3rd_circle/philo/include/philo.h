@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/11 13:58:40 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:02:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,8 @@ typedef struct s_philo {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-int		atouille(char *str);
-int		dying(t_data data);
-int		eating(t_data data);
-int		thinking(t_data data);
-int		sleeping(t_data data);
 int		init_forks(t_data *data);
+int		ft_atoi(const char *nptr);
 int		init_args(int argc, char **argv, t_data *data);
 long	get_time_in_ms(void);
 void	destroy_fork(t_philo data);

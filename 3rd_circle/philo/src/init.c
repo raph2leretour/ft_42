@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/11 14:34:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:37:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	init_args(int argc, char **argv, t_data *data)
 		if (data->nbr_philo_eat < 0)
 			return (5);
 	}
-	data->start_time = get_time_in_ms();
 	return (0);
 }
 
@@ -101,6 +100,7 @@ int	init_threads(t_data *data)
 	int	i;
 
 	i = 0;
+	data->start_time = get_time_in_ms();
 	while (i < data->nbr_of_philo)
 	{
 		if (pthread_create(&data->philo[i], NULL, &routine, (void *)philo))
