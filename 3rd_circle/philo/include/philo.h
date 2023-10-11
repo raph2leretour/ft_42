@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/10 16:37:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/11 13:58:40 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ typedef struct s_data {
 	int				philo_died;
 	pthread_t		philo_died_m;
 	pthread_mutex_t	*all_forks;
+	pthread_mutex_t	print;
+	pthread_mutex_t	eat;
+	pthread_mutex_t	start;
+	pthread_mutex_t	last_meal;
 	struct s_philo	*philo;
 }	t_data;
 

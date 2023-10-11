@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:50:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/10 15:29:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:42:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*routine(void *philou)
 {
-	t_data	*data;
+	t_philo	*philo;
 
-	data = (t_data *)philou;
+	philo = (t_philo *)philou;
 	return (NULL);
 }
 

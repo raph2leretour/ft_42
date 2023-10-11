@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/10 17:15:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/11 14:34:54 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,22 @@ int	init_args(int argc, char **argv, t_data *data)
 	return (0);
 }
 
+void	init_rl_forks(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->nbr_of_philo)
+	{
+		data->pilo[i].left_fork = data->all_forks[i];
+		if (i == data->nbr_of_philo)
+			data->philo[i].right_fork = data->all_forks[0];
+		else
+			data->philo[i].right_fork = data->all_fotks[i + 1];
+		i++;
+	}
+}
+
 int	init_forks(t_data *data)
 {
 	int	i;
@@ -54,6 +70,7 @@ int	init_forks(t_data *data)
 			error("Cannot Init Mutex", data);
 		i++;
 	}
+	init_rl_forks(data);
 	return (0);
 }
 
@@ -68,6 +85,15 @@ int	init_philo(t_data *data)
 		data->philo[i].nb_meals = 0;
 		data->philo[i].time_last_meal = 0;
 	}
+	if (pthread_mutex_init(&data->print, NULL))
+		error("Cannot Init Mutex", data);
+	if (pthread_mutex_init(&data->eat, NULL))
+		error("Cannot Init Mutex", data);
+	if (pthread_mutex_init(&data->start, NULL))
+		error("Cannot Init Mutex", data);
+	if (pthread_mutex_init(&data->last_meal, NULL))
+		error("Cannot Init Mutex", data);
+	return (0);
 }
 
 int	init_threads(t_data *data)
@@ -75,13 +101,11 @@ int	init_threads(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < philo->data->nbr_of_philo)
+	while (i < data->nbr_of_philo)
 	{
-		if (pthread_create(&philo->philo[i], NULL, &routine, (void *)philo))
-		{
-			destroy_fork((*philo));
-			return ;
-		}
+		if (pthread_create(&data->philo[i], NULL, &routine, (void *)philo))
+			error("Cannot Create Thread");
 		i++;
 	}
+	return (0);
 }
