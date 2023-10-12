@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/12 14:56:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/12 17:21:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *nptr)
 	while (*nptr > 47 && *nptr < 58)
 	{
 		res = res * 10 + *nptr - 48;
-		++res;
+		++nptr;
 	}
 	return (res * sig);
 }
