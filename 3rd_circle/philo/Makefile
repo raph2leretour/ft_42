@@ -11,8 +11,7 @@ SRCS			:=		\
 	init.c				\
 	utils.c				\
 	routine.c			\
-	destroy.c			\
-	get_time_in_ms.c
+	destroy.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

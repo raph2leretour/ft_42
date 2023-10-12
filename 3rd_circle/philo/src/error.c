@@ -6,9 +6,11 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:42:53 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/10 16:52:03 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:49:31 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "philo.h"
 
 void	error(char *s, t_data *data)
 {

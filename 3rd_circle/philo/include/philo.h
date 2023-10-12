@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/11 19:02:08 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/12 15:29:05 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,23 @@
 typedef struct s_data {
 	int				nbr_of_philo;
 	int				nbr_philo_eat;
-	long			start_time;
-	long			time_to_die;
-	long			time_to_eat;
-	long			time_to_sleep;
-	int				philo_died;
-	pthread_t		philo_died_m;
+	int				stop_v;
+	long long int	start_time;
+	long long int	time_to_die;
+	long long int	time_to_eat;
+	long long int	time_to_sleep;
 	pthread_mutex_t	*all_forks;
+	pthread_mutex_t	stop_m;
 	pthread_mutex_t	print;
-	pthread_mutex_t	eat;
 	pthread_mutex_t	start;
-	pthread_mutex_t	last_meal;
 	struct s_philo	*philo;
 }	t_data;
 
 typedef struct s_philo {
 	int					id;
-	pthread_t			*philo;
 	long				nb_meals;
 	long				time_last_meal;
+	pthread_t			philo;
 	pthread_mutex_t		left_fork;
 	pthread_mutex_t		right_fork;
 	struct s_data		*data;
@@ -56,13 +54,17 @@ typedef struct s_philo {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-int		init_forks(t_data *data);
-int		ft_atoi(const char *nptr);
-int		init_args(int argc, char **argv, t_data *data);
-long	get_time_in_ms(void);
-void	destroy_fork(t_philo data);
-void	init_threads(t_philo *data);
-void	join_threads(t_philo *data);
-void	*routine(void *philou);
+int				is_stop(t_data *data);
+int				init_forks(t_data *data);
+int				ft_atoi(const char *nptr);
+int				init_threads(t_data *data);
+int				join_threads(t_data *data);
+int				init_args(int argc, char **argv, t_data *data);
+void			*routine(void *philou);
+void			destroy_fork(t_data *data);
+void			error(char *s, t_data *data);
+void			ft_print(char *s, t_philo *philo);
+void			ft_usleep(long long int time, t_philo *philo);
+long long int	get_time_in_ms(void);
 
 #endif

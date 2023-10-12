@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/11 19:02:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/12 14:56:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,52 @@ int	ft_atoi(const char *nptr)
 		++res;
 	}
 	return (res * sig);
+}
+
+void	ft_print(char *s, t_philo *philo)
+{
+	long long int	time;
+
+	pthread_mutex_lock(&philo->data->print);
+	time = get_time_in_ms() - philo->data->start_time;
+	printf("%lld %d %s\n", time, philo->id, s);
+	pthread_mutex_unlock(&philo->data->print);
+}
+
+long long int	get_time_in_ms(void)
+{
+	struct timeval	tv;
+
+	if (gettimeofday(&tv, NULL))
+	{
+		printf("Error: Cannot Get Time\n");
+		return (0);
+	}
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+}
+
+void	ft_usleep(long long int time, t_philo *philo)
+{
+	long long int	start_time;
+
+	start_time = get_time_in_ms();
+	while (get_time_in_ms() - start_time < time)
+	{
+		if (is_stop(philo->data))
+			return ;
+		pthread_mutex_unlock(&philo->data->stop_m);
+		usleep(500);
+	}
+}
+
+int	is_stop(t_data *data)
+{
+	pthread_mutex_lock(&data->stop_m);
+	if (data->stop_v)
+	{
+		pthread_mutex_unlock(&data->stop_m);
+		return (1);
+	}
+	pthread_mutex_unlock(&data->stop_m);
+	return (0);
 }
