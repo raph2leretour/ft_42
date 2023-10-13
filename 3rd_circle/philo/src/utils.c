@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/12 17:21:29 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:44:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int	res;
-	int	sig;
+	int		res_i;
+	int		sig;
+	long	res_l;
 
-	res = 0;
+	res_l = 0;
 	sig = 1;
 	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
 		++nptr;
@@ -30,10 +31,13 @@ int	ft_atoi(const char *nptr)
 		++nptr;
 	while (*nptr > 47 && *nptr < 58)
 	{
-		res = res * 10 + *nptr - 48;
+		res_l = res * 10 + *nptr - 48;
 		++nptr;
 	}
-	return (res * sig);
+	if (res_l > INT_MAX || (res_l > INT_MIN * -1 && sig < 0))
+		return (0);
+	res_i = (int)res_l;
+	return (res_i * sig);
 }
 
 void	ft_print(char *s, t_philo *philo)

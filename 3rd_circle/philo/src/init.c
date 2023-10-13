@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/12 17:50:08 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:54:21 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	init_args(int argc, char **argv, t_data *data)
 {
-	data->nbr_of_philo = ft_atoi(argv[1]);
-	if (data->nbr_of_philo < 0)
+	data->nb_philo = ft_atoi(argv[1]);
+	if (data->nbr_of_philo <= 0)
 		return (1);
 	data->time_to_die = ft_atoi(argv[2]);
 	if (data->time_to_die < 0)
@@ -26,13 +26,14 @@ int	init_args(int argc, char **argv, t_data *data)
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (data->time_to_sleep < 0)
 		return (4);
-	data->nbr_philo_eat = -1;
 	if (argc == 6)
 	{
-		data->nbr_philo_eat = ft_atoi(argv[5]);
-		if (data->nbr_philo_eat < 0)
+		data->nb_philo_eat = ft_atoi(argv[5]);
+		if (data->nb_philo_eat <= 0)
 			return (5);
 	}
+	else
+		data->nb_philo_eat = -1;
 	data->stop_v = 0;
 	return (0);
 }
@@ -42,13 +43,13 @@ void	init_rl_forks(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->nbr_of_philo / 2)
+	while (i < data->nb_philo)
 	{
-		data->philo[i].left_fork = data->all_forks[i];
-		if (i == data->nbr_of_philo)
-			data->philo[i].right_fork = data->all_forks[0];
+		data->philo[i].left_fork = &data->all_forks[i];
+		if (i == data->nb_philo - 1)
+			data->philo[i].right_fork = &data->all_forks[0];
 		else
-			data->philo[i].right_fork = data->all_forks[i + 1];
+			data->philo[i].right_fork = &data->all_forks[i + 1];
 		i++;
 	}
 }
@@ -57,14 +58,14 @@ int	init_forks(t_data *data)
 {
 	int	i;
 
-	data->all_forks = malloc(sizeof(pthread_mutex_t) * data->nbr_of_philo);
-	if (!data->all_forks)
-		error("Cannot Malloc Forks", data);
-	data->philo = malloc(sizeof(t_philo) * data->nbr_of_philo);
+	data->philo = malloc(sizeof(t_philo) * data->nb_philo);
 	if (!data->philo)
 		error("Cannot Malloc Philo", data);
+	data->all_forks = malloc(sizeof(pthread_mutex_t) * data->nb_philo);
+	if (!data->all_forks)
+		error("Cannot Malloc Forks", data);
 	i = 0;
-	while (i < data->nbr_of_philo)
+	while (i < data->nb_philo)
 	{
 		if (pthread_mutex_init(&data->all_forks[i], NULL))
 			error("Cannot Init Mutex", data);

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/12 15:29:05 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/13 12:41:35 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@
 # include <string.h>
 # include <pthread.h>
 # include <sys/time.h>
+# include <limits.h>
 
 /******************************************************************************/
 /*   STRUCTURES                                                               */
 /******************************************************************************/
 typedef struct s_data {
-	int				nbr_of_philo;
-	int				nbr_philo_eat;
+	int				nb_philo;
+	int				nb_philo_eat;
 	int				stop_v;
 	long long int	start_time;
 	long long int	time_to_die;
