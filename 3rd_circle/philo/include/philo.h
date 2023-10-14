@@ -30,15 +30,16 @@
 typedef struct s_data {
 	int				nb_philo;
 	int				nb_philo_eat;
-	int				stop_v;
+	int				eat_v;
+	int				died_v;
 	long long int	start_time;
 	long long int	time_to_die;
 	long long int	time_to_eat;
 	long long int	time_to_sleep;
 	pthread_mutex_t	*all_forks;
-	pthread_mutex_t	stop_m;
+	pthread_mutex_t	eat_m;
+	pthread_mutex_t	died_m;
 	pthread_mutex_t	print;
-	pthread_mutex_t	start;
 	struct s_philo	*philo;
 }	t_data;
 
@@ -55,7 +56,7 @@ typedef struct s_philo {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-int				is_stop(t_data *data);
+int				is_end(t_data *data);
 int				init_forks(t_data *data);
 int				ft_atoi(const char *nptr);
 int				init_threads(t_data *data);

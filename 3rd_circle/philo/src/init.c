@@ -34,7 +34,8 @@ int	init_args(int argc, char **argv, t_data *data)
 	}
 	else
 		data->nb_philo_eat = -1;
-	data->stop_v = 0;
+	data->eat_v = 0;
+	data->died_v = 0;
 	return (0);
 }
 
@@ -82,7 +83,7 @@ int	init_philo(t_data *data)
 	i = 0;
 	while (i < data->nbr_of_philo)
 	{
-		data->philo[i].id = i + 1;
+		data->philo[i].id = i;
 		data->philo[i].nb_meals = 0;
 		data->philo[i].time_last_meal = 0;
 	}
@@ -90,7 +91,9 @@ int	init_philo(t_data *data)
 		error("Cannot Init Mutex", data);
 	if (pthread_mutex_init(&data->start, NULL))
 		error("Cannot Init Mutex", data);
-	if (pthread_mutex_init(&data->stop_m, NULL))
+	if (pthread_mutex_init(&data->eat_m, NULL))
+		error("Cannot Init Mutex", data);
+	if (pthread_mutex_init(&data->died_m, NULL))
 		error("Cannot Init Mutex", data);
 	return (0);
 }
@@ -101,10 +104,10 @@ int	init_threads(t_data *data)
 
 	i = 0;
 	data->start_time = get_time_in_ms();
-	while (i < data->nbr_of_philo)
+	while (i < data->nb_philo)
 	{
 		if (pthread_create(&data->philo[i].philo, NULL, \
-			&routine, (void *)data->philo))
+			&routine, (void *)data->philo[i]))
 			error("Cannot Create Thread", data);
 		i++;
 	}

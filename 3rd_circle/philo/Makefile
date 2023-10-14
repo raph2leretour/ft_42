@@ -10,6 +10,7 @@ SRCS			:=		\
 	main.c				\
 	init.c				\
 	utils.c				\
+	utils2.c			\
 	routine.c			\
 	destroy.c
 SRCS			:= $(SRCS:%=$(SRC_DIR)/%)

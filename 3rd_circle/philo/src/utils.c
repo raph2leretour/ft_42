@@ -75,15 +75,3 @@ void	ft_usleep(long long int time, t_philo *philo)
 		usleep(500);
 	}
 }
-
-int	is_stop(t_data *data)
-{
-	pthread_mutex_lock(&data->stop_m);
-	if (data->stop_v)
-	{
-		pthread_mutex_unlock(&data->stop_m);
-		return (1);
-	}
-	pthread_mutex_unlock(&data->stop_m);
-	return (0);
-}
