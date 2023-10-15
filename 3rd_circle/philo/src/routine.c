@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:50:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/13 12:28:30 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:37:50 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	philo_routine(t_philo *philo)
 	eating(philo);
 	if (is_stop(philo->data))
 		return ;
-	if (philo->data->nbr_philo_eat > 0 &&philo->nb_meals >= philo->data->nbr_philo_eat)
+	if (philo->data->nbr_philo_eat > 0 && \
+		philo->nb_meals >= philo->data->nbr_philo_eat)
 	{
 		pthread_mutex_lock(&philo->data->stop_m);
 		philo->data->stop_v = 1;
@@ -70,6 +71,24 @@ void	philo_routine(t_philo *philo)
 	ft_usleep(philo->data->time_to_eat + philo->data->time_to_sleep, philo);
 }
 
+void	*routinette(void *tmp)
+{
+	t_data	*data;
+
+	data = (t_data *)tmp;
+	pthread_mutex_lock(&data->stop_m);
+	while (!data->stop_m)
+	{
+		pthread_mutex_unlock(&data->stop_m);
+		if (is_full(data))
+			return (NULL);
+		if (is_stop(data))
+			return (NULL);
+		pthread_mutex_lock(&data->stop_m);
+	}
+	pthread_mutex_unlock(&data->stop_m);
+}
+
 void	*routine(void *philou)
 {
 	t_philo	*philo;
@@ -77,11 +96,7 @@ void	*routine(void *philou)
 	philo = (t_philo *)philou;
 	if (philo->id % 2 != 0)
 		ft_usleep(philo->data->time_to_eat, philo);
-	printf("stop_v = %d\n", philo->data->stop_v);
 	while (!is_stop(philo->data))
-	{
-		printf("id = %d, nb_meals = %ld, time_last_meal = %ld\n", philo->id, philo->nb_meals, philo->time_last_meal);
 		philo_routine(philo);
-	}
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/13 12:54:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:50:01 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	init_args(int argc, char **argv, t_data *data)
 	else
 		data->nb_philo_eat = -1;
 	data->eat_v = 0;
-	data->died_v = 0;
+	data->stop_v = 0;
 	return (0);
 }
 
@@ -46,6 +46,8 @@ void	init_rl_forks(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
+		if (pthread_mutex_init(&data->philo[i]->time_last_meal_m, NULL))
+			error("Cannot Init Mutex", data);
 		data->philo[i].left_fork = &data->all_forks[i];
 		if (i == data->nb_philo - 1)
 			data->philo[i].right_fork = &data->all_forks[0];
@@ -93,16 +95,21 @@ int	init_philo(t_data *data)
 		error("Cannot Init Mutex", data);
 	if (pthread_mutex_init(&data->eat_m, NULL))
 		error("Cannot Init Mutex", data);
-	if (pthread_mutex_init(&data->died_m, NULL))
+	if (pthread_mutex_init(&data->stop_m, NULL))
 		error("Cannot Init Mutex", data);
 	return (0);
 }
 
 int	init_threads(t_data *data)
 {
-	int	i;
+	int			i;
+	t_data		*tmp;
+	pthread_t	t1;
 
 	i = 0;
+	tmp = data;
+	if (pthread_create(&t1, NULL, &routinette, (void *)data))
+		error("Cannot Create Thread", data);
 	data->start_time = get_time_in_ms();
 	while (i < data->nb_philo)
 	{

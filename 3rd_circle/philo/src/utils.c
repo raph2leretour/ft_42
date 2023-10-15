@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/13 12:44:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/15 16:56:32 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	ft_print(char *s, t_philo *philo)
 
 	pthread_mutex_lock(&philo->data->print);
 	time = get_time_in_ms() - philo->data->start_time;
-	printf("%lld %d %s\n", time, philo->id, s);
+	printf("%lld %d %s\n", time, philo->id + 1, s);
 	pthread_mutex_unlock(&philo->data->print);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/13 12:41:35 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/15 17:50:05 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,26 +31,27 @@ typedef struct s_data {
 	int				nb_philo;
 	int				nb_philo_eat;
 	int				eat_v;
-	int				died_v;
+	int				stop_v;
 	long long int	start_time;
 	long long int	time_to_die;
 	long long int	time_to_eat;
 	long long int	time_to_sleep;
 	pthread_mutex_t	*all_forks;
 	pthread_mutex_t	eat_m;
-	pthread_mutex_t	died_m;
+	pthread_mutex_t	stop_m;
 	pthread_mutex_t	print;
 	struct s_philo	*philo;
 }	t_data;
 
 typedef struct s_philo {
-	int					id;
-	long				nb_meals;
-	long				time_last_meal;
-	pthread_t			philo;
-	pthread_mutex_t		left_fork;
-	pthread_mutex_t		right_fork;
-	struct s_data		*data;
+	int				id;
+	long			nb_meals;
+	long			time_last_meal;
+	pthread_t		philo;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	right_fork;
+	pthread_mutex_t	time_last_meal_m;
+	struct s_data	*data;
 }	t_philo;
 
 /******************************************************************************/
@@ -63,6 +64,7 @@ int				init_threads(t_data *data);
 int				join_threads(t_data *data);
 int				init_args(int argc, char **argv, t_data *data);
 void			*routine(void *philou);
+void			*routinette(void *tmp);
 void			destroy_fork(t_data *data);
 void			error(char *s, t_data *data);
 void			ft_print(char *s, t_philo *philo);
