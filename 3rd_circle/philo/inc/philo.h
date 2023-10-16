@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/15 17:50:05 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:25:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data {
 	pthread_mutex_t	*all_forks;
 	pthread_mutex_t	eat_m;
 	pthread_mutex_t	stop_m;
+	pthread_mutex_t	start_time_m;
 	pthread_mutex_t	print;
 	struct s_philo	*philo;
 }	t_data;
@@ -48,8 +49,8 @@ typedef struct s_philo {
 	long			nb_meals;
 	long			time_last_meal;
 	pthread_t		philo;
-	pthread_mutex_t	left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
 	pthread_mutex_t	time_last_meal_m;
 	struct s_data	*data;
 }	t_philo;
@@ -57,8 +58,10 @@ typedef struct s_philo {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-int				is_end(t_data *data);
+int				is_full(t_data *data);
+int				is_stop(t_data *data);
 int				init_forks(t_data *data);
+int				init_philo(t_data *data);
 int				ft_atoi(const char *nptr);
 int				init_threads(t_data *data);
 int				join_threads(t_data *data);
@@ -68,7 +71,7 @@ void			*routinette(void *tmp);
 void			destroy_fork(t_data *data);
 void			error(char *s, t_data *data);
 void			ft_print(char *s, t_philo *philo);
-void			ft_usleep(long long int time, t_philo *philo);
+void			ft_usleep(long long int time, t_data *data);
 long long int	get_time_in_ms(void);
 
 #endif

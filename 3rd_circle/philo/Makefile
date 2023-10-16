@@ -48,7 +48,7 @@ fclean: clean
 	$(RM) $(NAME)
 
 norminette:
-	norminette include
+	norminette inc
 	norminette src
 
 re: fclean all

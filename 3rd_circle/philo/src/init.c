@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/16 14:22:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:01:23 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	init_rl_forks(t_data *data)
 	{
 		if (pthread_mutex_init(&data->philo[i].time_last_meal_m, NULL))
 			error("Cannot Init Mutex", data);
-		&data->philo[i].left_fork = &data->all_forks[i];
+		data->philo[i].left_fork = &data->all_forks[i];
 		if (i == data->nb_philo - 1)
-			&data->philo[i].right_fork = &data->all_forks[0];
+			data->philo[i].right_fork = &data->all_forks[0];
 		else
-			&data->philo[i].right_fork = &data->all_forks[i + 1];
+			data->philo[i].right_fork = &data->all_forks[i + 1];
 		i++;
 	}
 }
@@ -88,14 +88,16 @@ int	init_philo(t_data *data)
 		data->philo[i].id = i;
 		data->philo[i].nb_meals = 0;
 		data->philo[i].time_last_meal = 0;
+		data->philo[i].data = data;
+		i++;
 	}
 	if (pthread_mutex_init(&data->print, NULL))
-		error("Cannot Init Mutex", data);
-	if (pthread_mutex_init(&data->start, NULL))
 		error("Cannot Init Mutex", data);
 	if (pthread_mutex_init(&data->eat_m, NULL))
 		error("Cannot Init Mutex", data);
 	if (pthread_mutex_init(&data->stop_m, NULL))
+		error("Cannot Init Mutex", data);
+	if (pthread_mutex_init(&data->start_time_m, NULL))
 		error("Cannot Init Mutex", data);
 	return (0);
 }
@@ -110,15 +112,17 @@ int	init_threads(t_data *data)
 	tmp = data;
 	if (pthread_create(&t1, NULL, &routinette, (void *)data))
 		error("Cannot Create Thread", data);
+	pthread_mutex_lock(&data->start_time_m);
 	data->start_time = get_time_in_ms();
+	pthread_mutex_unlock(&data->start_time_m);
 	while (i < data->nb_philo)
 	{
 		if (pthread_create(&data->philo[i].philo, NULL, \
-			&routine, (void *)data->philo[i]))
+			&routine, &data->philo[i]))
 			error("Cannot Create Thread", data);
 		i++;
 	}
 	if (pthread_join(t1, NULL))
-		error("Cannot Join Thread");
+		error("Cannot Join Thread", data);
 	return (0);
 }

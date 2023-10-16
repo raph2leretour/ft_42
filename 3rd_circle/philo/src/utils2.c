@@ -6,7 +6,7 @@
 /*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:54:07 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/15 17:50:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/16 17:06:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ int	is_stop(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		pthread_mutex_lock(data->philo[i].time_last_meal_m);
+		pthread_mutex_lock(&data->philo[i].time_last_meal_m);
 		if (time - data->philo[i].time_last_meal >= data->time_to_die)
 		{
-			pthread_mutex_unlock(&data->philo[i].time_last_m);
+			pthread_mutex_unlock(&data->philo[i].time_last_meal_m);
 			pthread_mutex_lock(&data->stop_m);
 			data->stop_v = 1;
 			pthread_mutex_unlock(&data->stop_m);
-			ft_print("died", data);
+			ft_print("died", &data->philo[i]);
 			return (1);
 		}
-		pthread_mutex_unlock(&data->philo[i].time_last_m);
+		pthread_mutex_unlock(&data->philo[i].time_last_meal_m);
 	}
 	return (0);
 }

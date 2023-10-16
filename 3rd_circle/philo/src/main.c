@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:27:39 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/13 12:00:39 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:01:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int	main(int ac, char **av)
 			return (1);
 		if (init_forks(&data))
 			return (2);
-		if (init_threads(&data))
+		if (init_philo(&data))
 			return (3);
-		if (join_threads(&data))
+		if (init_threads(&data))
 			return (4);
+		if (join_threads(&data))
+			return (5);
 		destroy_fork(&data);
 	}
 	return (0);
