@@ -18,7 +18,7 @@ OBJS			:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror
-CPPFLAGS	:= -I include
+CPPFLAGS	:= -I inc
 
 #------------------------------------------------#
 #   UTENSILS                                     #

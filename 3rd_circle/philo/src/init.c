@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/15 17:50:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:22:58 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	init_args(int argc, char **argv, t_data *data)
 {
 	data->nb_philo = ft_atoi(argv[1]);
-	if (data->nbr_of_philo <= 0)
+	if (data->nb_philo <= 0)
 		return (1);
 	data->time_to_die = ft_atoi(argv[2]);
 	if (data->time_to_die < 0)
@@ -46,13 +46,13 @@ void	init_rl_forks(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		if (pthread_mutex_init(&data->philo[i]->time_last_meal_m, NULL))
+		if (pthread_mutex_init(&data->philo[i].time_last_meal_m, NULL))
 			error("Cannot Init Mutex", data);
-		data->philo[i].left_fork = &data->all_forks[i];
+		&data->philo[i].left_fork = &data->all_forks[i];
 		if (i == data->nb_philo - 1)
-			data->philo[i].right_fork = &data->all_forks[0];
+			&data->philo[i].right_fork = &data->all_forks[0];
 		else
-			data->philo[i].right_fork = &data->all_forks[i + 1];
+			&data->philo[i].right_fork = &data->all_forks[i + 1];
 		i++;
 	}
 }
@@ -83,7 +83,7 @@ int	init_philo(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->nbr_of_philo)
+	while (i < data->nb_philo)
 	{
 		data->philo[i].id = i;
 		data->philo[i].nb_meals = 0;
@@ -118,5 +118,7 @@ int	init_threads(t_data *data)
 			error("Cannot Create Thread", data);
 		i++;
 	}
+	if (pthread_join(t1, NULL))
+		error("Cannot Join Thread");
 	return (0);
 }
