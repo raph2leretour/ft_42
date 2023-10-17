@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/16 17:25:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 13:12:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ typedef struct s_data {
 typedef struct s_philo {
 	int				id;
 	long			nb_meals;
-	long			time_last_meal;
+	long long int	time_last_meal;
 	pthread_t		philo;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	time_last_meal_m;
+	pthread_mutex_t	meal_m;
 	struct s_data	*data;
 }	t_philo;
 
@@ -69,6 +69,7 @@ int				init_args(int argc, char **argv, t_data *data);
 void			*routine(void *philou);
 void			*routinette(void *tmp);
 void			destroy_fork(t_data *data);
+void			take_forks(t_philo *philo);
 void			error(char *s, t_data *data);
 void			ft_print(char *s, t_philo *philo);
 void			ft_usleep(long long int time, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/16 18:01:23 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 12:21:28 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ void	init_rl_forks(t_data *data)
 	i = 0;
 	while (i < data->nb_philo)
 	{
-		if (pthread_mutex_init(&data->philo[i].time_last_meal_m, NULL))
-			error("Cannot Init Mutex", data);
 		data->philo[i].left_fork = &data->all_forks[i];
 		if (i == data->nb_philo - 1)
 			data->philo[i].right_fork = &data->all_forks[0];
@@ -89,6 +87,8 @@ int	init_philo(t_data *data)
 		data->philo[i].nb_meals = 0;
 		data->philo[i].time_last_meal = 0;
 		data->philo[i].data = data;
+		if (pthread_mutex_init(&data->philo[i].meals_m, NULL))
+			error("Cannot Init Mutex", data);
 		i++;
 	}
 	if (pthread_mutex_init(&data->print, NULL))
