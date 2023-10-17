@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/17 13:12:15 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:21:22 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,13 @@ int				init_philo(t_data *data);
 int				ft_atoi(const char *nptr);
 int				init_threads(t_data *data);
 int				join_threads(t_data *data);
+int				error(char *s, t_data *data);
 int				init_args(int argc, char **argv, t_data *data);
+void			clear(t_data *dat);
 void			*routine(void *philou);
 void			*routinette(void *tmp);
 void			destroy_fork(t_data *data);
 void			take_forks(t_philo *philo);
-void			error(char *s, t_data *data);
 void			ft_print(char *s, t_philo *philo);
 void			ft_usleep(long long int time, t_data *data);
 long long int	get_time_in_ms(void);

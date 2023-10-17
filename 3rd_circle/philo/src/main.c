@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:27:39 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/17 13:04:26 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:14:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int ac, char **av)
 		if (join_threads(&data))
 			return (5);
 		destroy_fork(&data);
+		clear(&data);
 	}
 	return (0);
 }

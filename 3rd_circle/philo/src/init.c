@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/17 12:21:28 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:21:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	init_philo(t_data *data)
 		data->philo[i].nb_meals = 0;
 		data->philo[i].time_last_meal = 0;
 		data->philo[i].data = data;
-		if (pthread_mutex_init(&data->philo[i].meals_m, NULL))
+		if (pthread_mutex_init(&data->philo[i].meal_m, NULL))
 			error("Cannot Init Mutex", data);
 		i++;
 	}
@@ -110,8 +110,6 @@ int	init_threads(t_data *data)
 
 	i = 0;
 	tmp = data;
-	if (pthread_create(&t1, NULL, &routinette, (void *)data))
-		error("Cannot Create Thread", data);
 	pthread_mutex_lock(&data->start_time_m);
 	data->start_time = get_time_in_ms();
 	pthread_mutex_unlock(&data->start_time_m);
@@ -122,6 +120,8 @@ int	init_threads(t_data *data)
 			error("Cannot Create Thread", data);
 		i++;
 	}
+	if (pthread_create(&t1, NULL, &routinette, (void *)data))
+		error("Cannot Create Thread", data);
 	if (pthread_join(t1, NULL))
 		error("Cannot Join Thread", data);
 	return (0);

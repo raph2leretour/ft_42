@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/16 18:00:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:21:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ void	ft_print(char *s, t_philo *philo)
 {
 	long long int	time;
 
+	pthread_mutex_lock(&philo->data->stop_m);
+	if (philo->data->stop_v)
+	{
+		pthread_mutex_unlock(&philo->data->stop_m);
+		return ;
+	}
+	pthread_mutex_unlock(&philo->data->stop_m);
 	pthread_mutex_lock(&philo->data->print);
 	pthread_mutex_lock(&philo->data->start_time_m);
 	time = get_time_in_ms() - philo->data->start_time;
@@ -78,6 +85,12 @@ void	ft_usleep(long long int time, t_data *data)
 			return ;
 		}
 		pthread_mutex_unlock(&data->stop_m);
-		usleep(500);
+		usleep(10);
 	}
+}
+
+void	clear(t_data *data)
+{
+	free(data->philo);
+	free(data->all_forks);
 }

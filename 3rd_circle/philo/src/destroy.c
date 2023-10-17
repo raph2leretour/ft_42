@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:23:14 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/16 15:44:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:21:09 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ void	destroy_fork(t_data *data)
 	int	i;
 
 	i = 0;
+	pthread_mutex_destroy(&data->eat_m);
+	pthread_mutex_destroy(&data->stop_m);
+	pthread_mutex_destroy(&data->start_time_m);
+	pthread_mutex_destroy(&data->print);
 	while (i < data->nb_philo)
 	{
 		pthread_mutex_destroy(&data->all_forks[i]);
+		pthread_mutex_destroy(&data->philo[i].meal_m);
 		i++;
 	}
 }
