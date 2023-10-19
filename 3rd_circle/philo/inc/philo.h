@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 11:33:22 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/17 19:21:22 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:54:48 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int				init_args(int argc, char **argv, t_data *data);
 void			clear(t_data *dat);
 void			*routine(void *philou);
 void			*routinette(void *tmp);
+void			philo_one(t_philo *philo);
 void			destroy_fork(t_data *data);
 void			take_forks(t_philo *philo);
 void			ft_print(char *s, t_philo *philo);

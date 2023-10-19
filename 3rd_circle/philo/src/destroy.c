@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:23:14 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/17 18:21:09 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:33:43 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,10 @@ void	destroy_fork(t_data *data)
 		pthread_mutex_destroy(&data->philo[i].meal_m);
 		i++;
 	}
+}
+
+void	clear(t_data *data)
+{
+	free(data->philo);
+	free(data->all_forks);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:54:07 by raphael           #+#    #+#             */
-/*   Updated: 2023/10/17 19:20:51 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:47:10 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,7 @@ int	is_full(t_data *data)
 
 void	take_forks(t_philo *philo)
 {
-	if (philo->id == 0 && philo->data->nb_philo == 1)
-	{
-		pthread_mutex_lock(philo->left_fork);
-		ft_print("has taken a fork", philo);
-		pthread_mutex_unlock(philo->left_fork);
-	}
-	else if (philo->id % 2 == 0)
+	if (philo->id % 2 == 0)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		ft_print("has taken a fork", philo);

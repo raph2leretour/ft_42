@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:17:49 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/17 19:21:17 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:59:28 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ int	init_args(int argc, char **argv, t_data *data)
 {
 	data->nb_philo = ft_atoi(argv[1]);
 	if (data->nb_philo <= 0)
-		return (1);
+		return (printf("Error: Bad Arguments\n"), 1);
 	data->time_to_die = ft_atoi(argv[2]);
 	if (data->time_to_die < 0)
-		return (2);
+		return (printf("Error: Bad Arguments\n"), 1);
 	data->time_to_eat = ft_atoi(argv[3]);
 	if (data->time_to_eat < 0)
-		return (3);
+		return (printf("Error: Bad Arguments\n"), 1);
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if (data->time_to_sleep < 0)
-		return (4);
+		return (printf("Error: Bad Arguments\n"), 1);
 	if (argc == 6)
 	{
 		data->nb_philo_eat = ft_atoi(argv[5]);
 		if (data->nb_philo_eat <= 0)
-			return (5);
+			return (printf("Error: Bad Arguments\n"), 1);
 	}
 	else
 		data->nb_philo_eat = -1;
@@ -105,14 +105,12 @@ int	init_philo(t_data *data)
 int	init_threads(t_data *data)
 {
 	int			i;
-	t_data		*tmp;
 	pthread_t	t1;
 
 	i = 0;
-	tmp = data;
 	pthread_mutex_lock(&data->start_time_m);
 	data->start_time = get_time_in_ms();
-	pthread_mutex_unlock(&data->start_time_m);
+	// pthread_mutex_unlock(&data->start_time_m);
 	while (i < data->nb_philo)
 	{
 		if (pthread_create(&data->philo[i].philo, NULL, \
@@ -120,9 +118,15 @@ int	init_threads(t_data *data)
 			error("Cannot Create Thread", data);
 		i++;
 	}
-	if (pthread_create(&t1, NULL, &routinette, (void *)data))
-		error("Cannot Create Thread", data);
-	if (pthread_join(t1, NULL))
-		error("Cannot Join Thread", data);
+	if (data->nb_philo != 1)
+	{
+		if (pthread_create(&t1, NULL, &routinette, (void *)data))
+			error("Cannot Create Thread", data);
+		pthread_mutex_unlock(&data->start_time_m);
+		if (pthread_join(t1, NULL))
+			error("Cannot Join Thread", data);
+	}
+	else
+		pthread_mutex_unlock(&data->start_time_m);
 	return (0);
 }

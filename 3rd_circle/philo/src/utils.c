@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 18:27:50 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/17 19:21:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:41:40 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int		res_i;
 	int		sig;
-	long	res_l;
+	long	res;
 
-	res_l = 0;
+	res = 0;
 	sig = 1;
 	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
 		++nptr;
@@ -31,13 +30,14 @@ int	ft_atoi(const char *nptr)
 		++nptr;
 	while (*nptr > 47 && *nptr < 58)
 	{
-		res_l = res_l * 10 + *nptr - 48;
+		res = res * 10 + *nptr - 48;
+		if (res > INT_MAX || (res * -1 < INT_MIN && sig < 0))
+			return (0);
 		++nptr;
 	}
-	if (res_l > INT_MAX || (res_l * -1 < INT_MIN && sig < 0))
-		return (0);
-	res_i = (int)res_l;
-	return (res_i * sig);
+	if (*nptr)
+		return (-1);
+	return (res * sig);
 }
 
 void	ft_print(char *s, t_philo *philo)
@@ -89,8 +89,11 @@ void	ft_usleep(long long int time, t_data *data)
 	}
 }
 
-void	clear(t_data *data)
+void	philo_one(t_philo *philo)
 {
-	free(data->philo);
-	free(data->all_forks);
+	pthread_mutex_lock(philo->left_fork);
+	ft_print("has taken a fork", philo);
+	ft_usleep(philo->data->time_to_die, philo->data);
+	pthread_mutex_unlock(philo->left_fork);
+	ft_print("died", philo);
 }

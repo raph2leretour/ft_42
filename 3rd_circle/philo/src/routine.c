@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/30 14:50:19 by rtissera          #+#    #+#             */
-/*   Updated: 2023/10/18 12:31:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2023/10/19 01:57:35 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,11 @@ void	throw_forks(t_philo *philo)
 void	eating(t_philo *philo)
 {
 	take_forks(philo);
-	if (philo->id == 0 && philo->data->nb_philo == 1)
-		ft_usleep(philo->data->time_to_die, philo->data);
 	pthread_mutex_lock(&philo->data->stop_m);
 	if (philo->data->stop_v)
 	{
 		pthread_mutex_unlock(&philo->data->stop_m);
-		if (!(philo->id == 0 && philo->data->nb_philo == 1))
-			throw_forks(philo);
+		throw_forks(philo);
 		return ;
 	}
 	pthread_mutex_unlock(&philo->data->stop_m);
@@ -72,7 +69,7 @@ void	philo_routine(t_philo *philo)
 	pthread_mutex_unlock(&philo->data->stop_m);
 	ft_print("is thinking", philo);
 	ft_usleep((philo->data->time_to_eat > philo->data->time_to_sleep) \
-		* (philo->data->time_to_eat - philo->data->time_to_sleep) + 125, \
+		* (philo->data->time_to_eat - philo->data->time_to_sleep) + 1, \
 		philo->data);
 	pthread_mutex_lock(&philo->data->stop_m);
 }
@@ -97,11 +94,18 @@ void	*routine(void *philou)
 	t_philo	*philo;
 
 	philo = (void *)philou;
+	// pthread_mutex_lock(&philo->data->start_time_m);
+	// pthread_mutex_unlock(&philo->data->start_time_m);
+	if (philo->data->nb_philo == 1)
+	{
+		philo_one(philo);
+		return (NULL);
+	}
 	pthread_mutex_lock(&philo->meal_m);
 	philo->time_last_meal = get_time_in_ms();
 	pthread_mutex_unlock(&philo->meal_m);
-	if (philo->id & 1)
-		ft_usleep(100, philo->data);
+	if (philo->id % 2 != 0)
+		ft_usleep(10, philo->data);
 	pthread_mutex_lock(&philo->data->stop_m);
 	while (!philo->data->stop_v)
 	{
