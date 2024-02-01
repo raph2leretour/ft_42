@@ -6,13 +6,13 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 15:34:59 by rtissera          #+#    #+#             */
-/*   Updated: 2024/01/31 22:50:22 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:07:01 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <cstdlib>
-#include "PhoneBook.class.hpp"
+#include "PhoneBook.hpp"
 
 int	main(void) {
 
@@ -22,7 +22,7 @@ int	main(void) {
 	std::cout << "Welcome to your PhoneBook!" << std::endl;
 	for (;;) {
 
-		std::cout << "Please enter a command: " << std::endl;
+		std::cout << "Please enter a command: ";
 		std::cin >> command;
 		if (std::cin.eof())
 			exit(EXIT_SUCCESS);

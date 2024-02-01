@@ -1,0 +1,8 @@
+megaphone
+phonebook
+*.o
+*.a
+*.out
+
+obj/
+.build/

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.class.cpp                                :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/01 17:17:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/01 19:06:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Contact.class.hpp"
-#include "PhoneBook.class.hpp"
+#include <cstdlib>
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {}
 
@@ -45,23 +45,23 @@ void	PhoneBook::addContact(void) {
 
 		std::cout << "Phone number: ";
 		this->_prompt();
-	} while (!Contact::checkPhoneNumber(str));
-	contact.setLastPhoneNumber(str);
+	} while (!Contact::checkNumber(str));
+	contact.setPhoneNumber(str);
 	do {
 
 		std::cout << "Darkest secret: ";
 		this->_prompt();
-	} while (!Contact::checkDarkestSecret(str));
-	contact.setLastDarkestSecret(str);
+	} while (!Contact::checkPrint(str));
+	contact.setDarkestSecret(str);
 	this->_nbContacts++;
 	if (this->_nbContacts == 9) {
 
-		this->_nbContacts == 0
+		this->_nbContacts = 0;
 	}
-	this->_contacts[this->_nbContacts] = _nbContacts;
+	this->_contacts[this->_nbContacts] = contact;
 }
 
-void	_prompt(void) {
+void	PhoneBook::_prompt(void) {
 
 	std::string	value;
 
@@ -74,7 +74,7 @@ void	_prompt(void) {
 
 		exit(EXIT_SUCCESS);
 	}
-	this->_input = value
+	this->_input = value;
 }
 
 void	PhoneBook::searchContact(void) const {}
