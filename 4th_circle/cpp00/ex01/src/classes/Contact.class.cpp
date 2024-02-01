@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:19 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/01 15:42:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:18:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ bool	Contact::checkPrint(std::string str) {
 
 bool	Contact::checkNumber(std::string number) {
 
-	for (std::string::itarator it = number.begin(); it != number.end(); it++) {
+	for (std::string::iterator it = number.begin(); it != number.end(); it++) {
 
 		char c = *it;
 		if (!isdigit(c)) {

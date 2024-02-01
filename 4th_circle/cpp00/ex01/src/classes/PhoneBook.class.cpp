@@ -6,11 +6,12 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/01 16:05:31 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/01 17:17:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include "Contact.class.hpp"
 #include "PhoneBook.class.hpp"
 
 PhoneBook::PhoneBook(void) {}
@@ -22,64 +23,58 @@ void	PhoneBook::addContact(void) {
 	Contact		contact;
 	std::string	str;
 
-	std::cout << "First name: ";
-	while (!Contact::checkName(str)) {
+	do {
 
 		std::cout << "First name: ";
-		std::cin >> str;
-		if (std::cin.eof()) {
-
-			exit(EXIT_SUCCESS);
-		}
-	}
+		this->_prompt();
+	} while (!Contact::checkName(this->_input));
 	contact.setFirstName(str);
-	std::cout << "Last name: ";
-	while (!Contact::checkName(str)) {
+	do {
 
 		std::cout << "Last name: ";
-		std::cin >> str;
-		if (std::cin.eof()) {
-
-			exit(EXIT_SUCCESS);
-		}
-	}
+		this->_prompt();
+	} while (!Contact::checkName(str));
 	contact.setLastName(str);
-	std::cout << "Nickname: ";
-	while (!Contact::checkPrint(str)) {
+	do {
 
 		std::cout << "Nickname: ";
-		std::cin >> str;
-		if (std::cin.eof()) {
-
-			exit(EXIT_SUCCESS);
-		}
-	}
+		this->_prompt();
+	} while (!Contact::checkPrint(str));
 	contact.setNickname(str);
-	std::cout << "Phone number: ";
-	while (!Contact::checkNumber(str)) {
+	do {
 
-		std::cout << "Phone Number: ";
-		std::cin >> str;
-		if (std::cin.eof()) {
-
-			exit(EXIT_SUCCESS);
-		}
-	}
-	contact.setPhoneNumber(str);
-	std::cout << "Darkest secret: ";
-	while (!Contact::checkPrint(str)) {
+		std::cout << "Phone number: ";
+		this->_prompt();
+	} while (!Contact::checkPhoneNumber(str));
+	contact.setLastPhoneNumber(str);
+	do {
 
 		std::cout << "Darkest secret: ";
-		std::cin >> str;
-		if (std::cin.eof()) {
+		this->_prompt();
+	} while (!Contact::checkDarkestSecret(str));
+	contact.setLastDarkestSecret(str);
+	this->_nbContacts++;
+	if (this->_nbContacts == 9) {
 
-			exit(EXIT_SUCCESS);
-		}
+		this->_nbContacts == 0
 	}
-	contact.setDarkestSecret(str);
+	this->_contacts[this->_nbContacts] = _nbContacts;
 }
 
-void	PhoneBook::searchContact(void) const {
+void	_prompt(void) {
 
+	std::string	value;
 
+	if (!std::cin) {
+
+		exit(EXIT_SUCCESS);
+	}
+	std::cin >> value;
+	if (std::cin.eof()) {
+
+		exit(EXIT_SUCCESS);
+	}
+	this->_input = value
 }
+
+void	PhoneBook::searchContact(void) const {}
