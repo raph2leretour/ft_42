@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Contact.class.cpp                                  :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:19 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/01 17:18:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:38:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Contact.class.hpp"
+#include "Contact.hpp"
 
 Contact::Contact(void) {}
 
@@ -67,7 +66,39 @@ void	Contact::setDarkestSecret(std::string darkestSecret) {
 	this->_darkestSecret = darkestSecret;
 }
 
-void	Contact::printContact(void) const {
+void	Contact::printName(std::string name) const {
+
+	if (name.length() < 10) {
+
+		for (int i = name.length(); i < 10; i++) {
+
+			std::cout << " ";
+		}
+		std::cout << name;
+	} else if (name.length() > 10) {
+
+		for (int i = 0; i < 10; i++) {
+
+			std::cout << name[i];
+		}
+		std::cout << ".";
+	} else {
+
+		std::cout << name;
+	}
+}
+
+void	Contact::printLineContact(void) const {
+
+	this->printName(this->_firstName);
+	std::cout << "|";
+	this->printName(this->_lastName);
+	std::cout << "|";
+	this->printName(this->_nickname);
+	std::cout << "|";
+}
+
+void	Contact::printRawContact(void) const {
 
 	std::cout << "First Name: " << this->_firstName << std::endl;
 	std::cout << "Last Name: " << this->_lastName << std::endl;
@@ -106,7 +137,7 @@ bool	Contact::checkNumber(std::string number) {
 
 	for (std::string::iterator it = number.begin(); it != number.end(); it++) {
 
-		char c = *it;
+		char	c = *it;
 		if (!isdigit(c)) {
 
 			return (false);

@@ -6,17 +6,20 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/01 19:06:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/02 18:10:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstdlib>
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(void) {}
 
 PhoneBook::~PhoneBook() {}
+
+void	PhoneBook::initPhoneBook(void) {
+
+	this->_nbContacts = -1;
+}
 
 void	PhoneBook::addContact(void) {
 
@@ -77,4 +80,16 @@ void	PhoneBook::_prompt(void) {
 	this->_input = value;
 }
 
-void	PhoneBook::searchContact(void) const {}
+void	PhoneBook::searchContact(void) const {
+
+	std::cout << "|----------|-------Contact-------|----------|" << std::endl;
+	std::cout << "|Index     |First name|Last name |Nickname  |" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	for (int i = 0; i < 8; i++) {
+
+		std::cout << "|         " << i + 1 << "|";
+		this->_contacts[i].printLineContact();
+		std::cout << std::endl;
+	}
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
+}

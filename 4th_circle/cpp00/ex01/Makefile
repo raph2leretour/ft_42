@@ -10,13 +10,13 @@ SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:=					\
 	main.cpp					\
-	classes/Contact.class.cpp	\
-	classes/PhoneBook.class.cpp
+	classes/Contact.cpp	\
+	classes/PhoneBook.cpp
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC			:= c++
-CFLAGS		:= -Wall -Wextra -Werror -std=c++98
+CFLAGS		:= -Wall -Wextra -Werror -std=c++98 -g
 CPPFLAGS	:= -Iinc
 
 #------------------------------------------------#
