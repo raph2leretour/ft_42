@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:07:41 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/02 14:11:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:29:11 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ public:
 	void		setNickname(std::string nickname);
 	void		setPhoneNumber(std::string phoneNumber);
 	void		setDarkestSecret(std::string darkestSecret);
-
-	int			sizeName(std::string name) const;
 
 	void		printName(std::string name) const ;
 	void		printLineContact(void) const;

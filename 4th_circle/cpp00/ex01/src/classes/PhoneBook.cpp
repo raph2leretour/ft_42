@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/02 18:10:46 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:31:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,47 +21,66 @@ void	PhoneBook::initPhoneBook(void) {
 	this->_nbContacts = -1;
 }
 
+void	PhoneBook::phoneBookExecute(void) {
+
+	std::cout << "Welcome to your PhoneBook!" << std::endl;
+	for (;;) {
+
+		std::cout << "Please enter a command: ";
+		this->_prompt();
+		if (this->_input == "ADD") {
+
+			this->addContact();
+		} else if (this->_input == "SEARCH") {
+
+			this->searchContact();
+		} else if (this->_input == "EXIT") {
+
+			exit(EXIT_SUCCESS);
+		} else {
+
+			std::cout << "Invalid command" << std::endl;
+		}
+	}
+}
+
 void	PhoneBook::addContact(void) {
 
-	Contact		contact;
-	std::string	str;
+	this->_nbContacts++;
+	if (this->_nbContacts == 8) {
 
+		this->_nbContacts = 0;
+	}
 	do {
 
 		std::cout << "First name: ";
 		this->_prompt();
-	} while (!Contact::checkName(this->_input));
-	contact.setFirstName(str);
+	} while (Contact::checkName(this->_input) == false);
+	this->_contacts[this->_nbContacts].setFirstName(this->_input);
 	do {
 
 		std::cout << "Last name: ";
 		this->_prompt();
-	} while (!Contact::checkName(str));
-	contact.setLastName(str);
+	} while (Contact::checkName(this->_input) == false);
+	this->_contacts[this->_nbContacts].setLastName(this->_input);
 	do {
 
 		std::cout << "Nickname: ";
 		this->_prompt();
-	} while (!Contact::checkPrint(str));
-	contact.setNickname(str);
+	} while (Contact::checkPrint(this->_input) == false);
+	this->_contacts[this->_nbContacts].setNickname(this->_input);
 	do {
 
 		std::cout << "Phone number: ";
 		this->_prompt();
-	} while (!Contact::checkNumber(str));
-	contact.setPhoneNumber(str);
+	} while (Contact::checkNumber(this->_input) == false);
+	this->_contacts[this->_nbContacts].setPhoneNumber(this->_input);
 	do {
 
 		std::cout << "Darkest secret: ";
 		this->_prompt();
-	} while (!Contact::checkPrint(str));
-	contact.setDarkestSecret(str);
-	this->_nbContacts++;
-	if (this->_nbContacts == 9) {
-
-		this->_nbContacts = 0;
-	}
-	this->_contacts[this->_nbContacts] = contact;
+	} while (Contact::checkPrint(this->_input) == false);
+	this->_contacts[this->_nbContacts].setDarkestSecret(this->_input);
 }
 
 void	PhoneBook::_prompt(void) {
@@ -72,7 +91,7 @@ void	PhoneBook::_prompt(void) {
 
 		exit(EXIT_SUCCESS);
 	}
-	std::cin >> value;
+	std::getline(std::cin, value);
 	if (std::cin.eof()) {
 
 		exit(EXIT_SUCCESS);
@@ -80,10 +99,12 @@ void	PhoneBook::_prompt(void) {
 	this->_input = value;
 }
 
-void	PhoneBook::searchContact(void) const {
+void	PhoneBook::searchContact(void) {
 
-	std::cout << "|----------|-------Contact-------|----------|" << std::endl;
-	std::cout << "|Index     |First name|Last name |Nickname  |" << std::endl;
+	int	number;
+
+	std::cout << "|----------|--PhoneBook contacts-|----------|" << std::endl;
+	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
 	for (int i = 0; i < 8; i++) {
 
@@ -92,4 +113,11 @@ void	PhoneBook::searchContact(void) const {
 		std::cout << std::endl;
 	}
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	do {
+
+		std::cout << "Please enter a valid number: ";
+		this->_prompt();
+		number = atoi(this->_input.c_str());
+	} while (this->_input.length() != 1 || number < 1 || number > 8);
+	this->_contacts[number - 1].printRawContact();
 }

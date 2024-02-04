@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:19 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/02 15:38:46 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/04 18:16:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	Contact::printName(std::string name) const {
 		std::cout << name;
 	} else if (name.length() > 10) {
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 9; i++) {
 
 			std::cout << name[i];
 		}
@@ -109,10 +109,14 @@ void	Contact::printRawContact(void) const {
 
 bool	Contact::checkName(std::string name) {
 
+	if (name.length() == 0) {
+
+		return (false);
+	}
 	for (std::string::iterator it = name.begin(); it != name.end(); it++) {
 
-		char c = *it;
-		if (!isalpha(c) || c == '-') {
+		char	c = *it;
+		if (!isalpha(c) && c != '-') {
 
 			return (false);
 		}
@@ -122,9 +126,13 @@ bool	Contact::checkName(std::string name) {
 
 bool	Contact::checkPrint(std::string str) {
 
+	if (str.length() == 0) {
+
+		return (false);
+	}
 	for (std::string::iterator it = str.begin(); it != str.end(); it++) {
 
-		char c = *it;
+		char	c = *it;
 		if (!isprint(c)) {
 
 			return (false);
@@ -135,6 +143,10 @@ bool	Contact::checkPrint(std::string str) {
 
 bool	Contact::checkNumber(std::string number) {
 
+	if (number.length() == 0) {
+
+		return (false);
+	}
 	for (std::string::iterator it = number.begin(); it != number.end(); it++) {
 
 		char	c = *it;
