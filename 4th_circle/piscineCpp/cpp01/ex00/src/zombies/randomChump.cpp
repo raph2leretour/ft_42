@@ -6,7 +6,10 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:22:21 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/06 10:22:22 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:28:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+void	randomChump( std::string name ) {}

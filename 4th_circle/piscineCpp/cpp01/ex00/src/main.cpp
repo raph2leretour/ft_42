@@ -6,15 +6,16 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:18:59 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/06 11:34:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:59:07 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(int argc, char **argv) {
+int	main( int argc, char **argv ) {
 
-	(void)argc;
-	(void)argv;
-	return (0);
+	( void )argc;
+	( void )argv;
+
+	return 0;
 }

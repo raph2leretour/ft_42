@@ -6,7 +6,10 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:22:03 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/06 10:22:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:29:13 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Zombie.hpp"
+
+Zombie*	newZombie( std::string name ) {}

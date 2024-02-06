@@ -6,30 +6,36 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:19:49 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/06 11:47:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:46:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
+/******************************************************************************/
+/*   INCLUDES                                                                 */
+/******************************************************************************/
 # include <iostream>
 # include <cstring>
 
+/******************************************************************************/
+/*   CLASSES                                                                  */
+/******************************************************************************/
 class Zombie {
 
 private:
 	std::string	_name;
 
 public:
-	Zombie(void);
-	~Zombie();
+	Zombie( void );
+	~Zombie( void );
 
-	std::string	getName(void) const;
+	std::string	getName( void ) const;
 
-	void		setName(std::string str);
+	void		setName( std::string str );
 
-	void		announce(void);
+	void		announce( void );
 
 };
 
