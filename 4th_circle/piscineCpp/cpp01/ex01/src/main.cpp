@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 10:22:03 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/09 17:19:30 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/06 10:18:59 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/09 19:12:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie*	newZombie( std::string name ) {
+int	main( void ) {
 
-	Zombie*	zombie = new Zombie;
+	int	n = 42;
 
-	zombie->setName( name );
+	if (n < 0) {
 
-	return zombie;
+		return -1;
+	}
+	Zombie*	zombies = zombieHorde( n, "Claude" );
+
+	for (int i = 0; i < n; i++) {
+
+		zombies[i].announce();
+	}
+
+	delete [] zombies;
+
+	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 16:46:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/06 17:57:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/09 13:26:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,11 @@ void	PhoneBook::addContact( void ) {
 
 void	PhoneBook::_prompt( void ) {
 
-	std::string	value;
-
 	if ( !std::cin ) {
 
 		exit( EXIT_SUCCESS );
 	}
+	std::string	value;
 	std::getline( std::cin, value );
 	if ( std::cin.eof() ) {
 
@@ -100,8 +99,6 @@ void	PhoneBook::_prompt( void ) {
 }
 
 void	PhoneBook::searchContact( void ) {
-
-	int	number;
 
 	std::cout << "|----------|--PhoneBook contacts-|----------|" << std::endl;
 	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
@@ -113,6 +110,7 @@ void	PhoneBook::searchContact( void ) {
 		std::cout << std::endl;
 	}
 	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	int	number;
 	do {
 
 		std::cout << "Please enter a valid number: ";

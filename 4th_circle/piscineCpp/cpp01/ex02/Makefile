@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 #   NAME                                                                       #
 #------------------------------------------------------------------------------#
-NAME		:= ex00
+NAME		:= ex02
 
 #------------------------------------------------------------------------------#
 #   INGREDIENTS                                                                #
@@ -10,15 +10,11 @@ SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:=		\
 	main.cpp		\
-	class/Zombie.cpp	\
-	zombies/newZombie.cpp	\
-	zombies/randomChump.cpp
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
 CC			:= c++
 CFLAGS		:= -Wall -Wextra -Werror -std=c++98
-CPPFLAGS	:= -Iinc
 
 #------------------------------------------------------------------------------#
 #   UTENSILS                                                                   #
@@ -37,7 +33,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) $(OBJS)

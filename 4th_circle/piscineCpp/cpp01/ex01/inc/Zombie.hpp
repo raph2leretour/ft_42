@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:19:49 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/09 16:41:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/09 19:07:37 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ public:
 /******************************************************************************/
 /*   FONCTIONS                                                                */
 /******************************************************************************/
-void	randomChump( std::string name );
-Zombie*	newZombie( std::string name );
+Zombie*	zombieHorde( int N, std::string name );
 
 #endif

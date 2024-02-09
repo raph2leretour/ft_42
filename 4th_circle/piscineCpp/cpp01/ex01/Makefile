@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 #   NAME                                                                       #
 #------------------------------------------------------------------------------#
-NAME		:= ex00
+NAME		:= ex01
 
 #------------------------------------------------------------------------------#
 #   INGREDIENTS                                                                #
@@ -11,8 +11,7 @@ OBJ_DIR		:= obj
 SRCS		:=		\
 	main.cpp		\
 	class/Zombie.cpp	\
-	zombies/newZombie.cpp	\
-	zombies/randomChump.cpp
+	zombies/zombieHorde.cpp
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

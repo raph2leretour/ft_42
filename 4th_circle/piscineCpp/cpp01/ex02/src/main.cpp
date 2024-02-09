@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/06 10:18:59 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/09 17:16:34 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/09 19:18:20 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/09 19:26:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
 int	main( void ) {
 
-	Zombie*	george = newZombie("George");
-	delete george;
-	randomChump("Geraldine");
+	std::string	string = "HI THIS IS BRAIN";
+	std::string*	stringPtr = &string;
+	std::string&	stringREF = string;
+
+	std::cout << &string << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
+
+	std::cout << string << std::endl;
+	std::cout << *stringPTR << std::endl;
+	std::cout << stringREF << std::endl;
 
 	return 0;
 }
