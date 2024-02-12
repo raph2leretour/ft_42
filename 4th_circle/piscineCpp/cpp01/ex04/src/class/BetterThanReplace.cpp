@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 16:50:49 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/11 17:26:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:03:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,22 @@ BetterThanReplace~::BetterThanReplace( void ) {}
 
 void	BetterThanReplace::myReplace( void ) {
 
+	// open l'infile
 	std::ifstream	ifs(this->_filename);
-	std::string	cur;
+
+	// verifier si c'est bien open
+	if ( ifs.is_open() ) {
+
+		return false;
+	}
+
+	// copier le contenue
+
+	// remplacer les strings
+
+	// open l'outfile
+
+	// verifier si c'est bien open
+
+	// ecrire dedans
 }
