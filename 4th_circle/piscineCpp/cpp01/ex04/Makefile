@@ -9,7 +9,7 @@ NAME		:= ex04
 SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:=		\
-	main.cpp		\
+	main.cpp
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
