@@ -1,33 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
-#                                                     +:+ +:+         +:+      #
-#    By: rtissera <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/21 16:33:00 by rtissera          #+#    #+#              #
-/*   Updated: 2024/02/21 16:34:37 by rtissera         ###   ########.fr       */
-#                                                                              #
-# **************************************************************************** #
+/*                                                    +:+ +:+         +:+     */
+/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/21 17:39:33 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/21 18:25:14 by rtissera         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Fixed::Fixed( void ) : _fixedPointValue( 0 ) {}
+ClapTrap::ClapTrap( void ) : _name( NULL ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {}
 
-Fixed::Fixed( Fixed const & src ) : _fixedPointValue( src._fixedPointValue ) {}
+ClapTrap::ClapTrap( std::string name ) : _name( name ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {}
 
-Fixed::~Fixed( void ) {}
+ClapTrap::ClapTrap( ClapTrap const & src ) : _name( src._name ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {}
+
+ClapTrap::~ClapTrap( void ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {}
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-Fixed&	Fixed::operator=( Fixed const & rhs ) {
+ClapTrap&	ClapTrap::operator=( ClapTrap const & rhs ) {
 
 	if ( this != &rhs ) {
 
@@ -38,110 +40,48 @@ Fixed&	Fixed::operator=( Fixed const & rhs ) {
 }
 
 /******************************************************************************/
-/*   ARITHMETIC OPERATORS                                                     */
+/*   GETTERS                                                                  */
 /******************************************************************************/
-Fixed	Fixed::operator+( Fixed const & rhs ) const {
+void	ClapTrap::setName( std::string name ) : _name( name ) {}
 
-	return Fixed( this->toFloat()+ rhs.toFloat());
-}
+void	ClapTrap::setHitPoints( unsigned int hitPoints ) : _hitPoints( hitPoints ) {}
 
-Fixed	Fixed::operator-( Fixed const & rhs ) const {
+void	ClapTrap::setEnergyPoints( unsigned int energyPoints ) : _energyPoints( enegryPoints ) {}
 
-	return Fixed( this->toFloat()- rhs.toFloat());
-}
-
-Fixed	Fixed::operator*( Fixed const & rhs ) const {
-
-	return Fixed( this->toFloat()* rhs.toFloat());
-}
-
-Fixed	Fixed::operator/( Fixed const & rhs ) const {
-
-	return Fixed( this->toFloat()/ rhs.toFloat());
-}
+void	ClapTrap::setAttackDamage( unsigned int attackDamage ) : _attackDamage( attckDamage ) {}
 
 /******************************************************************************/
-/*   COMPARISON OPERATORS                                                     */
+/*   SETTERS                                                                  */
 /******************************************************************************/
-bool	Fixed::operator>( Fixed const & rhs ) const {
+std::string	getName( void ) const {
 
-	return this->_fixedPointValue > rhs._fixedPointValue;
+	return this->_name;
 }
 
-bool	Fixed::operator<( Fixed const & rhs ) const {
+unsigned int	getHitPoints( void ) const {
 
-	return this->_fixedPointValue < rhs._fixedPointValue;
+	return this->_hitPoints;
 }
 
-bool	Fixed::operator>=( Fixed const & rhs ) const {
+unsigned int	getEnergyPoints( void ) const {
 
-	return this->_fixedPointValue >= rhs._fixedPointValue;
+	return this->_energyPoints;
 }
 
-bool	Fixed::operator<=( Fixed const & rhs ) const {
+unsigned int	getAttackDamage( void ) const {
 
-	return this->_fixedPointValue <= rhs._fixedPointValue;
+	return this->_attackDamage;
 }
-
-bool	Fixed::operator==( Fixed const & rhs ) const {
-
-	return this->_fixedPointValue == rhs._fixedPointValue;
-}
-
-bool	Fixed::operator!=( Fixed const & rhs ) const {
-
-	return this->_fixedPointValue != rhs._fixedPointValue;
-}
-
-/******************************************************************************/
-/*   INCREMENT / DECREMENT OPERATORS                                          */
-/******************************************************************************/
-Fixed&	Fixed::operator++( void ) {
-
-	++this->_fixedPointValue;
-
-	return *this;
-}
-
-Fixed	Fixed::operator++( int ) {
-
-	Fixed	tmp( *this );
-	tmp._fixedPointValue = this->_fixedPointValue++;
-
-	return tmp;
-}
-
-Fixed&	Fixed::operator--( void ) {
-
-	--this->_fixedPointValue;
-
-	return *this;
-}
-
-Fixed	Fixed::operator--( int ) {
-
-	Fixed	tmp( *this );
-	tmp._fixedPointValue = this->_fixedPointValue--;
-
-	return tmp;
-}
-
-/******************************************************************************/
-/*   MIN / MAX                                                                */
-/******************************************************************************/
-
-/******************************************************************************/
-/*   GETTERS / SETTERS                                                        */
-/******************************************************************************/
 
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
+void	attack( const std::string& target ) {}
 
 /******************************************************************************/
 /*   STREAM REDIRECTION OPERATOR                                              */
 /******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, Fixed const & rhs ) {
+std::ostream&	operator<<( std::ostream& o, ClapTrap const & rhs ) {
 
 	o << rhs.toFloat();
 

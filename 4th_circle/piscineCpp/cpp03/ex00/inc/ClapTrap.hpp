@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:30:38 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/21 16:31:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:18:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,49 +20,36 @@
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Fixed {
+class ClapTrap {
 
 private:
-	int			_fixedPointValue;
-	static int const	_fractionalBits = 8;
+	std::string	_name;
+	unsigned int	_hitPoints;
+	unsigned int	_energyPoints;
+	unsigned int	_attackDamage;
 
 public:
-	Fixed( void );
-	Fixed( int const n );
-	Fixed( float const n );
-	Fixed( Fixed const & src );
-	~Fixed( void );
+	ClapTrap( void );
+	ClapTrap( std::string name );
+	ClapTrap( ClapTrap const & src );
+	~ClapTrap( void );
 
-	Fixed&			operator=( Fixed const & rhs );
+	ClapTrap&	operator=( ClapTrap const & rhs );
 
-	Fixed			operator+( Fixed const & rhs ) const;
-	Fixed			operator-( Fixed const & rhs ) const;
-	Fixed			operator*( Fixed const & rhs ) const;
-	Fixed			operator/( Fixed const & rhs ) const;
+	void		setName( std::string name );
+	void		setHitPoints( unsigned int hitPoints );
+	void		setEnergyPoints( unsigned int energyPoints );
+	void		setAttackDamage( unsigned int attackDamage );
 
-	bool			operator>( Fixed const & rhs ) const;
-	bool			operator<( Fixed const & rhs ) const;
-	bool			operator>=( Fixed const & rhs ) const;
-	bool			operator<=( Fixed const & rhs ) const;
-	bool			operator==( Fixed const & rhs ) const;
-	bool			operator!=( Fixed const & rhs ) const;
+	std::string	getName( void ) const;
+	unsigned int	getHitPoints( void ) const;
+	unsigned int	getEnergyPoints( void ) const;
+	unsigned int	getAttackDamage( void ) const;
 
-	Fixed&			operator++( void );
-	Fixed			operator++( int );
-	Fixed&			operator--( void );
-	Fixed			operator--( int );
-
-	static Fixed&		min( Fixed& lhs, Fixed& rhs );
-	static Fixed const &	min( Fixed const & lhs, Fixed const & rhs );
-	static Fixed&		max( Fixed& lhs, Fixed& rhs );
-	static Fixed const &	max( Fixed const & lhs, Fixed const & rhs );
-
-	int			getRawBits( void ) const;
-	void			setRawBits( int const raw );
-
-	float			toFloat( void ) const;
-	int			toInt( void ) const;
+	void		attack( const std::string& target );
+	void		damage( unsigned int amount );
+	void		beRepaired( unsigned int amount );
 
 };
 
-std::ostream&			operator<<( std::ostream& o, Fixed const & rhs );
+std::ostream&		operator<<( std::ostream& o, ClapTrap const & rhs );
