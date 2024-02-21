@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 10:48:55 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/20 23:47:41 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/21 02:42:59 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ public:
 	~Fixed( void );
 
 	Fixed&			operator=( Fixed const & rhs );
+
 	Fixed			operator+( Fixed const & rhs ) const;
 	Fixed			operator-( Fixed const & rhs ) const;
 	Fixed			operator*( Fixed const & rhs ) const;
 	Fixed			operator/( Fixed const & rhs ) const;
-	
+
 	bool			operator>( Fixed const & rhs ) const;
 	bool			operator<( Fixed const & rhs ) const;
 	bool			operator>=( Fixed const & rhs ) const;
@@ -47,8 +48,15 @@ public:
 	bool			operator==( Fixed const & rhs ) const;
 	bool			operator!=( Fixed const & rhs ) const;
 
-	Fixed			operator++( void ) const;
-	Fixed			operator--( void ) const;
+	Fixed&			operator++( void );
+	Fixed			operator++( int );
+	Fixed&			operator--( void );
+	Fixed			operator--( int );
+
+	static Fixed&		min( Fixed& lhs, Fixed& rhs );
+	static Fixed const &	min( Fixed const & lhs, Fixed const & rhs );
+	static Fixed&		max( Fixed& lhs, Fixed& rhs );
+	static Fixed const &	max( Fixed const & lhs, Fixed const & rhs );
 
 	int			getRawBits( void ) const;
 	void			setRawBits( int const raw );
@@ -58,4 +66,4 @@ public:
 
 };
 
-std::ostream &			operator<<( std::ostream& o, Fixed const & rhs );
+std::ostream&			operator<<( std::ostream& o, Fixed const & rhs );
