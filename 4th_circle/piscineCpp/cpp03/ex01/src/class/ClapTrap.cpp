@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:39:33 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 06:52:57 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 07:47:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 /******************************************************************************/
 ClapTrap::ClapTrap( void ) : _name( "Gedeon" ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {
 
-	std::cout << "ClapTrap Default Constructor called";
-	std::cout << "." << std::endl;
+	std::cout << "ClapTrap Default Constructor called." << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) : _name( name ), _hitPoints( 10 ), _energyPoints( 10 ), _attackDamage( 0 ) {
@@ -107,7 +106,7 @@ unsigned int	ClapTrap::getAttackDamage( void ) const {
 void	ClapTrap::attack( const std::string& target ) {
 
 	if (_hitPoints == 0) {
-		
+
 		std::cout << "ClapTrap " << _name;
 		std::cout << " can't attack, " << _name;
 		std::cout << " is dead (#ripbozo 😹👎👎)" << std::endl;

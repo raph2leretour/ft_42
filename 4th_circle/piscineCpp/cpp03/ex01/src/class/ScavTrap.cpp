@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 01:21:58 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 06:52:40 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 08:06:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ ScavTrap::ScavTrap( void ) {
 	_energyPoints = 50;
 	_attackDamage = 20;
 
-	std::cout << "ScavTrap Default Constructor called";
-	std::cout << "." << std::endl;
+	std::cout << "ScavTrap Default Constructor called." << std::endl;
 }
 
 ScavTrap::ScavTrap( std::string name ) {
@@ -76,7 +75,7 @@ ScavTrap&	ScavTrap::operator=( ScavTrap const & rhs ) {
 void	ScavTrap::attack( const std::string& target ) {
 
 	if (_hitPoints == 0) {
-		
+
 		std::cout << "ScavTrap " << _name;
 		std::cout << " can't attack, " << _name;
 		std::cout << " is dead (#ripbozo 😹👎👎)" << std::endl;
@@ -101,7 +100,7 @@ void	ScavTrap::guardGate( void ) {
 	if ( _hitPoints == 0 ) {
 
 		std::cout << "ScavTrap " << _name;
-		std::cout << " can't take damage, " << _name;
+		std::cout << " can't keep the Gate, " << _name;
 		std::cout << " is already dead (#ripbozo 😹👎👎)" << std::endl;
 	} else if ( _energyPoints == 0 ) {
 

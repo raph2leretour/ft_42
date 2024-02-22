@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 04:15:05 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 06:52:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 07:46:28 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ FragTrap::FragTrap( void ) {
 	_energyPoints = 100;
 	_attackDamage = 30;
 
-	std::cout << "FragTrap Default Constructor called;
-	std::cout << "." << std::endl;
+	std::cout << "FragTrap Default Constructor called." << std::endl;
 }
 
 FragTrap::FragTrap( std::string name ) {

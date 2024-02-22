@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:03:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 03:47:59 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 08:04:19 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main( void ) {
 	b.attack( "Gerard" );
 	b.beRepaired( 10 );
 	b.takeDamage( MOINS );
+	b.guardGate();
 
 	return 0;
 }
