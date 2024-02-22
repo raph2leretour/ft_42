@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 12:17:06 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:43:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:09:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,17 @@ private:
 
 public:
 	Brain( void );
+	Brain( std::string idea );
 	Brain( Brain const & src );
 	virtual ~Brain( void );
 
 	Brain&		operator=( Brain const & rhs );
 
+	std::string*	getIdeas( void ) const;
+
 };
+
+/******************************************************************************/
+/*   REDIRECTION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&		operator<<( std::ostream& o, Brain const & rhs );

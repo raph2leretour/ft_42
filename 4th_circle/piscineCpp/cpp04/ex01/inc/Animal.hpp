@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 10:24:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:16:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class Animal {
 
 protected:
 	std::string		_type;
+
+	Brain			_brain;
 
 public:
 	Animal( void );

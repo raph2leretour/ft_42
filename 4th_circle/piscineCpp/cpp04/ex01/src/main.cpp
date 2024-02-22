@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:49:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:14:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main( void ) {
 
 	while (i < num)
 	{
-		b[i]->PrintIdeas();
+		std::cout << b[i]->_brain;
 		b[i]->makeSound();
 		delete b[i];
 		i++;

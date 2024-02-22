@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:51:53 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:59:32 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:00:20 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,9 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-WrongCat::WrongCat( void ) : _type( "WrongCat" ) {
+WrongCat::WrongCat( void ) : WrongAnimal( "Wrong cat" ) {
 
 	std::cout << _type << ": default constructor called" << std::endl;
-}
-
-WrongCat::WrongCat( WrongCat const & src ) : _type( src._type ) {
-
-	std::cout << _type << ": copy constructor called" << std::endl;
 }
 
 WrongCat::~WrongCat( void ) {
@@ -34,27 +29,9 @@ WrongCat::~WrongCat( void ) {
 }
 
 /******************************************************************************/
-/*   ASSIGNATION OPERATOR                                                     */
-/******************************************************************************/
-WrongCat&	WrongCat::operator=( WrongCat const & rhs ) {
-
-	_type = rhs._type;
-
-	return *this;
-}
-
-/******************************************************************************/
-/*   GETTERS                                                                  */
-/******************************************************************************/
-std::string	WrongCat::getType( void ) const {
-
-	return _type;
-}
-
-/******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
 void	WrongCat::makeSound( void ) const {
 
-	std::cout << _type << ": ouaf !" << std::endl;
+	std::cout << _type << ": meow !" << std::endl;
 }

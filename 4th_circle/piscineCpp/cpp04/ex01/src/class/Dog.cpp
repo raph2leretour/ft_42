@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:42:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:13:26 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /******************************************************************************/
 Dog::Dog( void ) : _type( "Dog" ) {
 
-	_brain = new Brain();
+	_brain = new Brain( "ouaf !" );
 
 	std::cout << _type << ": default constructor called" << std::endl;
 }
