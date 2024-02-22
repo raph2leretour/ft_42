@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 10:54:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:55:48 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Dog::Dog( void ) : _type( "Dog" ) {}
+Dog::Dog( void ) : _type( "Dog" ) {
 
-Dog::Dog( Dog const & src ) : _type( src._type ) {}
+	std::cout << _type << ": default constructor called" << std::endl;
+}
 
-Dog::~Dog( void ) {}
+Dog::Dog( Dog const & src ) : _type( src._type ) {
+
+	std::cout << _type << ": copy constructor called" << std::endl;
+}
+
+Dog::~Dog( void ) {
+
+	std::cout << _type << ": default destructor called" << std::endl;
+}
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 10:24:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,29 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
+#include <iostream>
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
+class Animal {
 
-private:
-	std::string	_type;
+protected:
+	std::string		_type;
 
 public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	Animal( void );
+	Animal( Animal const & src );
+	virtual ~Animal( void );
 
-	Cat&		operator=( Cat const & rhs );
+	Animal&			operator=( Animal const & rhs );
 
-	std::string	getType( void ) const;
+	virtual std::string	getType( void ) const;
 
-	void		makeSound( void ) const;
+	virtual void		makeSound( void ) const;
 };
+
+/******************************************************************************/
+/*   REDIRECTION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&		operator<<( std::ostream& o, Animal const & rhs );

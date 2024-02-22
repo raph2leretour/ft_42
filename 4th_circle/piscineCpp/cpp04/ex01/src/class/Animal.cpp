@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:59:54 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 08:45:09 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 13:20:42 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Cat.hpp"
+#include "Animal.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Cat::Cat( void ) : _type( "Cat" ) {
+Animal::Animal( void ) : _type( "random animal" ) {
 
 	std::cout << _type << ": default constructor called" << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : _type( src._type ) {
+Animal::Animal( Animal const & src ) : _type( src._type ) {
 
-	std::cout << _type << ": copy constructor called" << std::endl;
+	std::cout << _type << ": copy constructor called" <<std::endl;
 }
 
-Cat::~Cat( void ) {
+Animal::~Animal( void ) {
 
 	std::cout << _type << ": default destructor called" << std::endl;
 }
@@ -36,7 +36,7 @@ Cat::~Cat( void ) {
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-Cat&	Cat::operator=( Cat const & rhs ) {
+Animal&	Animal::operator=( Animal const & rhs ) {
 
 	_type = rhs._type;
 
@@ -46,7 +46,7 @@ Cat&	Cat::operator=( Cat const & rhs ) {
 /******************************************************************************/
 /*   GETTERS                                                                  */
 /******************************************************************************/
-std::string	Cat::getType( void ) const {
+std::string	Animal::getType( void ) const {
 
 	return _type;
 }
@@ -54,7 +54,17 @@ std::string	Cat::getType( void ) const {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-void	Cat::makeSound( void ) const {
+void	Animal::makeSound( void ) const {
 
-	std::cout << _type << ": miaou !" << std::endl;
+	std::cout << _type << ": animal !" << std::endl;
+}
+
+/******************************************************************************/
+/*   REDIRECTION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&	operator<<( std::ostream& o, Animal const & rhs ) {
+
+	o << "Type = " << rhs.getType();
+
+	return o;
 }

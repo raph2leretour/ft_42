@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 11:17:48 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 11:30:12 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
+class WrongCat : public WrongAnimal {
 
 private:
 	std::string	_type;
 
 public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	WrongCat( void );
+	WrongCat( WrongCat const & src );
+	virtual ~WrongCat( void );
 
-	Cat&		operator=( Cat const & rhs );
+	WrongCat&	operator=( WrongCat const & rhs );
 
 	std::string	getType( void ) const;
 

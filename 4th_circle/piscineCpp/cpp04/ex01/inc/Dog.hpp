@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 09:44:13 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 13:38:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,24 @@
 /*   INCLUDES                                                                 */
 /******************************************************************************/
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
+class Dog : public Animal {
 
 private:
 	std::string	_type;
 
-public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	Brain*		_brain;
 
-	Cat&		operator=( Cat const & rhs );
+public:
+	Dog( void );
+	Dog( Dog const & src );
+	virtual ~Dog( void );
+
+	Dog&		operator=( Dog const & rhs );
 
 	std::string	getType( void ) const;
 

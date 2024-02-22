@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 10:50:40 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 10:51:23 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,29 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
+#include <iostream>
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
+class WrongAnimal {
 
-private:
-	std::string	_type;
+protected:
+	std::string		_type;
 
 public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	WrongAnimal( void );
+	WrongAnimal( WrongAnimal const & src );
+	virtual ~WrongAnimal( void );
 
-	Cat&		operator=( Cat const & rhs );
+	WrongAnimal&		operator=( WrongAnimal const & rhs );
 
-	std::string	getType( void ) const;
+	virtual std::string	getType( void ) const;
 
-	void		makeSound( void ) const;
+	virtual void		makeSound( void ) const;
 };
+
+/******************************************************************************/
+/*   REDIRECTION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&		operator<<( std::ostream& o, WrongAnimal const & rhs );

@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:45:09 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 10:47:26 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:19:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Animal::Animal( void ) : _type( "undestriptible creature" ) {}
+Animal::Animal( void ) : _type( "random animal" ) {
 
-Animal::Animal( Animal const & src ) : _type( src._type ) {}
+	std::cout << _type << ": default constructor called" << std::endl;
+}
 
-Animal::~Animal( void ) {}
+Animal::Animal( Animal const & src ) : _type( src._type ) {
+
+	std::cout << _type << ": copy constructor called" <<std::endl;
+}
+
+Animal::~Animal( void ) {
+
+	std::cout << _type << ": default destructor called" << std::endl;
+}
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
@@ -47,7 +56,7 @@ std::string	Animal::getType( void ) const {
 /******************************************************************************/
 void	Animal::makeSound( void ) const {
 
-	std::cout << _type << ":" << std::endl;
+	std::cout << _type << ": animal !" << std::endl;
 }
 
 /******************************************************************************/

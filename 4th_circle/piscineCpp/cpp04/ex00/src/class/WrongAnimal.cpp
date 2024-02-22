@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:54:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 10:55:16 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 13:20:08 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-WrongAnimal::WrongAnimal( void ) : _type( "undestriptible creature" ) {}
+WrongAnimal::WrongAnimal( void ) : _type( "wrong random animal" ) {
 
-WrongAnimal::WrongAnimal( WrongAnimal const & src ) : _type( src._type ) {}
+	std::cout << _type << ": default contructor called" << std::endl;
+}
 
-WrongAnimal::~WrongAnimal( void ) {}
+WrongAnimal::WrongAnimal( WrongAnimal const & src ) : _type( src._type ) {
+
+	std::cout << _type << ": copy constructor called" << std::endl;
+}
+
+WrongAnimal::~WrongAnimal( void ) {
+
+	std::cout << _type << ": default destructor called" << std::endl;
+}
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
@@ -47,7 +56,7 @@ std::string	WrongAnimal::getType( void ) const {
 /******************************************************************************/
 void	WrongAnimal::makeSound( void ) const {
 
-	std::cout << _type << ":" << std::endl;
+	std::cout << _type << ": wrong animal !" << std::endl;
 }
 
 /******************************************************************************/

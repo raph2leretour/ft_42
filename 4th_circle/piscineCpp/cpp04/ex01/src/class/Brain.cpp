@@ -1,38 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 12:19:58 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 13:15:40 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
+#include "Brain.hpp"
 
 /******************************************************************************/
-/*   CLASSES                                                                  */
+/*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-class Cat : public Animal {
+Brain::Brain( void ) {
 
-private:
-	std::string	_type;
+	std::cout << "Brain: default constructor called" << std::endl;
+}
 
-public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+Brain::Brain( Brain const & src ) {
 
-	Cat&		operator=( Cat const & rhs );
+	*this = src;
 
-	std::string	getType( void ) const;
+	std::cout << "Brain: copy constructor called" <<std::endl;
+}
 
-	void		makeSound( void ) const;
-};
+Brain::~Brain( void ) {
+
+	std::cout << "Brain: default destructor called" << std::endl;
+}
+
+/******************************************************************************/
+/*   ASSIGNATION OPERATOR                                                     */
+/******************************************************************************/
+Brain&	Brain::operator=( Brain const & rhs ) {
+
+	for ( int i = 0; i < 100; i++ ) {
+
+		_ideas[ i ] = rhs._ideas[ i ];
+	}
+
+	return *this;
+}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:43 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 12:17:06 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 13:43:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
+#include <iostream>
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
+class Brain {
 
 private:
-	std::string	_type;
+	std::string	_ideas[ 100 ];
 
 public:
-	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	Brain( void );
+	Brain( Brain const & src );
+	virtual ~Brain( void );
 
-	Cat&		operator=( Cat const & rhs );
+	Brain&		operator=( Brain const & rhs );
 
-	std::string	getType( void ) const;
-
-	void		makeSound( void ) const;
 };

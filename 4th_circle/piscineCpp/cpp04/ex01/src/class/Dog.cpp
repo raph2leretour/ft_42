@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.cpp                                            :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:59:54 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/22 13:42:13 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Cat.hpp"
+#include "Dog.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Cat::Cat( void ) : _type( "Cat" ) {
+Dog::Dog( void ) : _type( "Dog" ) {
+
+	_brain = new Brain();
 
 	std::cout << _type << ": default constructor called" << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : _type( src._type ) {
+Dog::Dog( Dog const & src ) : _type( src._type ), _brain( src._brain ) {
 
 	std::cout << _type << ": copy constructor called" << std::endl;
 }
 
-Cat::~Cat( void ) {
+Dog::~Dog( void ) {
+
+	delete _brain;
 
 	std::cout << _type << ": default destructor called" << std::endl;
 }
@@ -36,9 +40,11 @@ Cat::~Cat( void ) {
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-Cat&	Cat::operator=( Cat const & rhs ) {
+Dog&	Dog::operator=( Dog const & rhs ) {
 
 	_type = rhs._type;
+
+	_brain = rhs._brain;
 
 	return *this;
 }
@@ -46,7 +52,7 @@ Cat&	Cat::operator=( Cat const & rhs ) {
 /******************************************************************************/
 /*   GETTERS                                                                  */
 /******************************************************************************/
-std::string	Cat::getType( void ) const {
+std::string	Dog::getType( void ) const {
 
 	return _type;
 }
@@ -54,7 +60,7 @@ std::string	Cat::getType( void ) const {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-void	Cat::makeSound( void ) const {
+void	Dog::makeSound( void ) const {
 
-	std::cout << _type << ": miaou !" << std::endl;
+	std::cout << _type << ": ouaf !" << std::endl;
 }

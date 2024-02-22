@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 #   NAME                                                                       #
 #------------------------------------------------------------------------------#
-NAME		:= ex00
+NAME		:= ex01
 
 #------------------------------------------------------------------------------#
 #   INGREDIENTS                                                                #
@@ -14,7 +14,8 @@ SRCS		:=		\
 	class/Dog.cpp		\
 	class/Cat.cpp		\
 	class/WrongAnimal.cpp	\
-	class/WrongCat.cpp
+	class/WrongCat.cpp	\
+	class/Brain.cpp
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 
