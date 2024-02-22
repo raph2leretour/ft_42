@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 16:30:38 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 01:59:25 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 03:43:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@
 /******************************************************************************/
 class ClapTrap {
 
-private:
+protected:
 	std::string	_name;
 	unsigned int	_hitPoints;
 	unsigned int	_energyPoints;
 	unsigned int	_attackDamage;
-
-	static unsigned int const	_hitPointsMax = 10;
 
 public:
 	ClapTrap( void );

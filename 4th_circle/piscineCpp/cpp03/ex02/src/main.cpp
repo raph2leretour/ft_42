@@ -6,52 +6,41 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 22:03:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 00:54:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 06:42:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
+
 int	main( void ) {
-	ClapTrap	a = ClapTrap( "Gerard" );
 
-	std::cout << a << std:: endl << std::endl;
+	ClapTrap *s = new FragTrap("Piou");
+	FragTrap a("A");
+	FragTrap clapy("Clapy");
 
-	for ( int i = 0; i < 4; i++ ) {
-
-		a.attack( "nobody" );
-
-		std::cout << a << std:: endl << std::endl;
-	}
-
-	for ( int i = 0; i < 4; i++ ) {
-
-		a.beRepaired( 1 );
-
-		std::cout << a << std:: endl << std::endl;
-	}
-
-	a.takeDamage( 3 );
-
-	std::cout << a << std:: endl << std::endl;
-
+	clapy.attack("Poubelle1");
+	clapy.attack("Poubelle2");
+	clapy.attack("Poubelle3");
+	clapy.attack("Poubelle4");
+	clapy.beRepaired( 2 );
+	clapy.attack("Poubelle6");
+	clapy.attack("Poubelle7");
+	clapy.attack("Poubelle8");
+	clapy.attack("Poubelle9");
+	clapy.attack("Poubelle10");
+	clapy.attack("Poubelle11");
+	clapy.takeDamage(0);
+	clapy.takeDamage(1);
+	clapy.attack("Poubelle12");
+	clapy.attack("Poubelle");
+	clapy.attack("Poubelle");
+	clapy.highFivesGuys();
+	a.takeDamage(8);
+	a.takeDamage(4);
 	a.beRepaired( 2 );
+	s->attack("Poubelle");
 
-	std::cout << a << std:: endl << std::endl;
-
-	a.beRepaired( 10 );
-
-	std::cout << a << std:: endl << std::endl;
-
-	a.attack( "nobody" );
-	a.beRepaired( 10 );
-	a.setEnergyPoints( 2 );
-	a.takeDamage( BEAUCOUP );
-
-	std::cout << std::endl << a << std:: endl << std::endl;
-
-	a.attack( "nobody" );
-	a.beRepaired( 10 );
-	a.takeDamage( MOINS );
+	delete s;
 
 	return 0;
 }
