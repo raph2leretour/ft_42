@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:38:47 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:40:16 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 /*   INCLUDES                                                                 */
 /******************************************************************************/
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
@@ -25,8 +24,6 @@ class Cat : public Animal {
 
 private:
 	std::string	_type;
-
-	Brain*		_brain;
 
 public:
 	Cat( void );
@@ -38,5 +35,4 @@ public:
 	std::string	getType( void ) const;
 
 	void		makeSound( void ) const;
-
 };

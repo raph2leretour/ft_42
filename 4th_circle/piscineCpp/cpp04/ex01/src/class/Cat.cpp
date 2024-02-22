@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 16:13:34 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 16:45:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,15 @@
 /******************************************************************************/
 Cat::Cat( void ) : _type( "Cat" ) {
 
-	_brain = new Brain( "meow !" );
-
 	std::cout << _type << ": default constructor called" << std::endl;
 }
 
-Cat::Cat( Cat const & src ) : _type( src._type ), _brain( src._brain ) {
+Cat::Cat( Cat const & src ) : _type( src._type ) {
 
 	std::cout << _type << ": copy constructor called" << std::endl;
 }
 
 Cat::~Cat( void ) {
-
-	delete _brain;
 
 	std::cout << _type << ": default destructor called" << std::endl;
 }
@@ -43,8 +39,6 @@ Cat::~Cat( void ) {
 Cat&	Cat::operator=( Cat const & rhs ) {
 
 	_type = rhs._type;
-
-	_brain = rhs._brain;
 
 	return *this;
 }

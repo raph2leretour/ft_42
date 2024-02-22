@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:54:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:21:00 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:20:24 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,22 @@
 /******************************************************************************/
 WrongAnimal::WrongAnimal( void ) : _type( "wrong random animal" ) {
 
-	std::cout << _type << ": default contructor called" << std::endl;
+	std::cout << _type << ": default constructor called" << std::endl;
+}
+
+WrongAnimal::WrongAnimal( std::string type ) : _type( type ) {
+
+	std::cout << "Wrong random animal: " << _type << ": string constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal( WrongAnimal const & src ) : _type( src._type ) {
 
-	std::cout << _type << ": copy constructor called" << std::endl;
+	std::cout << "Wrong random animal: " << _type << " copy constructor called" << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( void ) {
 
-	std::cout << _type << ": default destructor called" << std::endl;
+	std::cout << "Wrong random animal: default destructor called" << std::endl;
 }
 
 /******************************************************************************/
@@ -64,7 +69,7 @@ void	WrongAnimal::makeSound( void ) const {
 /******************************************************************************/
 std::ostream&	operator<<( std::ostream& o, WrongAnimal const & rhs ) {
 
-	o << "Type = " << rhs.getType();
+	o << "Wrong animal type = " << rhs.getType();
 
 	return o;
 }
