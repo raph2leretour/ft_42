@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 13:17:36 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:07:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ class Cat : public Animal {
 
 public:
 	Cat( void );
-	~Cat( void );
+	Cat( Cat const & src );
+	virtual ~Cat( void );
+
+	Cat&	operator=( Cat const & rhs );
 
 	void		makeSound( void ) const;
 };

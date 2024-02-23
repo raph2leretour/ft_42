@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:50:40 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 18:08:58 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:10:31 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	WrongAnimal( void );
 	WrongAnimal( std::string type );
 	WrongAnimal( WrongAnimal const & src );
-	virtual ~WrongAnimal( void );
+	~WrongAnimal( void );
 
 	WrongAnimal&	operator=( WrongAnimal const & rhs );
 

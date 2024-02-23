@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:45:09 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:24:30 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:15:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,21 @@
 AAnimal::AAnimal( void ) : _type( "random animal" ) {
 
 	std::cout << _type << ": default constructor called." << std::endl;
-
-	_brain = new Brain();
 }
 
 AAnimal::AAnimal( std::string type ) : _type( type ) {
 
 	std::cout << "Random animal: string constructor called for " << _type << "." << std::endl;
-
-	_brain = new Brain( _type );
 }
 
 AAnimal::AAnimal( AAnimal const & src ) : _type( src._type ) {
 
 	std::cout << "Random animal: copy constructor called for " << _type << "." <<std::endl;
-
-	_brain = new Brain( src._type );
 }
 
 AAnimal::~AAnimal( void ) {
 
 	std::cout << "Random animal: default destructor called." << std::endl;
-
-	delete _brain;
 }
 
 /******************************************************************************/
@@ -57,11 +49,6 @@ AAnimal&	AAnimal::operator=( AAnimal const & rhs ) {
 	}
 
 	return *this;
-}
-
-void	AAnimal::printIdeas( void ) const {
-
-	this->_brain->printIdeas();
 }
 
 /******************************************************************************/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 09:44:13 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:21:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:12:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@
 /******************************************************************************/
 class Dog : public AAnimal {
 
+private:
+	Brain*	_brain;
+
 public:
 	Dog( void );
-	~Dog( void );
+	Dog( Dog const & src );
+	virtual ~Dog( void );
+
+	Dog&	operator=( Dog const & rhs);
 
 	void	makeSound( void ) const;
 	void	printIdeas( void ) const;

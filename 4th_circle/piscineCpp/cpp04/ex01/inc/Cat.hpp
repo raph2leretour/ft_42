@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 15:40:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:06:45 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,15 @@
 /******************************************************************************/
 class Cat : public Animal {
 
+private:
+	Brain*	_brain;
+
 public:
 	Cat( void );
+	Cat( Cat const & src );
 	~Cat( void );
+
+	Cat&	operator=( Cat const & rhs );
 
 	void	makeSound( void ) const;
 	void	printIdeas( void ) const;

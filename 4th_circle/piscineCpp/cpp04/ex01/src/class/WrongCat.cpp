@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:51:53 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 13:34:23 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 19:44:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,19 @@ WrongCat::WrongCat( void ) : WrongAnimal( "Wrong cat" ) {
 WrongCat::~WrongCat( void ) {
 
 	std::cout << _type << ": default destructor called." << std::endl;
+}
+
+/******************************************************************************/
+/*   ASSIGNATION OPERATOR                                                     */
+/******************************************************************************/
+WrongCat&	WrongCat::operator=( WrongCat const & rhs ) {
+
+	if ( this != &rhs ) {
+
+		_type = rhs._type;
+	}
+
+	return *this;
 }
 
 /******************************************************************************/

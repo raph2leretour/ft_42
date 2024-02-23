@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:21:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:03:21 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,36 @@
 Dog::Dog( void ) : AAnimal( "Dog" ) {
 
 	std::cout << _type << ": default constructor called." << std::endl;
+
+	_brain = new Brain( "Dog" );
+}
+
+Dog::Dog( Dog const & src ) : AAnimal( src ) {
+
+	std::cout << _type << ": copy constructor called." << std::endl;
+
+	_type = src._type;
+	_brain = new Brain( "Dog" );
 }
 
 Dog::~Dog( void ) {
 
 	std::cout << _type << ": default destructor called." << std::endl;
+
+	delete _brain;
+}
+
+/******************************************************************************/
+/*   ASSIGNATION OPERATOR                                                     */
+/******************************************************************************/
+Dog&	Dog::operator=( Dog const & rhs ) {
+
+	if ( this != &rhs ) {
+
+		_type = rhs._type;
+	}
+
+	return *this;
 }
 
 /******************************************************************************/
@@ -38,5 +63,5 @@ void	Dog::makeSound( void ) const {
 
 void	Dog::printIdeas( void ) const {
 
-	this->_brain->printIdeas();
+	_brain->printIdeas();
 }
