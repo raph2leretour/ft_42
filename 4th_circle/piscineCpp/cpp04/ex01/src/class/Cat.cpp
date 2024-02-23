@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 20:03:53 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 20:53:38 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,5 @@ void	Cat::makeSound( void ) const {
 
 void	Cat::printIdeas( void ) const {
 
-	this->_brain->printIdeas();
+	_brain->printIdeas();
 }

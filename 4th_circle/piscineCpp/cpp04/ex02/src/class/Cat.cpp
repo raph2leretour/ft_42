@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 20:00:56 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:00:54 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Cat::makeSound( void ) const {
 	std::cout << _type << ": miaou !" << std::endl;
 }
 
-void	Cat::printIdeas( void ) const {
+void Cat::printIdeas( void ) const {
 
-	this->_brain->printIdeas();
+	_brain->printIdeas();
 }
