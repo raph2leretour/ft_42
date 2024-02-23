@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 09:44:13 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 11:22:55 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:22:00 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,9 @@
 /******************************************************************************/
 class Dog : public Animal {
 
-private:
-	std::string	_type;
-
 public:
 	Dog( void );
-	Dog( Dog const & src );
-	virtual ~Dog( void );
-
-	Dog&		operator=( Dog const & rhs );
-
-	std::string	getType( void ) const;
+	~Dog( void );
 
 	void		makeSound( void ) const;
 };
