@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 21:00:44 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:14:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ Dog&	Dog::operator=( Dog const & rhs ) {
 	if ( this != &rhs ) {
 
 		_type = rhs._type;
+		_brain = new Brain( "Dog" );
 	}
 
 	return *this;

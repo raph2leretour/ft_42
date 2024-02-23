@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 21:00:54 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 21:13:36 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ Cat&	Cat::operator=( Cat const & rhs ) {
 	if ( this != &rhs ) {
 
 		_type = rhs._type;
+		_brain = new Brain( "cat" );
 	}
 
 	return *this;
