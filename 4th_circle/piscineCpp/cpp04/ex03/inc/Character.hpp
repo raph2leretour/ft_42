@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 18:13:47 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 18:16:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,23 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include <iostream>
-#include "Brain.hpp"
+#include "ICharacter.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Animal {
-
-protected:
-	std::string	_type;
-
-	Brain*		_brain;
+class Character {
 
 public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
+	Character( void );
+	Character( std::string const & type );
+	Character( Character const & src );
+	_Character( void ) {}
 
-	Animal&		operator=( Animal const & rhs );
+	Character&		operator=( Character const & rhs );
 
-	std::string	getType( void ) const;
-
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
+	std::string const &	getName( void );
+	void			equip( Character* m );
+	void			unequip( int idx );
+	void			use( int idx, ICharachter& target );
 };
-
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );

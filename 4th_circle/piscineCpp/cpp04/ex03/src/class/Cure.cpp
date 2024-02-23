@@ -1,48 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 18:05:32 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 18:10:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include <iostream>
-#include "Brain.hpp"
+#include "Cure.hpp"
 
 /******************************************************************************/
-/*   CLASSES                                                                  */
+/*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-class Animal {
+Cure::Cure( void ) : _type( "cure" ) {}
 
-protected:
-	std::string	_type;
+Cure::Cure( Cure const & src ) : _type( src._type ) {}
 
-	Brain*		_brain;
-
-public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
-
-	Animal&		operator=( Animal const & rhs );
-
-	std::string	getType( void ) const;
-
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
-};
+Cure::~Cure( void ) {}
 
 /******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
+/*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );
+Cure&	Cure::operator=( Cure const & rhs ) {
+
+	if ( this != &rhs ) {
+
+		_type = rhs._type;
+	}
+
+	return *this;
+}
+
+/******************************************************************************/
+/*   FUNCTIONS                                                                */
+/******************************************************************************/
+AMateria*	clone( void ) const {}
+
+void	use( ICharacter& taget ) {}

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:15:27 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 12:12:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:16:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,56 @@
 
 int	main( void ) {
 
-	const Animal*	 	meta = new Animal();
-	const Animal* 		dog = new Dog();
-	const Animal* 		cat = new Cat();
-	const WrongAnimal*	wrongMeta = new WrongAnimal();
-	const WrongAnimal*	wrongCat = new WrongCat();
+	{
+	int num = 10;
+	const Animal* j = new Dog();
+	const Animal* c = new Cat();
+	Animal* b[10];
+	int i =0;
+	while (i < num / 2)
+	{
+		b[i] = new Dog();
+		i++;
+	}
+	while (i < num)
+	{
+		b[i] = new Cat();
+		i++;
+	}
+	delete j;//should not create a leak
+	delete c;
+	i =0;
 
-	meta->makeSound();
-	dog->makeSound();
-	cat->makeSound();
-	wrongMeta->makeSound();
-	wrongCat->makeSound();
+	while (i < num)
+	{
+		b[i]->printIdeas();
+		b[i]->makeSound();
+		delete b[i];
+		i++;
+	}
+	}
 
-	delete meta;
-	delete dog;
-	delete cat;
-	delete wrongMeta;
-	delete wrongCat;
+	std::cout << "------------------GivenMain----------------------- " << std::endl;
+
+	{
+	const Dog d;
+	const Dog g(d);
+
+	Animal* j = new Dog();
+	Animal* f = new Dog(d);
+	const Animal* i = new Cat();
+
+	*f = *j;
+
+	delete f;
+	delete j;//should not create a leak
+	delete i;
+	}
+
+	const Dog plip;
+	{
+		Dog plop = plip;
+	}
 
 	return 0;
 }

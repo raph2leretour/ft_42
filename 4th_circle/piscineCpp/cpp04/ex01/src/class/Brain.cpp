@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 12:19:58 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 16:13:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 14:04:01 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 15:43:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,42 +20,39 @@
 /******************************************************************************/
 Brain::Brain( void ) {
 
+	std::cout << "Brain: default constructor called." << std::endl;
+
 	for ( int i = 0; i < 100; i++ ) {
 
-		_ideas[ i ] = "animal !";
+		_ideas[ i ] = "*Random animal though*";
 	}
-
-	std::cout << "Brain: default constructor called" << std::endl;
 }
 
 Brain::Brain( std::string idea ) {
 
+	std::cout << "Brain: string constructor called for " << idea << "." << std::endl;
+
 	for ( int i = 0; i < 100; i++ ) {
 
-		_ideas[ i ] = idea;
+		_ideas[ i ] = "*";
+		_ideas[ i ] += idea;
+		_ideas[ i ] += " though*";
 	}
-
-	std::cout << "Brain: string constructor called" << std::endl;
 }
 
 Brain::Brain( Brain const & src ) {
 
-	*this = src;
+	std::cout << "Brain: copy constructor called for " << src._ideas[ 0 ] << "." <<std::endl;
 
-	std::cout << "Brain: copy constructor called" <<std::endl;
+	for ( int i = 0; i < 100; i++ ) {
+
+		_ideas[ i ] = src._ideas[ i ];
+	}
 }
 
 Brain::~Brain( void ) {
 
-	std::cout << "Brain: default destructor called" << std::endl;
-}
-
-/******************************************************************************/
-/*   GETTERS                                                                  */
-/******************************************************************************/
-std::string*	getIdeas( void ) const {
-
-	return _ideas;
+	std::cout << "Brain: default destructor called." << std::endl;
 }
 
 /******************************************************************************/
@@ -63,25 +60,23 @@ std::string*	getIdeas( void ) const {
 /******************************************************************************/
 Brain&	Brain::operator=( Brain const & rhs ) {
 
-	for ( int i = 0; i < 100; i++ ) {
+	if ( this != &rhs ) {
 
-		_ideas[ i ] = rhs._ideas[ i ];
+		for ( int i = 0; i < 100; i++ ) {
+			_ideas[ i ] = rhs._ideas[ i ];
+		}
 	}
 
 	return *this;
 }
 
 /******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
+/*   FUNCTIONS                                                                */
 /******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, Brain const & rhs ) {
-
-	std::string	*idea = rhs.getIdeas();
+void	Brain::printIdeas( void ) const {
 
 	for ( int i = 0; i < 100; i++ ) {
 
-		o << idea[ i ] << std::endl;
+		std::cout << _ideas[ i ] << std::endl;
 	}
-
-	return o;
 }

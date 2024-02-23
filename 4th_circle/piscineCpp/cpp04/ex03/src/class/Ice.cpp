@@ -1,48 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 17:59:41 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 18:10:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#pragma once
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include <iostream>
-#include "Brain.hpp"
+#include "Ice.hpp"
 
 /******************************************************************************/
-/*   CLASSES                                                                  */
+/*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-class Animal {
+Ice::Ice( void ) : _type( "ice" ) {}
 
-protected:
-	std::string	_type;
+Ice::Ice( Ice const & src ) : _type( src._type ) {}
 
-	Brain*		_brain;
-
-public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
-
-	Animal&		operator=( Animal const & rhs );
-
-	std::string	getType( void ) const;
-
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
-};
+Ice::~Ice( void ) {}
 
 /******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
+/*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );
+Ice&	Ice::operator=( Ice const & rhs ) {
+
+	if ( this != &rhs ) {
+
+		_type = rhs._type;
+	}
+
+	return *this;
+}
+
+/******************************************************************************/
+/*   FUNCTIONS                                                                */
+/******************************************************************************/
+AMateria*	clone( void ) const {}
+
+void	use( ICharacter& target ) {
+
+	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+}

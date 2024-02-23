@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 17:05:17 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 17:56:43 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,25 @@
 /*   INCLUDES                                                                 */
 /******************************************************************************/
 #include <iostream>
-#include "Brain.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Animal {
+class AMateria {
 
 protected:
-	std::string	_type;
-
-	Brain*		_brain;
+	std::string		_type;
 
 public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
+	AMateria( void );
+	AMateria( std::string const & type );
+	AMateria( AMateria const & src );
+	virtual ~AMateria( void );
 
-	Animal&		operator=( Animal const & rhs );
+	AMateria&		operator=( AMateria const & rhs );
 
-	std::string	getType( void ) const;
+	std::string const &	getType( void ) const;
 
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
+	virtual AMateria*	clone( void ) const = 0;
+	virtual void		use( ICharacter& target );
 };
-
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );

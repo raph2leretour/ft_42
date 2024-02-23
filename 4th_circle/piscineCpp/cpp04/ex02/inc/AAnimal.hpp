@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:54:39 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:20:33 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 /*   INCLUDES                                                                 */
 /******************************************************************************/
 #include <iostream>
+#include "Brain.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
@@ -23,18 +24,22 @@
 class AAnimal {
 
 protected:
-	std::string		_type;
+	std::string	_type;
+
+	Brain*		_brain;
 
 public:
 	AAnimal( void );
+	AAnimal( std::string type );
 	AAnimal( AAnimal const & src );
 	virtual ~AAnimal( void );
 
-	AAnimal&			operator=( AAnimal const & rhs );
+	AAnimal&		operator=( AAnimal const & rhs );
 
-	virtual std::string	getType( void ) const = 0;
+	std::string	getType( void ) const;
 
-	virtual void		makeSound( void ) const = 0;
+	virtual void	makeSound( void ) const = 0;
+	virtual void		printIdeas( void ) const = 0;
 };
 
 /******************************************************************************/

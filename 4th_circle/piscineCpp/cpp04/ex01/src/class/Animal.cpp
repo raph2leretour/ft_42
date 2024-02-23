@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:45:09 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 18:21:47 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:42:09 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,30 @@
 /******************************************************************************/
 Animal::Animal( void ) : _type( "random animal" ) {
 
-	std::cout << _type << ": default constructor called" << std::endl;
+	std::cout << _type << ": default constructor called." << std::endl;
+
+	_brain = new Brain();
 }
 
 Animal::Animal( std::string type ) : _type( type ) {
 
-	std::cout << "Random animal: " << _type << ": string constructor called" << std::endl;
+	std::cout << "Random animal: string constructor called for " << _type << "." << std::endl;
+
+	_brain = new Brain( _type );
 }
 
 Animal::Animal( Animal const & src ) : _type( src._type ) {
 
-	std::cout << "Random animal: " << _type << ": copy constructor called" <<std::endl;
+	std::cout << "Random animal: copy constructor called for " << _type << "." <<std::endl;
+
+	_brain = new Brain( src._type );
 }
 
 Animal::~Animal( void ) {
 
-	std::cout << "Random animal: default destructor called" << std::endl;
+	std::cout << "Random animal: default destructor called." << std::endl;
+
+	delete _brain;
 }
 
 /******************************************************************************/
@@ -49,6 +57,11 @@ Animal&	Animal::operator=( Animal const & rhs ) {
 	}
 
 	return *this;
+}
+
+void	Animal::printIdeas( void ) const {
+
+	this->_brain->printIdeas();
 }
 
 /******************************************************************************/

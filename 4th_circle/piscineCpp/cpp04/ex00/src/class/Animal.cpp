@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 08:45:09 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 13:33:04 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:56:17 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ Animal::Animal( void ) : _type( "random animal" ) {
 
 Animal::Animal( std::string type ) : _type( type ) {
 
-	std::cout << "Random animal: " << _type << ": string constructor called." << std::endl;
+	std::cout << "Random animal: string constructor called for " << _type << "." << std::endl;
 }
 
 Animal::Animal( Animal const & src ) : _type( src._type ) {
 
-	std::cout << "Random animal: " << _type << ": copy constructor called." <<std::endl;
+	std::cout << "Random animal: copy constructor called for " << _type << "." <<std::endl;
 }
 
 Animal::~Animal( void ) {

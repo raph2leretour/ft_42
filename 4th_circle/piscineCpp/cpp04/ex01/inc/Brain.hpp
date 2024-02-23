@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 12:17:06 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 16:09:38 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 14:03:04 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 15:16:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 /******************************************************************************/
 class Brain {
 
-private:
-	std::string	_ideas[ 100 ];
+protected:
+	std::string	_ideas[100];
 
 public:
 	Brain( void );
@@ -33,11 +33,5 @@ public:
 
 	Brain&		operator=( Brain const & rhs );
 
-	std::string*	getIdeas( void ) const;
-
+	void		printIdeas( void ) const;
 };
-
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Brain const & rhs );

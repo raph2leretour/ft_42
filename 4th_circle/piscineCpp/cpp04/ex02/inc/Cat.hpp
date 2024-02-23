@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:38:42 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:38:47 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:21:10 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,17 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "AAnimal.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Cat : public Animal {
-
-private:
-	std::string	_type;
-
-	Brain*		_brain;
+class Cat : public AAnimal {
 
 public:
 	Cat( void );
-	Cat( Cat const & src );
-	virtual ~Cat( void );
+	~Cat( void );
 
-	Cat&		operator=( Cat const & rhs );
-
-	std::string	getType( void ) const;
-
-	void		makeSound( void ) const;
-
+	void	makeSound( void ) const;
+	void	printIdeas( void ) const;
 };

@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:39:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:42:18 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:21:40 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,14 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Cat::Cat( void ) : _type( "Cat" ) {
+Cat::Cat( void ) : AAnimal( "Cat" ) {
 
-	_brain = new Brain();
-
-	std::cout << _type << ": default constructor called" << std::endl;
-}
-
-Cat::Cat( Cat const & src ) : _type( src._type ), _brain( src._brain ) {
-
-	std::cout << _type << ": copy constructor called" << std::endl;
+	std::cout << _type << ": default constructor called." << std::endl;
 }
 
 Cat::~Cat( void ) {
 
-	delete _brain;
-
-	std::cout << _type << ": default destructor called" << std::endl;
-}
-
-/******************************************************************************/
-/*   ASSIGNATION OPERATOR                                                     */
-/******************************************************************************/
-Cat&	Cat::operator=( Cat const & rhs ) {
-
-	_type = rhs._type;
-
-	_brain = rhs._brain;
-
-	return *this;
-}
-
-/******************************************************************************/
-/*   GETTERS                                                                  */
-/******************************************************************************/
-std::string	Cat::getType( void ) const {
-
-	return _type;
+	std::cout << _type << ": default destructor called." << std::endl;
 }
 
 /******************************************************************************/
@@ -63,4 +34,9 @@ std::string	Cat::getType( void ) const {
 void	Cat::makeSound( void ) const {
 
 	std::cout << _type << ": miaou !" << std::endl;
+}
+
+void	Cat::printIdeas( void ) const {
+
+	this->_brain->printIdeas();
 }

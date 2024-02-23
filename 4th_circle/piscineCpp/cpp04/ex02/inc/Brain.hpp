@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 12:17:06 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:43:36 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 14:03:04 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 15:16:29 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@
 /******************************************************************************/
 class Brain {
 
-private:
-	std::string	_ideas[ 100 ];
+protected:
+	std::string	_ideas[100];
 
 public:
 	Brain( void );
+	Brain( std::string idea );
 	Brain( Brain const & src );
 	virtual ~Brain( void );
 
 	Brain&		operator=( Brain const & rhs );
 
+	void		printIdeas( void ) const;
 };

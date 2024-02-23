@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:28:18 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 13:42:13 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:21:55 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,14 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Dog::Dog( void ) : _type( "Dog" ) {
+Dog::Dog( void ) : AAnimal( "Dog" ) {
 
-	_brain = new Brain();
-
-	std::cout << _type << ": default constructor called" << std::endl;
-}
-
-Dog::Dog( Dog const & src ) : _type( src._type ), _brain( src._brain ) {
-
-	std::cout << _type << ": copy constructor called" << std::endl;
+	std::cout << _type << ": default constructor called." << std::endl;
 }
 
 Dog::~Dog( void ) {
 
-	delete _brain;
-
-	std::cout << _type << ": default destructor called" << std::endl;
-}
-
-/******************************************************************************/
-/*   ASSIGNATION OPERATOR                                                     */
-/******************************************************************************/
-Dog&	Dog::operator=( Dog const & rhs ) {
-
-	_type = rhs._type;
-
-	_brain = rhs._brain;
-
-	return *this;
-}
-
-/******************************************************************************/
-/*   GETTERS                                                                  */
-/******************************************************************************/
-std::string	Dog::getType( void ) const {
-
-	return _type;
+	std::cout << _type << ": default destructor called." << std::endl;
 }
 
 /******************************************************************************/
@@ -63,4 +34,9 @@ std::string	Dog::getType( void ) const {
 void	Dog::makeSound( void ) const {
 
 	std::cout << _type << ": ouaf !" << std::endl;
+}
+
+void	Dog::printIdeas( void ) const {
+
+	this->_brain->printIdeas();
 }

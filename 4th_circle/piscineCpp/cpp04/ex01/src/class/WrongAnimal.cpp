@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 10:54:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/22 18:20:24 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:57:18 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@
 /******************************************************************************/
 WrongAnimal::WrongAnimal( void ) : _type( "wrong random animal" ) {
 
-	std::cout << _type << ": default constructor called" << std::endl;
+	std::cout << _type << ": default constructor called." << std::endl;
 }
 
 WrongAnimal::WrongAnimal( std::string type ) : _type( type ) {
 
-	std::cout << "Wrong random animal: " << _type << ": string constructor called" << std::endl;
+	std::cout << "Wrong random animal: string constructor called for " << _type << "." << std::endl;
 }
 
 WrongAnimal::WrongAnimal( WrongAnimal const & src ) : _type( src._type ) {
 
-	std::cout << "Wrong random animal: " << _type << " copy constructor called" << std::endl;
+	std::cout << "Wrong random animal: copy constructor called for " << _type << "." << std::endl;
 }
 
 WrongAnimal::~WrongAnimal( void ) {
 
-	std::cout << "Wrong random animal: default destructor called" << std::endl;
+	std::cout << "Wrong random animal: default destructor called." << std::endl;
 }
 
 /******************************************************************************/

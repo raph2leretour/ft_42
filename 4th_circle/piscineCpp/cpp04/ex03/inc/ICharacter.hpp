@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   ICharacter.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 17:32:53 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 18:14:47 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,17 @@
 /*   INCLUDES                                                                 */
 /******************************************************************************/
 #include <iostream>
-#include "Brain.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Animal {
-
-protected:
-	std::string	_type;
-
-	Brain*		_brain;
+class ICharacter {
 
 public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
+	virtual _ICharacter( void ) {}
 
-	Animal&		operator=( Animal const & rhs );
-
-	std::string	getType( void ) const;
-
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
+	virtual std::string const &	getName( void ) = 0;
+	virtual void			equip( AMateria* m ) = 0;
+	virtual void			unequip( int idx ) = 0;
+	virtual void			use( int idx, ICharacter& target ) = 0;
 };
-
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );

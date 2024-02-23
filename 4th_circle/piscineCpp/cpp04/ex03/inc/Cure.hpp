@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/22 08:40:45 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 16:15:45 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/23 17:46:19 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/23 17:59:35 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,21 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include <iostream>
-#include "Brain.hpp"
+#include "AMateria"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Animal {
-
-protected:
-	std::string	_type;
-
-	Brain*		_brain;
+class Cure : public AMateria {
 
 public:
-	Animal( void );
-	Animal( std::string type );
-	Animal( Animal const & src );
-	virtual ~Animal( void );
+	Cure( void );
+	Cure( Cure const & src );
+	~Cure( void );
 
-	Animal&		operator=( Animal const & rhs );
+	Cure&		operator=( Cure const & rhs );
 
-	std::string	getType( void ) const;
+	AMateria*	clone( void ) const;
+	void		use( ICharacter& target );
 
-	virtual void	makeSound( void ) const;
-	virtual void	printIdeas( void ) const;
 };
-
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&		operator<<( std::ostream& o, Animal const & rhs );
