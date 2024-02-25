@@ -1,42 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.cpp                                           :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 18:05:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/25 18:37:20 by rtissera         ###   ########.fr       */
+/*   Created: 2024/02/25 17:45:50 by rtissera          #+#    #+#             */
+/*   Updated: 2024/02/25 18:38:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Cure.hpp"
+#include "AMateria.hpp"
+#include "ICharacter.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Cure::Cure( void ) : AMateria( "cure" ) {
+AMateria::AMateria( void ) : _type( "undefind materia" ) {
 
-	std::cout << "Cure: default constructor called" << std::endl;
+	std::cout << "Undefined materia: default constructor called" << std::endl;
 }
 
-Cure::Cure( Cure const & src ) : AMateria( src ) {
+AMateria::AMateria( AMateria const & src ) : _type( src._type ) {
 
-	std::cout << "Cure: default constructor called from " << src._type << std::endl;
+	std::cout << "Undefined materia: copy constructor called from " << src._type << std::endl;
 }
 
-Cure::~Cure( void ) {
+AMateria::~AMateria( void ) {
 
-	std::cout << "Cure: default constructor called" << std::endl;
+	std::cout << "Undefined materia: default destructor called" << std::endl;
 }
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-Cure&	Cure::operator=( Cure const & rhs ) {
+AMateria&	AMateria::operator=( AMateria const & rhs ) {
 
 	if ( this != &rhs ) {
 
@@ -47,16 +48,27 @@ Cure&	Cure::operator=( Cure const & rhs ) {
 }
 
 /******************************************************************************/
-/*   FUNCTIONS                                                                */
+/*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-AMateria*	clone( void ) const {
+std::string	AMateria::getType( void ) const {
 
-	AMateria*	newCure = Cure( this );
-
-	return newCure;
+	return _type;
 }
 
-void	use( ICharacter& target ) {
+/******************************************************************************/
+/*   FUNCTIONS                                                                */
+/******************************************************************************/
+void	AMateria::use( ICharacter& target ) {
 
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << "* coughing at " << target.getName() << " *" << std::endl;
+}
+
+/******************************************************************************/
+/*   ASSIGNATION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&		operator<<( std::ostream& o, AMateria const & rhs ) {
+
+	o << "Type = " << _type;
+
+	return o;
 }

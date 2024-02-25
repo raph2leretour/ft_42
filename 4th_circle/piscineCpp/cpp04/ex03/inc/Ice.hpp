@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:40:23 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 17:59:21 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:29:25 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ class Ice : public AMateria {
 
 public:
 	Ice( void );
-	Ice( std::string const & type );
 	Ice( Ice const & src );
 	virtual ~Ice( void );
 

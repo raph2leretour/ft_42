@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:13:47 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 18:16:43 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/25 15:53:22 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	Character( void );
 	Character( std::string const & type );
 	Character( Character const & src );
-	_Character( void ) {}
+	virtual ~Character( void ) {}
 
 	Character&		operator=( Character const & rhs );
 

@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:05:17 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 17:56:43 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/25 17:55:32 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ public:
 
 	virtual AMateria*	clone( void ) const = 0;
 	virtual void		use( ICharacter& target );
+
 };
+
+/******************************************************************************/
+/*   ASSIGNATION OPERATOR                                                     */
+/******************************************************************************/
+std::ostream&		operator<<( std::ostream& o, AMateria const & rhs );

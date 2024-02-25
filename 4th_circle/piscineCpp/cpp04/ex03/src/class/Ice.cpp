@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:59:41 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 18:10:33 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:32:56 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,20 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Ice::Ice( void ) : _type( "ice" ) {}
+Ice::Ice( void ) : AMateria( "ice" ) {
 
-Ice::Ice( Ice const & src ) : _type( src._type ) {}
+	std::cout << "Ice: default constructor called" << std::endl;
+}
 
-Ice::~Ice( void ) {}
+Ice::Ice( Ice const & src ) : AMateria( src ) {
+
+	std::cout << "Ice: copy constructor called from " << src._type << std::endl;
+}
+
+Ice::~Ice( void ) {
+
+	std::cout << "Ice: default destructor called" << std::endl;
+}
 
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
@@ -40,9 +49,14 @@ Ice&	Ice::operator=( Ice const & rhs ) {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-AMateria*	clone( void ) const {}
+AMateria*	clone( void ) const {
+
+	AMateria*	newIce = Ice( this );
+
+	return newIce;
+}
 
 void	use( ICharacter& target ) {
 
-	std::cout << "* shoots an ice bolt at " << target.getName() << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }
