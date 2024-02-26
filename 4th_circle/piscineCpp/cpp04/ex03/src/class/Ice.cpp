@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:59:41 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/25 18:32:56 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:04:06 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ Ice::Ice( void ) : AMateria( "ice" ) {
 Ice::Ice( Ice const & src ) : AMateria( src ) {
 
 	std::cout << "Ice: copy constructor called from " << src._type << std::endl;
+
+	*this = src;
 }
 
 Ice::~Ice( void ) {

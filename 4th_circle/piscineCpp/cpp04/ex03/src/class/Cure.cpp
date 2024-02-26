@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:05:32 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/25 18:37:20 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:07:02 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ Cure::Cure( void ) : AMateria( "cure" ) {
 Cure::Cure( Cure const & src ) : AMateria( src ) {
 
 	std::cout << "Cure: default constructor called from " << src._type << std::endl;
+
+	*this = src;
 }
 
 Cure::~Cure( void ) {
