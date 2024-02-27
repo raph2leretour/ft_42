@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:17:00 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 15:32:44 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:46:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character::Character( std::string const & name ) : _name( name ) {
 	}
 }
 
-Character::Character( Character const & src ) : _name( src.name ) {
+Character::Character( Character const & src ) : _name( src._name ) {
 
 	std::cout << "Character: copy constructor called" << std::endl;
 
@@ -63,7 +63,7 @@ Character::~Character( void ) {
 /******************************************************************************/
 Character&	Character::operator=( Character const & rhs ) {
 
-	if ( this!= rhs ) {
+	if ( this != &rhs ) {
 
 		_name = rhs._name;
 		for ( int i = 0; i < 4; i++ ) {
@@ -80,9 +80,9 @@ Character&	Character::operator=( Character const & rhs ) {
 }
 
 /******************************************************************************/
-/*   GETTERS / SETTERS                                                        */
+/*   ACCESSORS                                                                */
 /******************************************************************************/
-std::string	getName( void ) const {
+std::string const &	Character::getName( void ) const {
 
 	return _name;
 }
@@ -90,7 +90,7 @@ std::string	getName( void ) const {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-void	equip( AMateria* m ) {
+void	Character::equip( AMateria* m ) {
 
 	for ( int i = 0; i < 4; i++ ) {
 
@@ -101,15 +101,15 @@ void	equip( AMateria* m ) {
 	}
 }
 
-void	unequip( int idx ) {
+void	Character::unequip( int idx ) {
 
 	_m[ idx ] = NULL;
 }
 
-void	use( int idx, ICharacter& target ) {
+void	Character::use( int idx, ICharacter& target ) {
 
 	if ( _m[ idx ] ) {
 
-		_m[ idx ].use( target );
+		_m[ idx ]->use( target );
 	}
 }

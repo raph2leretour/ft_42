@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:16:44 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 15:45:41 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:59:01 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 /******************************************************************************/
 MateriaSource::MateriaSource( void ) {
 
-	stsd::cout << "MateriaSource: default constructor called" << std::endl;
+	std::cout << "MateriaSource: default constructor called" << std::endl;
 
 	for ( int i = 0; i < 4; i++ ) {
 
@@ -30,7 +30,7 @@ MateriaSource::MateriaSource( void ) {
 
 MateriaSource::MateriaSource( MateriaSource const & src ) {
 
-	stsd::cout << "MateriaSource: copy constructor called" << std::endl;
+	std::cout << "MateriaSource: copy constructor called" << std::endl;
 
 	for ( int i = 0; i < 4; i++ ) {
 
@@ -40,7 +40,7 @@ MateriaSource::MateriaSource( MateriaSource const & src ) {
 
 MateriaSource::~MateriaSource( void ) {
 
-	stsd::cout << "MateriaSource: default destructor called" << std::endl;
+	std::cout << "MateriaSource: default destructor called" << std::endl;
 
 	for ( int i = 0; i < 4; i++ ) {
 
@@ -56,23 +56,19 @@ MateriaSource::~MateriaSource( void ) {
 /******************************************************************************/
 MateriaSource&	MateriaSource::operator=( MateriaSource const & rhs ) {
 
-	if ( this!= rhs ) {
+	if ( this!= &rhs ) {
 
 		for ( int i = 0; i < 4; i++ ) {
 
+			if ( _source[ i ] ) {
+
+				delete _source[ i ];
+			}
 			_source[ i ] = rhs._source[ i ];
 		}
 	}
 
 	return *this;
-}
-
-/******************************************************************************/
-/*   ACCESSORS                                                                */
-/******************************************************************************/
-AMateria*	MateriaSource::getSource( void ) const {
-
-	return _source;
 }
 
 /******************************************************************************/
@@ -93,24 +89,11 @@ AMateria*	MateriaSource::createMateria( std::string const & type ) {
 
 	for ( int i = 0; i < 4; i++ ) {
 
-		if ( _source[ i ].getType() == type ) {
+		if ( _source[ i ]->getType() == type ) {
 
 			return _source[ i ];
 		}
 	}
-}
 
-/******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
-/******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, MateriaSource const & rhs ) {
-
-	o << "MateriaSource = {";
-	for ( int i = 0; i < 4; i++ ) {
-
-		o << " " << i << ": rhs._source[ i ],;
-	}
-	o << " }";
-
-	return o;
+	return NULL;
 }

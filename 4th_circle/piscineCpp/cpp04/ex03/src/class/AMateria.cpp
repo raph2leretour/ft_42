@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 16:46:49 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:00:46 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ AMateria::AMateria( void ) : _type( "undefind materia" ) {
 
 AMateria::AMateria( AMateria const & src ) : _type( src._type ) {
 
-	std::cout << "Undefined materia: copy constructor called from " << src._type << std::endl;
+	std::cout << "Undefined materia: copy constructor called" << std::endl;
 }
 
 AMateria::~AMateria( void ) {
@@ -48,7 +48,7 @@ AMateria&	AMateria::operator=( AMateria const & rhs ) {
 }
 
 /******************************************************************************/
-/*   ASSIGNATION OPERATOR                                                     */
+/*   ACCESSORS                                                                */
 /******************************************************************************/
 std::string const &	AMateria::getType( void ) const {
 
