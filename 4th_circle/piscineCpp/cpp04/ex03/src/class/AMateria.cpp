@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/25 18:38:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:46:49 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ AMateria&	AMateria::operator=( AMateria const & rhs ) {
 /******************************************************************************/
 /*   ASSIGNATION OPERATOR                                                     */
 /******************************************************************************/
-std::string	AMateria::getType( void ) const {
+std::string const &	AMateria::getType( void ) const {
 
 	return _type;
 }
@@ -68,7 +68,7 @@ void	AMateria::use( ICharacter& target ) {
 /******************************************************************************/
 std::ostream&		operator<<( std::ostream& o, AMateria const & rhs ) {
 
-	o << "Type = " << _type;
+	o << "Type = " << rhs.getType();
 
 	return o;
 }

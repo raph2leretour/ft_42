@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:17:00 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/26 19:46:37 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:32:44 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ Character&	Character::operator=( Character const & rhs ) {
 		_name = rhs._name;
 		for ( int i = 0; i < 4; i++ ) {
 
+			if ( _m[ i ] ) {
+
+				delete _m[ i ];
+			}
 			_m[ i ] = rhs._m[ i ];
 		}
 	}

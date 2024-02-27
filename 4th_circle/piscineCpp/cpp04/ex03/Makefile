@@ -10,6 +10,12 @@ SRC_DIR		:= src
 OBJ_DIR		:= obj
 SRCS		:=		\
 	main.cpp		\
+	class/AMateria.cpp	\
+	class/Ice.cpp		\
+	class/Cure.cpp		\
+	class/Character.cpp	\
+	class/MateriaSource.cpp
+
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 OBJS		:= $(SRCS:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 

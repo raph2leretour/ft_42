@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 17:59:41 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/26 19:04:06 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:59:07 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Ice&	Ice::operator=( Ice const & rhs ) {
 /******************************************************************************/
 AMateria*	clone( void ) const {
 
-	AMateria*	newIce = Ice( this );
+	AMateria*	newIce = Ice( *this );
 
 	return newIce;
 }

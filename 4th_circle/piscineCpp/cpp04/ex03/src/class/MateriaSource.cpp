@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:16:44 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/26 19:52:12 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:45:41 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,27 @@ AMateria*	MateriaSource::getSource( void ) const {
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
-void	MateriaSource::learnMateria( AMateria* src ) {}
+void	MateriaSource::learnMateria( AMateria* src ) {
 
-AMateria*	MateriaSource::createMateria( std::string const & type ) {}
+	for ( int i = 0; i < 4; i++ ) {
+
+		if ( !_source[ i ] ) {
+
+			_source[ i ] = src;
+		}
+	}
+}
+
+AMateria*	MateriaSource::createMateria( std::string const & type ) {
+
+	for ( int i = 0; i < 4; i++ ) {
+
+		if ( _source[ i ].getType() == type ) {
+
+			return _source[ i ];
+		}
+	}
+}
 
 /******************************************************************************/
 /*   REDIRECTION OPERATOR                                                     */
