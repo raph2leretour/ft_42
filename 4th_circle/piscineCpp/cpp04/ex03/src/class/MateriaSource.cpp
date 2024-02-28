@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:16:44 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 18:59:01 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:05:09 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ MateriaSource::MateriaSource( MateriaSource const & src ) {
 
 	std::cout << "MateriaSource: copy constructor called" << std::endl;
 
-	for ( int i = 0; i < 4; i++ ) {
-
-		_source[ i ] = src._source[ i ];
-	}
+	*this = src;
 }
 
 MateriaSource::~MateriaSource( void ) {
@@ -64,7 +61,13 @@ MateriaSource&	MateriaSource::operator=( MateriaSource const & rhs ) {
 
 				delete _source[ i ];
 			}
-			_source[ i ] = rhs._source[ i ];
+			if ( rhs._source[ i ] ) {
+
+				_source[ i ] = rhs._source[ i ]->clone();
+			} else {
+
+				_source[ i ] = NULL;
+			}
 		}
 	}
 
@@ -91,7 +94,7 @@ AMateria*	MateriaSource::createMateria( std::string const & type ) {
 
 		if ( _source[ i ]->getType() == type ) {
 
-			return _source[ i ];
+			return _source[ i ]->clone();
 		}
 	}
 

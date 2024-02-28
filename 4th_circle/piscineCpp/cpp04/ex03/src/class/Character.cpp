@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:17:00 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 17:46:49 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:07:16 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ Character::Character( std::string const & name ) : _name( name ) {
 	}
 }
 
-Character::Character( Character const & src ) : _name( src._name ) {
+Character::Character( Character const & src ) { 
 
 	std::cout << "Character: copy constructor called" << std::endl;
 
@@ -72,7 +72,13 @@ Character&	Character::operator=( Character const & rhs ) {
 
 				delete _m[ i ];
 			}
-			_m[ i ] = rhs._m[ i ];
+			if ( rhs._m[ i ] ) {
+
+				_m[ i ] = rhs._m[ i ]->clone();
+			} else {
+
+				_m[ i ] = NULL;
+			}
 		}
 	}
 
@@ -103,11 +109,19 @@ void	Character::equip( AMateria* m ) {
 
 void	Character::unequip( int idx ) {
 
+	if ( _m[ idx ] < 0 || _m > 3 ) {
+
+		return ;
+	}
 	_m[ idx ] = NULL;
 }
 
 void	Character::use( int idx, ICharacter& target ) {
 
+	if ( _m[ idx ] < 0 || _m > 3 ) {
+
+		return ;
+	}
 	if ( _m[ idx ] ) {
 
 		_m[ idx ]->use( target );

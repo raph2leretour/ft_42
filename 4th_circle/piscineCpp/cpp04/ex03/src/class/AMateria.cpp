@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 19:00:46 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:55:39 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 AMateria::AMateria( void ) : _type( "undefind materia" ) {
 
 	std::cout << "Undefined materia: default constructor called" << std::endl;
+}
+
+AMateria::AMateria( std::string const & type ) : _type( type ) {
+
+	std::cout << "Undefined materia: string constructor called" << std::endl;
 }
 
 AMateria::AMateria( AMateria const & src ) : _type( src._type ) {
