@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 18:13:47 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/27 16:40:02 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/03/02 16:22:22 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	Character&		operator=( Character const & rhs );
 
 	std::string const &	getName( void ) const;
+	AMateria*	getM( int idx ) const;
 
 	void			equip( AMateria* m );
 	void			unequip( int idx );

@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 17:45:50 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/28 14:55:39 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/03/02 16:31:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-AMateria::AMateria( void ) : _type( "undefind materia" ) {
-
-	std::cout << "Undefined materia: default constructor called" << std::endl;
-}
+AMateria::AMateria( void ) : _type( "Cannot create typeless materia" ) {}
 
 AMateria::AMateria( std::string const & type ) : _type( type ) {
 

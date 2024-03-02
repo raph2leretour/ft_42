@@ -6,7 +6,7 @@
 /*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 16:17:00 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/28 15:07:16 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:29:57 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Character::Character( void ) : _name( "Gerard" ) {
 
 Character::Character( std::string const & name ) : _name( name ) {
 
-	std::cout << "Character: string contructor called" << std::endl;
+	std::cout << "Character: string constructor called" << std::endl;
 
 	for ( int i = 0; i < 4; i++ ) {
 
@@ -39,10 +39,21 @@ Character::Character( std::string const & name ) : _name( name ) {
 }
 
 Character::Character( Character const & src ) { 
-
+ 
 	std::cout << "Character: copy constructor called" << std::endl;
 
-	*this = src;
+	_name = src._name;
+	for ( int i = 0; i < 4; i++ ) {
+
+		if ( src._m[ i ] ) {
+
+			_m[ i ] = src._m[ i ]->clone();
+		}
+		else {
+
+			_m[ i ] = NULL;
+		}
+	}
 }
 
 Character::~Character( void ) {
@@ -68,14 +79,12 @@ Character&	Character::operator=( Character const & rhs ) {
 		_name = rhs._name;
 		for ( int i = 0; i < 4; i++ ) {
 
-			if ( _m[ i ] ) {
-
-				delete _m[ i ];
-			}
+			delete _m[ i ];
 			if ( rhs._m[ i ] ) {
 
 				_m[ i ] = rhs._m[ i ]->clone();
-			} else {
+			}
+			else {
 
 				_m[ i ] = NULL;
 			}
@@ -93,6 +102,18 @@ std::string const &	Character::getName( void ) const {
 	return _name;
 }
 
+AMateria*	Character::getM( int idx ) const {
+
+	if ( _m[ idx ] ) {
+
+		return _m[ idx ];
+	}
+	else {
+
+		return NULL;
+	}
+}
+
 /******************************************************************************/
 /*   FUNCTIONS                                                                */
 /******************************************************************************/
@@ -103,13 +124,16 @@ void	Character::equip( AMateria* m ) {
 		if ( !_m[ i ] ) {
 
 			_m[ i ] = m;
+
+			return ;
 		}
 	}
+	delete m;
 }
 
 void	Character::unequip( int idx ) {
 
-	if ( _m[ idx ] < 0 || _m > 3 ) {
+	if ( idx < 0 || idx > 3 ) {
 
 		return ;
 	}
@@ -118,7 +142,7 @@ void	Character::unequip( int idx ) {
 
 void	Character::use( int idx, ICharacter& target ) {
 
-	if ( _m[ idx ] < 0 || _m > 3 ) {
+	if ( idx < 0 || idx > 3 ) {
 
 		return ;
 	}
