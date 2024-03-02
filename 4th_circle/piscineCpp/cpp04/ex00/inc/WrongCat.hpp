@@ -6,7 +6,7 @@
 /*   By: rtissera <rtissera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:17:48 by rtissera          #+#    #+#             */
-/*   Updated: 2024/02/23 19:48:26 by rtissera         ###   ########.fr       */
+/*   Updated: 2024/03/02 17:41:15 by rtissera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ public:
 	WrongCat( WrongCat const & src );
 	~WrongCat( void );
 
-	WrongAnimal&	operator=( WrongAnimal const & rhs );
+	WrongCat&	operator=( WrongCat const & rhs );
 
 	void		makeSound( void ) const;
 };
