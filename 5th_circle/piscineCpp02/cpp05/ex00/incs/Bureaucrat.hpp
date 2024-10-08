@@ -1,27 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/26 13:55:04 by rtissera          #+#    #+#             */
-/*   Updated: 2024/10/07 18:46:33 by rtissera         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #pragma once
 
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-# include <iostream>
-# include <string>
-# include <exception>
-
-/******************************************************************************/
-/*   DEFINES                                                                  */
-/******************************************************************************/
+#include <iostream>
+#include <string>
+#include <exception>
+#include "GradeTooHighException.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
@@ -29,28 +14,54 @@
 class Bureaucrat {
 
 private:
+	// Constructors
 	Bureaucrat( void );
 
+	// Variables
 	int					_grade;
 	std::string const &	_name;
 
 protected:
 
 public:
-	Bureaucrat( int const grade );
-	Bureaucrat( std::string const & name );
+	// Constructors
 	Bureaucrat( std::string const & name, int const grade );
 	Bureaucrat( Bureaucrat const & src );
 	virtual ~Bureaucrat( void );
 
-	Bureaucrat&	operator=( Bureaucrat const & rhs );
+	// Operators
+	Bureaucrat&		operator=( Bureaucrat const & rhs );
 
-	std::string const &	getName( void ) const;
-	int const			getGrade( void ) const;
+	// Accessors
+	int				getGrade( void ) const;
+	std::string&	getName( void ) const;
+
+	// Methods
+	void			increment( void );
+	void			decrement( void );
+
+	// Exeption classes
+	class GradeTooHighException;
+	class GradeTooLowException;
+
+};
+
+class Bureaucrat::GradeTooHighException : public std::exception {
+
+public:
+	virtual char const * what() const throw();
+
+};
+
+class Bureaucrat::GradeTooLowException : public std::exception {
+
+public:
+	virtual char const * what() const throw();
 
 };
 
 /******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
+/*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
+// Redirection operator
 std::ostream&	operator<<( std::ostream& o, Bureaucrat const & rhs );

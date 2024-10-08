@@ -9,7 +9,8 @@ NAME		:= ex00
 SRCS_DIR	:= srcs
 SRCS		:= \
 				main.cpp \
-				class/Bureaucrat.cpp
+				class/Bureaucrat.cpp \
+				class/GradeTooHighException.cpp
 SRCS		:= $(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR	:= .build

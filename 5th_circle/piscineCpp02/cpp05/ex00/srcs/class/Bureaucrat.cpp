@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: rtissera <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/26 14:00:41 by rtissera          #+#    #+#             */
-/*   Updated: 2024/10/07 18:52:06 by rtissera         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
@@ -18,25 +6,22 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Bureaucrat::Bureaucrat( void ) {}
+Bureaucrat::Bureaucrat( std::string const & name, int const grade ) \
+						: _grade( grade ), _name( name ) {}
 
-Bureaucra::Bureaucrat( int const grade ) : _grade( grade ) {}
-
-Bureaucrat::Bureaucrat( std::string const & name ) : _name( name ) {}
-
-Bureaucrat::Bureaucrat( std::string const & name, int const grade ) _grade( grade ), _name( name ) {}
-
-Bureaucrat::Bureaucrat( Bureaucrat const & src ) _grade( src._grade ), _name( src._name ) {}
+Bureaucrat::Bureaucrat( Bureaucrat const & src ) \
+						: _grade( src._grade ), _name( src._name ) {}
 
 Bureaucrat::~Bureaucrat( void ) {}
 
 /******************************************************************************/
 /*   OPERATORS                                                                */
 /******************************************************************************/
-Bureaucrat&	operator=( Bureaucrat const & rhs ) {
+Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & rhs ) {
 
 	if ( this != &rhs ) {
 
+		// Since the name is const you cannot copy it !
 		_grade = rhs._grade;
 	}
 
@@ -46,24 +31,33 @@ Bureaucrat&	operator=( Bureaucrat const & rhs ) {
 /******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
-std::string const &	getName( void ) { return _name; }
+int	Bureaucrat::getGrade( void ) const { return _grade; }
 
-int const	getGrade( void ) { return _grade; }
-
-/******************************************************************************/
-/*   FUNCTIONS                                                                */
-/******************************************************************************/
+std::string&	Bureaucrat::getName( void ) const { return _name; }
 
 /******************************************************************************/
-/*   THROW STUFF                                                              */
+/*   METHODS                                                                  */
 /******************************************************************************/
 
 /******************************************************************************/
-/*   REDIRECTION OPERATOR                                                     */
+/*   EXCEPTIONS                                                               */
+/******************************************************************************/
+/*char const * bureaucrat::gradetoohighexception::what() const throw() {
+
+	return "grade is too high";
+}*/
+
+char const * Bureaucrat::GradeTooLowException::what() const throw() {
+
+		return "Grade is too low";
+}
+
+/******************************************************************************/
+/*   EXTERNAL FUNTIONS                                                        */
 /******************************************************************************/
 std::ostream&	operator<<( std::ostream& o, Bureaucrat const & rhs ) {
 
-	o << "Samy fdp de bureaucrat";
+	o << getName() << ", bureaucrat grade " << getGrade() << '.';
 
 	return o;
 }
