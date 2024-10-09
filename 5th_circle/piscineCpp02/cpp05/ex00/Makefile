@@ -9,8 +9,7 @@ NAME		:= ex00
 SRCS_DIR	:= srcs
 SRCS		:= \
 				main.cpp \
-				class/Bureaucrat.cpp \
-				class/GradeTooHighException.cpp
+				class/Bureaucrat.cpp
 SRCS		:= $(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR	:= .build
@@ -27,7 +26,9 @@ CPPFLAGS	:= $(CPPFLAGS) -Iincs
 RM			:= rm -fr
 MAKE		:= $(MAKE) --jobs --silent --no-print-directory
 DIR_DUP		= mkdir -p $(@D)
-VALGRIND	:= valgrind -q -s --leak-check=yes --show-leak-kinds=all --track-fds=yes --track-origins=yes --trace-children=yes --verbose
+VALGRIND	:= valgrind -q -s --leak-check=yes --show-leak-kinds=all \
+				--track-fds=yes --track-origins=yes --trace-children=yes \
+				--verbose
 ERR_MUTE	:= 2>/dev/null
 
 CRUSH		:= \r\033[K

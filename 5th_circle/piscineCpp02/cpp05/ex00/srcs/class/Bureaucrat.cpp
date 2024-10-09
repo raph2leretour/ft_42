@@ -7,7 +7,17 @@
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
 Bureaucrat::Bureaucrat( std::string const & name, int const grade ) \
-						: _grade( grade ), _name( name ) {}
+						: _grade( grade ), _name( name ) {
+
+	if ( _grade > GRADE_MIN ) {
+
+		throw Bureaucrat::GradeTooLowException();
+	}
+	if ( _grade < GRADE_MAX ) {
+
+		throw Bureaucrat::GradeTooHighException();
+	}
+}
 
 Bureaucrat::Bureaucrat( Bureaucrat const & src ) \
 						: _grade( src._grade ), _name( src._name ) {}
@@ -33,23 +43,27 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & rhs ) {
 /******************************************************************************/
 int	Bureaucrat::getGrade( void ) const { return _grade; }
 
-std::string&	Bureaucrat::getName( void ) const { return _name; }
+std::string	Bureaucrat::getName( void ) const { return _name; }
 
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
+void	Bureaucrat::increment( void ) {
 
-/******************************************************************************/
-/*   EXCEPTIONS                                                               */
-/******************************************************************************/
-/*char const * bureaucrat::gradetoohighexception::what() const throw() {
+	if ( _grade - 1 < GRADE_MAX ) {
 
-	return "grade is too high";
-}*/
+		throw Bureaucrat::GradeTooHighException();
+	}
+	--_grade;
+}
 
-char const * Bureaucrat::GradeTooLowException::what() const throw() {
+void	Bureaucrat::decrement( void ) {
 
-		return "Grade is too low";
+	if ( _grade + 1 > GRADE_MIN ) {
+
+	throw Bureaucrat::GradeTooLowException();
+	}
+	++_grade;
 }
 
 /******************************************************************************/
@@ -57,7 +71,7 @@ char const * Bureaucrat::GradeTooLowException::what() const throw() {
 /******************************************************************************/
 std::ostream&	operator<<( std::ostream& o, Bureaucrat const & rhs ) {
 
-	o << getName() << ", bureaucrat grade " << getGrade() << '.';
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << '.';
 
 	return o;
 }

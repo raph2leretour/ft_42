@@ -6,7 +6,12 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "GradeTooHighException.hpp"
+
+/******************************************************************************/
+/*   DEFINES                                                                  */
+/******************************************************************************/
+#define GRADE_MAX 1
+#define GRADE_MIN 150
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
@@ -19,7 +24,7 @@ private:
 
 	// Variables
 	int					_grade;
-	std::string const &	_name;
+	std::string const 	_name;
 
 protected:
 
@@ -30,33 +35,33 @@ public:
 	virtual ~Bureaucrat( void );
 
 	// Operators
-	Bureaucrat&		operator=( Bureaucrat const & rhs );
+	Bureaucrat&	operator=( Bureaucrat const & rhs );
 
 	// Accessors
-	int				getGrade( void ) const;
-	std::string&	getName( void ) const;
+	int			getGrade( void ) const;
+	std::string	getName( void ) const;
 
 	// Methods
-	void			increment( void );
-	void			decrement( void );
+	void		increment( void );
+	void		decrement( void );
 
 	// Exeption classes
-	class GradeTooHighException;
-	class GradeTooLowException;
+	class GradeTooLowException : public std::exception {
 
-};
+	public:
+		virtual char const * what() const throw() {
 
-class Bureaucrat::GradeTooHighException : public std::exception {
+		return "Grade is too low";
+		}
+	};
+	class GradeTooHighException : public std::exception {
 
-public:
-	virtual char const * what() const throw();
+	public:
+		virtual char const * what() const throw() {
 
-};
-
-class Bureaucrat::GradeTooLowException : public std::exception {
-
-public:
-	virtual char const * what() const throw();
+		return "Grade is too high";
+		}
+	};
 
 };
 
