@@ -67,7 +67,7 @@ void	Bureaucrat::decrement( void ) {
 }
 
 /******************************************************************************/
-/*   EXTERNAL FUNCTIONS                                                       */
+/*   EXTERNAL FUNTIONS                                                        */
 /******************************************************************************/
 std::ostream&	operator<<( std::ostream& o, Bureaucrat const & rhs ) {
 

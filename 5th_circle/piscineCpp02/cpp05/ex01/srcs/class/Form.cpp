@@ -1,38 +1,25 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "Bureaucrat.hpp"
+#include "../incs/Form.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Bureaucrat::Bureaucrat( std::string const & name, int const grade ) \
-						: _grade( grade ), _name( name ) {
+Form::Form( void ) {}
 
-	if ( _grade > GRADE_MIN ) {
+Form::Form( Form const & src ) {}
 
-		throw Bureaucrat::GradeTooLowException();
-	}
-	if ( _grade < GRADE_MAX ) {
-
-		throw Bureaucrat::GradeTooHighException();
-	}
-}
-
-Bureaucrat::Bureaucrat( Bureaucrat const & src ) \
-						: _grade( src._grade ), _name( src._name ) {}
-
-Bureaucrat::~Bureaucrat( void ) {}
+Form::~Form( void ) {}
 
 /******************************************************************************/
 /*   OPERATORS                                                                */
 /******************************************************************************/
-Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & rhs ) {
+Form& Form::operator=( Form const & rhs ) {
 
 	if ( this != &rhs ) {
 
-		// Since the name is const you cannot copy it !
-		_grade = rhs._grade;
+		// assign members
 	}
 
 	return *this;
@@ -41,37 +28,17 @@ Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & rhs ) {
 /******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
-int	Bureaucrat::getGrade( void ) const { return _grade; }
-
-std::string	Bureaucrat::getName( void ) const { return _name; }
 
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
-void	Bureaucrat::increment( void ) {
-
-	if ( _grade - 1 < GRADE_MAX ) {
-
-		throw Bureaucrat::GradeTooHighException();
-	}
-	--_grade;
-}
-
-void	Bureaucrat::decrement( void ) {
-
-	if ( _grade + 1 > GRADE_MIN ) {
-
-	throw Bureaucrat::GradeTooLowException();
-	}
-	++_grade;
-}
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, Bureaucrat const & rhs ) {
+std::ostream& operator<<( std::ostream& o, Form const & rhs ) {
 
-	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade() << '.';
+	o << "Form redirection operator not set";
 
 	return o;
 }
