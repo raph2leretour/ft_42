@@ -1,45 +1,17 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main( void ) {
 
 	try {
 
-		Bureaucrat b3( "tonton Xav", 2 );
-		for ( int i = 0; i < 2; ++i ) {
+		Bureaucrat	bureaucrat( 11, "loiccoz" );
+		Form		form( 10, 123, "samy" );
 
-			std::cout << b3 << std::endl;
-			b3.increment();
-		}
-	} catch ( const Bureaucrat::GradeTooHighException& e ) {
+		bureaucrat.signForm( form );
 
-		std::cout << e.what() << std::endl;
-	}
-
-	try {
-
-		Bureaucrat b4( "moi", 149 );
-		for ( int i = 0; i < 2; ++i ) {
-
-			std::cout << b4 << std::endl;
-			b4.decrement();
-		}
-	} catch ( const Bureaucrat::GradeTooLowException& e ) {
-
-		std::cout << e.what() << std::endl;
-	}
-
-	try {
-
-		Bureaucrat b5("poulet", 160);
-	} catch ( const Bureaucrat::GradeTooLowException& e ) {
-
-		std::cout << e.what() << std::endl;
-	}
-
-	try {
-
-		Bureaucrat b4("bk mdr", -5);
-	} catch ( const Bureaucrat::GradeTooHighException& e ) {
+		std::cout << form << std::endl;
+	} catch ( std::exception& e ) {
 
 		std::cout << e.what() << std::endl;
 	}

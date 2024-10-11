@@ -30,7 +30,7 @@ protected:
 
 public:
 	// Constructors
-	Bureaucrat( std::string const & name, int const grade );
+	Bureaucrat( int const grade, std::string const & name );
 	Bureaucrat( Bureaucrat const & src );
 	virtual ~Bureaucrat( void );
 

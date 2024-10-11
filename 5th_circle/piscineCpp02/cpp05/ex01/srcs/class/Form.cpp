@@ -1,25 +1,46 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "../incs/Form.hpp"
+#include "Form.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Form::Form( void ) {}
+Form::Form( int const sigGrade, int const exeGrade, std::string const name ) : \
+			_signed( false ), _sigGrade( sigGrade ), _exeGrade( exeGrade ), \
+			_name( name ) {
 
-Form::Form( Form const & src ) {}
+	if ( sigGrade > GRADE_MIN ) {
+
+		throw Form::GradeTooLowException();
+	}
+	if ( sigGrade < GRADE_MAX ) {
+
+		throw Form::GradeTooHighException();
+	}
+	if ( exeGrade > GRADE_MIN ) {
+
+		throw Form::GradeTooLowException();
+	}
+	if ( exeGrade < GRADE_MAX ) {
+
+		throw Form::GradeTooHighException();
+	}
+}
+
+Form::Form( Form const & src ) : _signed( src._signed ), _sigGrade( src._sigGrade ), \
+								_exeGrade( src._exeGrade ), _name( src._name ) {}
 
 Form::~Form( void ) {}
 
 /******************************************************************************/
 /*   OPERATORS                                                                */
 /******************************************************************************/
-Form& Form::operator=( Form const & rhs ) {
+Form&	Form::operator=( Form const & rhs ) {
 
 	if ( this != &rhs ) {
 
-		// assign members
+		_signed = rhs._signed;
 	}
 
 	return *this;
@@ -28,17 +49,37 @@ Form& Form::operator=( Form const & rhs ) {
 /******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
+bool	Form::getSigned( void ) const { return _signed }
+
+int	Form::getSigGrade( void ) const { return _sigGrade }
+
+int	Form::getExeGrade( void ) const { return _exeGrade }
+
+std::string	Form::getName( void ) const { return _name }
 
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
+void	Form::beSigned( Bureaucrat const & bureaucrat ) {
+
+	if ( bureaucrat.getGrade() > _sigGrade  ) {
+
+		throw Form::GradeTooLowException();
+	}
+
+	_signed = true;
+}
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
 std::ostream& operator<<( std::ostream& o, Form const & rhs ) {
 
-	o << "Form redirection operator not set";
+	o << rhs.getName() << ", form sig. grade " << rhs.getSigGrade();
+	o << ", exe. grade " << rhs.getExeGrade(); << ", ";
+	if ( _signed == false )
+		o << "not ";
+	o << "signed";
 
 	return o;
 }

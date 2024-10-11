@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
 
 /******************************************************************************/
 /*   DEFINES                                                                  */
@@ -30,7 +31,7 @@ protected:
 
 public:
 	// Constructors
-	Bureaucrat( std::string const & name, int const grade );
+	Bureaucrat( int const grade, std::string const & name );
 	Bureaucrat( Bureaucrat const & src );
 	virtual ~Bureaucrat( void );
 
@@ -44,6 +45,7 @@ public:
 	// Methods
 	void		increment( void );
 	void		decrement( void );
+	void		signForm( Form& form );
 
 	// Exeption classes
 	class GradeTooLowException : public std::exception {

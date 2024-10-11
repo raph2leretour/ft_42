@@ -6,14 +6,14 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Bureaucrat::Bureaucrat( std::string const & name, int const grade ) \
-						: _grade( grade ), _name( name ) {
+Bureaucrat::Bureaucrat( int const grade, std::string const & name ) : \
+						_grade( grade ), _name( name ) {
 
-	if ( _grade > GRADE_MIN ) {
+	if ( grade > GRADE_MIN ) {
 
 		throw Bureaucrat::GradeTooLowException();
 	}
-	if ( _grade < GRADE_MAX ) {
+	if ( grade < GRADE_MAX ) {
 
 		throw Bureaucrat::GradeTooHighException();
 	}

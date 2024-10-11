@@ -9,7 +9,8 @@ NAME		:= ex01
 SRCS_DIR	:= srcs
 SRCS		:= \
 				main.cpp \
-				class/Bureaucrat.cpp
+				class/Bureaucrat.cpp \
+				class/Form.cpp
 SRCS		:= $(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR	:= .build
