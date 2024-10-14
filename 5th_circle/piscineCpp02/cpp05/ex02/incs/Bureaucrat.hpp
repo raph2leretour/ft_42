@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /******************************************************************************/
 /*   DEFINES                                                                  */
