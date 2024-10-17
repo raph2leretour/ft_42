@@ -13,59 +13,53 @@
 /******************************************************************************/
 class Bureaucrat;
 
-class Form {
+class AForm {
 
 private:
 	// Constructors
-	Form( void );
+	AForm( void );
 
 	// Variables
+	std::string const	_name;
 	bool				_signed;
 	int const			_execGrade;
 	int const			_signGrade;
-	std::string const	_name;
 
 protected:
 
 public:
 	// Constructors / Destructor
-	Form( int const execGrade, int const signGrade, std::string const name );
-	Form( Form const & src );
-	virtual ~Form( void );
+	AForm( std::string const name, int const execGrade, int const signGrade );
+	AForm( AForm const & src );
+	virtual ~AForm( void );
 
 	// Operators
-	Form&		operator=( Form const & rhs );
+	AForm&			operator=( AForm const & rhs );
 
 	// Accessors
-	bool		getSigned( void ) const;
-	int			getExeGrade( void ) const;
-	int			getSigGrade( void ) const;
-	std::string	getName( void ) const;
+	std::string		getName( void ) const;
+	bool			getSigned( void ) const;
+	int				getExeGrade( void ) const;
+	int				getSigGrade( void ) const;
 
 	// Methods
-	void		beSigned ( Bureaucrat const * bureaucrat );
+	void			beSigned ( Bureaucrat const * bureaucrat );
+	virtual void	execute( Bureaucrat const & executor );
 
 	// Exception classes
 	class GradeTooLowException : public std::exception {
 
 	public:
-		virtual char const * what() const throw() {
-
-		return "Grade is too low";
-		}
+		virtual char const * what() const throw() { return "Grade is too low"; }
 	};
 	class GradeTooHighException : public std::exception {
 
 	public:
-		virtual char const * what() const throw() {
-
-		return "Grade is too high";
-		}
+		virtual char const * what() const throw() { return "Grade is too high"; }
 	};
-
 };
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream& operator<<( std::ostream& o, Form const & rhs );
+std::ostream& operator<<( std::ostream& o, AForm const & rhs );

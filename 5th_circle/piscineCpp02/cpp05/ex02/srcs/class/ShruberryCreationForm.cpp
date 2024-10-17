@@ -1,46 +1,23 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "AForm.hpp"
+#include "ShruberryCreationForm.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Form::Form( int const signGrade, int const execGrade, std::string const name ) : \
-			_signed( false ), _execGrade( execGrade ), _signGrade( signGrade ), \
-			_name( name ) {
+ShruberryCreationForm::ShruberryCreationForm( std::string const & target ) : AForm() {}
 
-	if ( signGrade > GRADE_MIN ) {
-
-		throw Form::GradeTooLowException();
-	}
-	if ( signGrade < GRADE_MAX ) {
-
-		throw Form::GradeTooHighException();
-	}
-	if ( execGrade > GRADE_MIN ) {
-
-		throw Form::GradeTooLowException();
-	}
-	if ( execGrade < GRADE_MAX ) {
-
-		throw Form::GradeTooHighException();
-	}
-}
-
-Form::Form( Form const & src ) : _signed( src._signed ), _execGrade( src._execGrade ), \
-								_signGrade( src._signGrade ), _name( src._name ) {}
-
-Form::~Form( void ) {}
+ShruberryCreationForm::~ShruberryCreationForm( void ) {}
 
 /******************************************************************************/
 /*   OPERATORS                                                                */
 /******************************************************************************/
-Form&	Form::operator=( Form const & rhs ) {
+ShruberryCreationForm&	ShruberryCreationForm::operator=( ShruberryCreationForm const & rhs ) {
 
 	if ( this != &rhs ) {
 
-		_signed = rhs._signed;
+		// assign members
 	}
 
 	return *this;
@@ -49,37 +26,17 @@ Form&	Form::operator=( Form const & rhs ) {
 /******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
-bool	Form::getSigned( void ) const { return _signed; }
-
-int	Form::getExeGrade( void ) const { return _execGrade; }
-
-int	Form::getSigGrade( void ) const { return _signGrade; }
-
-std::string	Form::getName( void ) const { return _name; }
 
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
-void	Form::beSigned( Bureaucrat const * bureaucrat ) {
-
-	if ( bureaucrat->getGrade() > _signGrade  ) {
-
-		throw Form::GradeTooLowException();
-	}
-
-	_signed = true;
-}
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream& operator<<( std::ostream& o, Form const & rhs ) {
+std::ostream&	operator<<( std::ostream& o, ShruberryCreationForm const & rhs ) {
 
-	o << rhs.getName() << ", form signature grade: " << rhs.getSigGrade();
-	o << ", execution grade: " << rhs.getExeGrade() << ", ";
-	if ( rhs.getSigned() == false )
-		o << "not ";
-	o << "signed";
+	o << "ShruberryCreationForm redirection operator not set";
 
 	return o;
 }
