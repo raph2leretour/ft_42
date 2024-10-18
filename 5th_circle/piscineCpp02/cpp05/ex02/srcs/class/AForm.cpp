@@ -70,7 +70,15 @@ void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 	_signed = true;
 }
 
-void	AForm::execute( Bureaucrat const & bureaucrat ) {}
+void	AForm::execute( Bureaucrat const & executor ) {
+
+	if ( executor.getExecGrade() > _execGrade ) {
+
+		throw AForm::GradeTooLowException();
+	}
+
+	std::cout << "Executing " << _name << "... nothing happened" << std::endl;
+}
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
@@ -79,8 +87,10 @@ std::ostream& operator<<( std::ostream& o, AForm const & rhs ) {
 
 	o << rhs.getName() << ", form signature grade: " << rhs.getSigGrade();
 	o << ", execution grade: " << rhs.getExeGrade() << ", ";
-	if ( rhs.getSigned() == false )
+	if ( rhs.getSigned() == false ) {
+
 		o << "not ";
+	}
 	o << "signed";
 
 	return o;

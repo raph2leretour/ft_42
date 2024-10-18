@@ -19,24 +19,32 @@ class ShruberryCreationForm : public AForm {
 
 private:
 	ShruberryCreationForm( void );
-	ShruberryCreationForm( ShruberryCreationForm const & src );
+
+	// Operators
+	ShruberryCreationForm&	operator=( ShruberryCreationForm const & rhs );
 
 protected:
 
 public:
 	// Constructors / Destructor
 	ShruberryCreationForm( std::string const & target );
+	ShruberryCreationForm( ShruberryCreationForm const & src );
 	virtual ~ShruberryCreationForm( void );
 
-	// Operators
-	ShruberryCreationForm&	operator=( ShruberryCreationForm const & rhs );
-
-	// Accessors
-
 	// Methods
+	void	execute( Bureaucrat const & executor );
 
 	// Exception classes
+	class GradeTooLowException : public std::exception {
 
+	public:
+		virtual char const * what() const throw() { return "Grade is too low"; }
+	};
+	class GradeTooHighException : public std::exception {
+
+	public:
+		virtual char const * what() const throw() { return "Grade is too high"; }
+	};
 };
 
 /******************************************************************************/
