@@ -25,20 +25,20 @@ private:
 	// Constructors
 	Bureaucrat( void );
 
+	// Operators
+	Bureaucrat&	operator=( Bureaucrat const & rhs );
+
 	// Variables
-	int					_grade;
 	std::string const 	_name;
+	int					_grade;
 
 protected:
 
 public:
 	// Constructors
-	Bureaucrat( int const grade, std::string const & name );
+	Bureaucrat( std::string const & name, int const grade );
 	Bureaucrat( Bureaucrat const & src );
 	virtual ~Bureaucrat( void );
-
-	// Operators
-	Bureaucrat&	operator=( Bureaucrat const & rhs );
 
 	// Accessors
 	int			getGrade( void ) const;
@@ -53,20 +53,13 @@ public:
 	class GradeTooLowException : public std::exception {
 
 	public:
-		virtual char const * what() const throw() {
-
-		return "Grade is too low";
-		}
+		virtual char const * what() const throw() { return "Grade is too low"; }
 	};
 	class GradeTooHighException : public std::exception {
 
 	public:
-		virtual char const * what() const throw() {
-
-		return "Grade is too high";
-		}
+		virtual char const * what() const throw() { return "Grade is too high"; }
 	};
-
 };
 
 /******************************************************************************/

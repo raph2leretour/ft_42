@@ -19,22 +19,22 @@ private:
 	// Constructors
 	Form( void );
 
+	// Operators
+	Form&		operator=( Form const & rhs );
+
 	// Variables
+	std::string const	_name;
 	bool				_signed;
 	int const			_execGrade;
 	int const			_signGrade;
-	std::string const	_name;
 
 protected:
 
 public:
 	// Constructors / Destructor
-	Form( int const execGrade, int const signGrade, std::string const name );
+	Form( std::string const name, int const execGrade, int const signGrade );
 	Form( Form const & src );
 	virtual ~Form( void );
-
-	// Operators
-	Form&		operator=( Form const & rhs );
 
 	// Accessors
 	bool		getSigned( void ) const;
@@ -43,7 +43,7 @@ public:
 	std::string	getName( void ) const;
 
 	// Methods
-	void		beSigned ( Bureaucrat const * bureaucrat );
+	void		beSigned ( Bureaucrat const & bureaucrat );
 
 	// Exception classes
 	class GradeTooLowException : public std::exception {

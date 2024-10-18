@@ -6,9 +6,9 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Form::Form( int const signGrade, int const execGrade, std::string const name ) : \
-			_signed( false ), _execGrade( execGrade ), _signGrade( signGrade ), \
-			_name( name ) {
+Form::Form( std::string const name, int const signGrade, int const execGrade ) : \
+			_name( name ), _signed( false ), _execGrade( execGrade ), \
+			_signGrade( signGrade ) {
 
 	if ( signGrade > GRADE_MIN ) {
 
@@ -28,8 +28,8 @@ Form::Form( int const signGrade, int const execGrade, std::string const name ) :
 	}
 }
 
-Form::Form( Form const & src ) : _signed( src._signed ), _execGrade( src._execGrade ), \
-								_signGrade( src._signGrade ), _name( src._name ) {}
+Form::Form( Form const & src ) : _name( src._name ), _signed( src._signed ), \
+				_execGrade( src._execGrade ), _signGrade( src._signGrade ) {}
 
 Form::~Form( void ) {}
 
@@ -60,9 +60,9 @@ std::string	Form::getName( void ) const { return _name; }
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
-void	Form::beSigned( Bureaucrat const * bureaucrat ) {
+void	Form::beSigned( Bureaucrat const & bureaucrat ) {
 
-	if ( bureaucrat->getGrade() > _signGrade  ) {
+	if ( bureaucrat.getGrade() > _signGrade  ) {
 
 		throw Form::GradeTooLowException();
 	}

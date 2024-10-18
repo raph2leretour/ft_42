@@ -60,15 +60,17 @@ int	AForm::getSigGrade( void ) const { return _signGrade; }
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
-void	AForm::beSigned( Bureaucrat const * bureaucrat ) {
+void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 
-	if ( bureaucrat->getGrade() > _signGrade  ) {
+	if ( bureaucrat.getGrade() > _signGrade  ) {
 
 		throw AForm::GradeTooLowException();
 	}
 
 	_signed = true;
 }
+
+void	AForm::execute( Bureaucrat const & bureaucrat ) {}
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */

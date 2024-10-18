@@ -19,6 +19,9 @@ private:
 	// Constructors
 	AForm( void );
 
+	// Operators
+	AForm&			operator=( AForm const & rhs );
+
 	// Variables
 	std::string const	_name;
 	bool				_signed;
@@ -33,9 +36,6 @@ public:
 	AForm( AForm const & src );
 	virtual ~AForm( void );
 
-	// Operators
-	AForm&			operator=( AForm const & rhs );
-
 	// Accessors
 	std::string		getName( void ) const;
 	bool			getSigned( void ) const;
@@ -43,7 +43,7 @@ public:
 	int				getSigGrade( void ) const;
 
 	// Methods
-	void			beSigned ( Bureaucrat const * bureaucrat );
+	void			beSigned ( Bureaucrat const & bureaucrat );
 	virtual void	execute( Bureaucrat const & executor );
 
 	// Exception classes

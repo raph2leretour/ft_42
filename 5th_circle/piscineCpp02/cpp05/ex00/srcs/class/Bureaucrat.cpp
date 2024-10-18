@@ -6,8 +6,8 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-Bureaucrat::Bureaucrat( int const grade, std::string const & name ) : \
-						_grade( grade ), _name( name ) {
+Bureaucrat::Bureaucrat( std::string const & name, int const grade ) : \
+						_name( name ), _grade( grade ) {
 
 	if ( grade > GRADE_MIN ) {
 
@@ -19,8 +19,8 @@ Bureaucrat::Bureaucrat( int const grade, std::string const & name ) : \
 	}
 }
 
-Bureaucrat::Bureaucrat( Bureaucrat const & src ) \
-						: _grade( src._grade ), _name( src._name ) {}
+Bureaucrat::Bureaucrat( Bureaucrat const & src ) : \
+						_name( src._name ), _grade( src._grade ) {}
 
 Bureaucrat::~Bureaucrat( void ) {}
 
