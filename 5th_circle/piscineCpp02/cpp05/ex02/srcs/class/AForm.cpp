@@ -6,9 +6,9 @@
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-AForm::AForm( std::string const name, int const signGrade, int const execGrade ) : \
-			__name( name ), signed( false ), _execGrade( execGrade ), \
-			_signGrade( signGrade ) {
+AForm::AForm( std::string const name, int const signGrade, int const execGrade, std::string const target ) : \
+			_name( name ), _signed( false ), _execGrade( execGrade ), \
+			_signGrade( signGrade ), _target( target ) {
 
 	if ( signGrade > GRADE_MIN ) {
 
@@ -29,22 +29,10 @@ AForm::AForm( std::string const name, int const signGrade, int const execGrade )
 }
 
 AForm::AForm( AForm const & src ) : _name( src._name ), _signed( src._signed ), \
-					_execGrade( src._execGrade ), _signGrade( src._signGrade ) {}
+			_execGrade( src._execGrade ), _signGrade( src._signGrade ), \
+			_target( src._target ) {}
 
 AForm::~AForm( void ) {}
-
-/******************************************************************************/
-/*   OPERATORS                                                                */
-/******************************************************************************/
-AForm&	AForm::operator=( AForm const & rhs ) {
-
-	if ( this != &rhs ) {
-
-		_signed = rhs._signed;
-	}
-
-	return *this;
-}
 
 /******************************************************************************/
 /*   ACCESSORS                                                                */
@@ -53,9 +41,11 @@ std::string	AForm::getName( void ) const { return _name; }
 
 bool	AForm::getSigned( void ) const { return _signed; }
 
-int	AForm::getExeGrade( void ) const { return _execGrade; }
+int	AForm::getExecGrade( void ) const { return _execGrade; }
 
-int	AForm::getSigGrade( void ) const { return _signGrade; }
+int	AForm::getSignGrade( void ) const { return _signGrade; }
+
+std::string	AForm::getTarget( void ) const { return _target; }
 
 /******************************************************************************/
 /*   METHODS                                                                  */
@@ -70,14 +60,14 @@ void	AForm::beSigned( Bureaucrat const & bureaucrat ) {
 	_signed = true;
 }
 
-void	AForm::execute( Bureaucrat const & executor ) {
+void	AForm::execute( Bureaucrat const & executor ) const {
 
-	if ( executor.getExecGrade() > _execGrade ) {
+	if ( executor.getGrade() > _execGrade ) {
 
 		throw AForm::GradeTooLowException();
 	}
 
-	std::cout << "Executing " << _name << "... nothing happened" << std::endl;
+	std::cout << "Executing " << _name << "... Nothing happened." << std::endl;
 }
 
 /******************************************************************************/
@@ -85,13 +75,10 @@ void	AForm::execute( Bureaucrat const & executor ) {
 /******************************************************************************/
 std::ostream& operator<<( std::ostream& o, AForm const & rhs ) {
 
-	o << rhs.getName() << ", form signature grade: " << rhs.getSigGrade();
-	o << ", execution grade: " << rhs.getExeGrade() << ", ";
-	if ( rhs.getSigned() == false ) {
-
-		o << "not ";
-	}
-	o << "signed";
+	o << rhs.getName() << " Form";
+	o << "; signature grade: " << rhs.getSignGrade();
+	o << "; execution grade: " << rhs.getExecGrade();
+	o << ( rhs.getSigned() ? "; " : "; not " ) << "signed";
 
 	return o;
 }

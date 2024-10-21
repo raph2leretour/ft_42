@@ -6,47 +6,30 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Bureaucrat.hpp"
+#include <fstream>
+#include "AForm.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Bureaucrat;
-
-class AForm {
+class ShrubberyCreationForm : public AForm {
 
 private:
-	// Constructors
-	AForm( void );
+	ShrubberyCreationForm( void );
+	ShrubberyCreationForm( ShrubberyCreationForm const & src );
 
 	// Operators
-	AForm&			operator=( AForm const & rhs );
-
-	// Variables
-	std::string const	_name;
-	bool				_signed;
-	int const			_execGrade;
-	int const			_signGrade;
+	ShrubberyCreationForm&	operator=( ShrubberyCreationForm const & rhs );
 
 protected:
-	std::string const	_target;
 
 public:
 	// Constructors / Destructor
-	AForm( std::string const name, int const execGrade, int const signGrade, std::string const target );
-	AForm( AForm const & src );
-	virtual ~AForm( void );
-
-	// Accessors
-	std::string		getName( void ) const;
-	bool			getSigned( void ) const;
-	int				getExecGrade( void ) const;
-	int				getSignGrade( void ) const;
-	std::string		getTarget( void ) const;
+	ShrubberyCreationForm( std::string const & target );
+	virtual ~ShrubberyCreationForm( void );
 
 	// Methods
-	void			beSigned ( Bureaucrat const & bureaucrat );
-	virtual void	execute( Bureaucrat const & executor ) const;
+	void	execute( Bureaucrat const & executor ) const;
 
 	// Exception classes
 	class GradeTooLowException : public std::exception {
@@ -64,4 +47,4 @@ public:
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream& operator<<( std::ostream& o, AForm const & rhs );
+std::ostream&	operator<<( std::ostream& o, ShrubberyCreationForm const & rhs );

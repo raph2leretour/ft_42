@@ -17,13 +17,16 @@
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Form;
+class AForm;
 
 class Bureaucrat {
 
 private:
 	// Constructors
 	Bureaucrat( void );
+
+	// Operators
+	Bureaucrat&	operator=( Bureaucrat const & rhs );
 
 	// Variables
 	int					_grade;
@@ -37,9 +40,6 @@ public:
 	Bureaucrat( Bureaucrat const & src );
 	virtual ~Bureaucrat( void );
 
-	// Operators
-	Bureaucrat&	operator=( Bureaucrat const & rhs );
-
 	// Accessors
 	int			getGrade( void ) const;
 	std::string	getName( void ) const;
@@ -47,7 +47,8 @@ public:
 	// Methods
 	void		increment( void );
 	void		decrement( void );
-	void		signForm( Form& form );
+	void		signForm( AForm& form );
+	void		executeForm( AForm const & form );
 
 	// Exeption classes
 	class GradeTooLowException : public std::exception {

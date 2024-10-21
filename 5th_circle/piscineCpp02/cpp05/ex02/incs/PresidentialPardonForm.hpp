@@ -9,30 +9,26 @@
 #include "AForm.hpp"
 
 /******************************************************************************/
-/*   DEFINES                                                                  */
-/******************************************************************************/
-
-/******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class ShruberryCreationForm : public AForm {
+class PresidentialPardonForm : public AForm {
 
 private:
-	ShruberryCreationForm( void );
+	PresidentialPardonForm( void );
+	PresidentialPardonForm( PresidentialPardonForm const & src );
 
 	// Operators
-	ShruberryCreationForm&	operator=( ShruberryCreationForm const & rhs );
+	PresidentialPardonForm&	operator=( PresidentialPardonForm const & rhs );
 
 protected:
 
 public:
 	// Constructors / Destructor
-	ShruberryCreationForm( std::string const & target );
-	ShruberryCreationForm( ShruberryCreationForm const & src );
-	virtual ~ShruberryCreationForm( void );
+	PresidentialPardonForm( std::string const & target );
+	virtual ~PresidentialPardonForm( void );
 
 	// Methods
-	void	execute( Bureaucrat const & executor );
+	void	execute( Bureaucrat const & executor ) const;
 
 	// Exception classes
 	class GradeTooLowException : public std::exception {
@@ -50,4 +46,4 @@ public:
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, ShruberryCreationForm const & rhs );
+std::ostream&	operator<<( std::ostream& o, PresidentialPardonForm const & rhs );

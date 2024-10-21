@@ -34,19 +34,6 @@ Form::Form( Form const & src ) : _name( src._name ), _signed( src._signed ), \
 Form::~Form( void ) {}
 
 /******************************************************************************/
-/*   OPERATORS                                                                */
-/******************************************************************************/
-Form&	Form::operator=( Form const & rhs ) {
-
-	if ( this != &rhs ) {
-
-		_signed = rhs._signed;
-	}
-
-	return *this;
-}
-
-/******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
 bool	Form::getSigned( void ) const { return _signed; }
@@ -77,9 +64,7 @@ std::ostream& operator<<( std::ostream& o, Form const & rhs ) {
 
 	o << rhs.getName() << ", form signature grade: " << rhs.getSigGrade();
 	o << ", execution grade: " << rhs.getExeGrade() << ", ";
-	if ( rhs.getSigned() == false )
-		o << "not ";
-	o << "signed";
+	o << rhs.getSigned() ? " " : "not " << "signed";
 
 	return o;
 }

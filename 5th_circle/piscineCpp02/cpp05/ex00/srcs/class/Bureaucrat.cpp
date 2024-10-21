@@ -25,20 +25,6 @@ Bureaucrat::Bureaucrat( Bureaucrat const & src ) : \
 Bureaucrat::~Bureaucrat( void ) {}
 
 /******************************************************************************/
-/*   OPERATORS                                                                */
-/******************************************************************************/
-Bureaucrat&	Bureaucrat::operator=( Bureaucrat const & rhs ) {
-
-	if ( this != &rhs ) {
-
-		// Since the name is const you cannot copy it !
-		_grade = rhs._grade;
-	}
-
-	return *this;
-}
-
-/******************************************************************************/
 /*   ACCESSORS                                                                */
 /******************************************************************************/
 int	Bureaucrat::getGrade( void ) const { return _grade; }

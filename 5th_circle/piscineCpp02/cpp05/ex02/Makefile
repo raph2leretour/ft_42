@@ -10,7 +10,10 @@ SRCS_DIR	:= srcs
 SRCS		:= \
 				main.cpp \
 				class/Bureaucrat.cpp \
-				class/Form.cpp
+				class/AForm.cpp \
+				class/ShrubberyCreationForm.cpp \
+				class/RobotomyRequestForm.cpp \
+				class/PresidentialPardonForm.cpp
 SRCS		:= $(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR	:= .build

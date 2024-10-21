@@ -6,47 +6,31 @@
 #include <iostream>
 #include <string>
 #include <exception>
-#include "Bureaucrat.hpp"
+#include <cstdlib>
+#include <ctime>
+#include "AForm.hpp"
 
 /******************************************************************************/
 /*   CLASSES                                                                  */
 /******************************************************************************/
-class Bureaucrat;
-
-class AForm {
+class RobotomyRequestForm : public AForm {
 
 private:
-	// Constructors
-	AForm( void );
+	RobotomyRequestForm( void );
+	RobotomyRequestForm( RobotomyRequestForm const & src );
 
 	// Operators
-	AForm&			operator=( AForm const & rhs );
-
-	// Variables
-	std::string const	_name;
-	bool				_signed;
-	int const			_execGrade;
-	int const			_signGrade;
+	RobotomyRequestForm&	operator=( RobotomyRequestForm const & rhs );
 
 protected:
-	std::string const	_target;
 
 public:
 	// Constructors / Destructor
-	AForm( std::string const name, int const execGrade, int const signGrade, std::string const target );
-	AForm( AForm const & src );
-	virtual ~AForm( void );
-
-	// Accessors
-	std::string		getName( void ) const;
-	bool			getSigned( void ) const;
-	int				getExecGrade( void ) const;
-	int				getSignGrade( void ) const;
-	std::string		getTarget( void ) const;
+	RobotomyRequestForm( std::string const & target );
+	virtual ~RobotomyRequestForm( void );
 
 	// Methods
-	void			beSigned ( Bureaucrat const & bureaucrat );
-	virtual void	execute( Bureaucrat const & executor ) const;
+	void	execute( Bureaucrat const & executor ) const;
 
 	// Exception classes
 	class GradeTooLowException : public std::exception {
@@ -64,4 +48,4 @@ public:
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream& operator<<( std::ostream& o, AForm const & rhs );
+std::ostream&	operator<<( std::ostream& o, RobotomyRequestForm const & rhs );
