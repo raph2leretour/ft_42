@@ -1,38 +1,58 @@
 /******************************************************************************/
 /*   INCLUDES                                                                 */
 /******************************************************************************/
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 /******************************************************************************/
 /*   CONSTRUCTORS / DESTRUCTORS                                               */
 /******************************************************************************/
-PresidentialPardonForm::PresidentialPardonForm( std::string const & target ) : \
-			AForm( "PresidentialPardonForm", 5, 25, target ) {}
+Intern::Intern( void ) {}
 
-PresidentialPardonForm::~PresidentialPardonForm( void ) {}
+Intern::~Intern( void ) {}
 
 /******************************************************************************/
 /*   METHODS                                                                  */
 /******************************************************************************/
-void	PresidentialPardonForm::execute( Bureaucrat const & executor ) const {
+AForm*	Intern::makeForm( std::string const & form, std::string const & target ) {
 
-	if ( executor.getGrade() > getExecGrade() ) {
+	std::string	formType[ 3 ] = {
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon"
+	};
 
-		throw PresidentialPardonForm::GradeTooLowException();
+	AForm* formArr[ 3 ] = {
+		new ShrubberyCreationForm( target ),
+		new RobotomyRequestForm( target ),
+		new PresidentialPardonForm( target )
+	};
+
+	for ( int i = 0; i < 3; ++i ) {
+
+		if ( form == formType[ i ] ) {
+
+			std::cout << "Intern creates " << form << '.' << std::endl;
+			for ( ++i; i < 3; ++i ) {
+
+				delete formArr[ i ];
+			}
+			return formArr[ i ];
+		}
+		delete formArr[ i ];
 	}
 
-	std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
+	std::cout << "Error: wrong form type" << std::endl;
+
+	return NULL;
 }
 
 /******************************************************************************/
 /*   EXTERNAL FUNCTIONS                                                       */
 /******************************************************************************/
-std::ostream&	operator<<( std::ostream& o, PresidentialPardonForm const & rhs ) {
+std::ostream&	operator<<( std::ostream& o, Intern const & rhs ) {
 
-	o << rhs.getName() << " Form";
-	o << "; signature grade: " << rhs.getSignGrade();
-	o << "; execution grade: " << rhs.getExecGrade();
-	o << ( rhs.getSigned() ? "; " : "; not " ) << "signed";
+	( void )rhs;
+	o << "undefined cofee maker...";
 
 	return o;
 }

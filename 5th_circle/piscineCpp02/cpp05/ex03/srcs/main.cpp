@@ -3,6 +3,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main( void ) {
 
@@ -13,27 +14,15 @@ int	main( void ) {
 		RobotomyRequestForm form2( "Table" );
 		PresidentialPardonForm form3( "Ecouteurs" );
 
-		std::cout << std::endl;
-		std::cout << "-------------- Form 1 ( Shrubbery ) --------------";
-		std::cout << std::endl;
-		std::cout << std::endl;
+		std::cout << "\n-------------- Form 1 ( Shrubbery ) --------------" << std::endl;
 		bureaucrat.signForm( form1 );
 		bureaucrat.executeForm( form1 );
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------- Form 2 ( Robotomy ) --------------";
-		std::cout << std::endl;
-		std::cout << std::endl;
+		std::cout << "\n-------------- Form 2 ( Robotomy ) --------------" << std::endl;
 		bureaucrat.signForm( form2 );
 		bureaucrat.executeForm( form2 );
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << "-------------- Form 3 ( President ) --------------";
-		std::cout << std::endl;
-		std::cout << std::endl;
+		std::cout << "\n-------------- Form 3 ( President ) --------------" << std::endl;
 		bureaucrat.signForm( form3 );
 		bureaucrat.executeForm( form3 );
-		std::cout << std::endl;
 	} catch ( std::exception& e ) {
 
 		std::cout << e.what() << std::endl;

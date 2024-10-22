@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------#
 #   NAME                                                                       #
 #------------------------------------------------------------------------------#
-NAME		:= ex02
+NAME		:= ex03
 
 #------------------------------------------------------------------------------#
 #   INGREDIENTS                                                                #
@@ -13,7 +13,8 @@ SRCS		:= \
 				class/AForm.cpp \
 				class/ShrubberyCreationForm.cpp \
 				class/RobotomyRequestForm.cpp \
-				class/PresidentialPardonForm.cpp
+				class/PresidentialPardonForm.cpp \
+				class/Intern.cpp
 SRCS		:= $(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR	:= .build
