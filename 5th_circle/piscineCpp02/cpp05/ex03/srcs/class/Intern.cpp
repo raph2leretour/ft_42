@@ -32,9 +32,9 @@ AForm*	Intern::makeForm( std::string const & form, std::string const & target ) 
 		if ( form == formType[ i ] ) {
 
 			std::cout << "Intern creates " << form << '.' << std::endl;
-			for ( ++i; i < 3; ++i ) {
+			for ( int j = i + 1; j < 3; ++j ) {
 
-				delete formArr[ i ];
+				delete formArr[ j ];
 			}
 			return formArr[ i ];
 		}

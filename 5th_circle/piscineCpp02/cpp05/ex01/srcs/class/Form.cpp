@@ -64,7 +64,8 @@ std::ostream& operator<<( std::ostream& o, Form const & rhs ) {
 
 	o << rhs.getName() << ", form signature grade: " << rhs.getSigGrade();
 	o << ", execution grade: " << rhs.getExeGrade() << ", ";
-	o << rhs.getSigned() ? " " : "not " << "signed";
+	o << ( rhs.getSigned() ? " " : "not " );
+	o << "signed";
 
 	return o;
 }

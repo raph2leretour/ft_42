@@ -9,20 +9,19 @@ int	main( void ) {
 
 	try {
 
-		Bureaucrat bureaucrat( 2, "Karl" ); // error with 200
-		ShrubberyCreationForm form1( "Clement" );
-		RobotomyRequestForm form2( "Table" );
-		PresidentialPardonForm form3( "Ecouteurs" );
+		Intern	someRandomIntern;
+		AForm*	scf;
+		AForm*	rrf;
+		AForm*	ppf;
+		AForm*	uwu;
 
-		std::cout << "\n-------------- Form 1 ( Shrubbery ) --------------" << std::endl;
-		bureaucrat.signForm( form1 );
-		bureaucrat.executeForm( form1 );
-		std::cout << "\n-------------- Form 2 ( Robotomy ) --------------" << std::endl;
-		bureaucrat.signForm( form2 );
-		bureaucrat.executeForm( form2 );
-		std::cout << "\n-------------- Form 3 ( President ) --------------" << std::endl;
-		bureaucrat.signForm( form3 );
-		bureaucrat.executeForm( form3 );
+		scf = someRandomIntern.makeForm( "shrubbery creation", "You" );
+		delete scf;
+		rrf = someRandomIntern.makeForm( "robotomy request", "Me" );
+		delete rrf;
+		ppf = someRandomIntern.makeForm( "presidential pardon", "Punpun" );
+		delete ppf;
+		uwu = someRandomIntern.makeForm( "wrongness", "^w^" );
 	} catch ( std::exception& e ) {
 
 		std::cout << e.what() << std::endl;
